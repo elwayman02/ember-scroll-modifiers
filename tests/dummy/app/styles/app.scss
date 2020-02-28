@@ -1,0 +1,11 @@
+.not-found {
+  padding: 30px;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: lightgrey;
+    }
+  }
+}
