@@ -1,7 +1,9 @@
 ember-scroll-modifiers
 ==============================================================================
 
-[Short description of the addon.]
+Scoll-based Modifiers for Ember Applications
+
+Check out the [documentation](https://ember-scroll-modifiers.jhawk.co/)!
 
 
 Compatibility
@@ -18,12 +20,6 @@ Installation
 ```
 ember install ember-scroll-modifiers
 ```
-
-
-Usage
-------------------------------------------------------------------------------
-
-[Longer description of how to use the addon in apps.]
 
 
 Contributing

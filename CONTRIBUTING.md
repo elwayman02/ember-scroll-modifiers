@@ -2,7 +2,7 @@
 
 ## Installation
 
-* `git clone <repository-url>`
+* `git clone https://github.com/elwayman02/ember-scroll-modifiers`
 * `cd ember-scroll-modifiers`
 * `yarn install`
 

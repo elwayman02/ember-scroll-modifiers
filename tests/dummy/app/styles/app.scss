@@ -1,3 +1,13 @@
+.long-container {
+  height: 125vh;
+
+  .intersection-box {
+    border: 1px dotted black;
+    border-radius: 1px;
+    padding: 100px 4px 4px 4px;
+  }
+}
+
 .not-found {
   padding: 30px;
 
