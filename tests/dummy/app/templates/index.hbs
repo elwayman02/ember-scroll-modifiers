@@ -1,9 +1,11 @@
 <DocsHero/>
 
-<div class="docs-container">
+<div class="docs-container long-container">
   <DocsDemo as |demo|>
-    <demo.example name="my-demo.hbs">
-      <p>Make sure to read up on the DocsDemo component before building out this page.</p>
+    <demo.example @name="did-intersect.hbs">
+      <p {{did-intersect this.didIntersect}} class="intersection-box">Number of times this box has intersected the screen: {{this.numIntersections}}</p>
     </demo.example>
+
+    {{demo.snippet "did-intersect.hbs"}}
   </DocsDemo>
 </div>
