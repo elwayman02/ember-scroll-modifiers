@@ -64,6 +64,8 @@
     "eslint-plugin-node": "^11.0.0",
     "loader.js": "^4.7.0",
     "qunit-dom": "^1.0.0",
+    "release-it": "^12.6.2",
+    "release-it-lerna-changelog": "^1.0.3",
     "sass": "^1.26.2"
   },
   "engines": {
@@ -76,5 +78,18 @@
     "configPath": "tests/dummy/config",
     "demoURL": "https://ember-scroll-modifiers.jhawk.co/"
   },
-  "homepage": "https://ember-scroll-modifiers.jhawk.co/"
+  "homepage": "https://ember-scroll-modifiers.jhawk.co/",
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md"
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true
+    }
+  }
 }
