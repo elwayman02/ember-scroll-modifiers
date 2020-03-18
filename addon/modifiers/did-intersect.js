@@ -1,5 +1,4 @@
 import Modifier from 'ember-modifier';
-import { run } from '@ember/runloop';
 
 export default class DidIntersectModifier extends Modifier {
   // Public API
@@ -14,7 +13,6 @@ export default class DidIntersectModifier extends Modifier {
       this.handler(entries[0]);
     }, { threshold: this.threshold });
 
-    run.end();
     this.observer.observe(this.element);
   }
 
@@ -27,8 +25,6 @@ export default class DidIntersectModifier extends Modifier {
   }
 
   didReceiveArguments() {
-    run.begin();
-
     let [handler, threshold] = this.args.positional;
 
     // Save arguments for when we need them
