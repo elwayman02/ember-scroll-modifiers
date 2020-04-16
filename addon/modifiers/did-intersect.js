@@ -9,15 +9,19 @@ export default class DidIntersectModifier extends Modifier {
   observer = null;
 
   observe() {
-    this.observer = new IntersectionObserver((entries) => {
-      this.handler(entries[0]);
-    }, { threshold: this.threshold });
+    if ('IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        this.handler(entries[0]);
+      }, {threshold: this.threshold});
 
-    this.observer.observe(this.element);
+      this.observer.observe(this.element);
+    }
   }
 
   unobserve() {
-    this.observer.disconnect();
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   didUpdateArguments() {
