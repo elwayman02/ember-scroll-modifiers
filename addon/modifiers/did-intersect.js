@@ -10,8 +10,8 @@ export default class DidIntersectModifier extends Modifier {
 
   observe() {
     if ('IntersectionObserver' in window) {
-      this.observer = new IntersectionObserver((entries) => {
-        this.handler(entries[0]);
+      this.observer = new IntersectionObserver((entries, observer) => {
+        this.handler(entries[0], observer);
       }, {threshold: this.threshold});
 
       this.observer.observe(this.element);
