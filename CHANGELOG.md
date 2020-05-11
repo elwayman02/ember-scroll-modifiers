@@ -1,3 +1,22 @@
+## v0.0.4 (2020-05-11)
+
+#### :rocket: Enhancement
+* [#81](https://github.com/elwayman02/ember-scroll-modifiers/pull/81) Improve Callback, Implement Tests, Add Docs ([@elwayman02](https://github.com/elwayman02))
+
+#### :memo: Documentation
+* [#79](https://github.com/elwayman02/ember-scroll-modifiers/pull/79) Upgrade to Ember 3.18.1 & Addon-Docs 0.7.0 ([@elwayman02](https://github.com/elwayman02))
+* [#78](https://github.com/elwayman02/ember-scroll-modifiers/pull/78) Update demo app title ([@elwayman02](https://github.com/elwayman02))
+
+#### :house: Internal
+* [#81](https://github.com/elwayman02/ember-scroll-modifiers/pull/81) Improve Callback, Implement Tests, Add Docs ([@elwayman02](https://github.com/elwayman02))
+* [#80](https://github.com/elwayman02/ember-scroll-modifiers/pull/80) Fix changelog ([@elwayman02](https://github.com/elwayman02))
+* [#79](https://github.com/elwayman02/ember-scroll-modifiers/pull/79) Upgrade to Ember 3.18.1 & Addon-Docs 0.7.0 ([@elwayman02](https://github.com/elwayman02))
+* [#62](https://github.com/elwayman02/ember-scroll-modifiers/pull/62) [skip netlify]: Bump release-it-lerna-changelog from 2.1.2 to 2.2.0 ([@dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+#### Committers: 2
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v0.0.3 (2020-04-16)
 
 #### :bug: Bug Fix
