@@ -21,13 +21,13 @@ and the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/
 
 ## Advanced Usage
 
-`did-intersect` also supports passing an `threshold` number or array into IntersectionObserver:
+`did-intersect` also supports passing an `options` object into IntersectionObserver:
 
-```handlebars{
-  <div {{did-resize this.onIntersection this.thresholds}}></div>
+```handlebars
+  <div {{did-intersect this.onIntersection (hash rootMargin='-100px' threshold=1)}}></div>
 ```
 
-The threshold options supported are documented under [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver).
+The options supported are documented in the MDN site under [Intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#Intersection_observer_options).
 
 ## Browser Support
 
