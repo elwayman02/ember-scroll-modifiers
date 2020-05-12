@@ -1,10 +1,11 @@
 .long-container {
-  height: 125vh;
+  height: 150vh;
+  max-width: 100%; // prevent container from overgrowing the viewport and breaking `IntersectionObserver` on smaller screens
 
   .intersection-box {
     border: 1px dotted black;
-    border-radius: 1px;
-    padding: 100px 4px 4px 4px;
+    padding: 50px 16px;
+    text-align: center;
   }
 }
 
