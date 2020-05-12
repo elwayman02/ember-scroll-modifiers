@@ -9,6 +9,11 @@
   }
 }
 
+// prevent copy button from overlapping code
+pre {
+  padding-right: 60px !important;
+}
+
 .not-found {
   padding: 30px;
 
