@@ -3,7 +3,7 @@ import Modifier from 'ember-modifier';
 export default class DidIntersectModifier extends Modifier {
   // Public API
   handler = null;
-  threshold = [1];
+  options = {};
 
   // Private API
   observer = null;
@@ -12,7 +12,7 @@ export default class DidIntersectModifier extends Modifier {
     if ('IntersectionObserver' in window) {
       this.observer = new IntersectionObserver((entries, observer) => {
         this.handler(entries[0], observer);
-      }, {threshold: this.threshold});
+      }, this.options);
 
       this.observer.observe(this.element);
     }
@@ -29,11 +29,11 @@ export default class DidIntersectModifier extends Modifier {
   }
 
   didReceiveArguments() {
-    let [handler, threshold] = this.args.positional;
+    let [handler, options] = this.args.positional;
 
     // Save arguments for when we need them
     this.handler = handler;
-    this.threshold = threshold || this.threshold;
+    this.options = options || this.options;
 
     this.observe();
   }

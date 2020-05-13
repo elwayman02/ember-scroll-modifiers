@@ -47,8 +47,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     assert.ok(intersectionCallback, 'IntersectionObserver received callback');
     assert.ok(observeStub.calledOnce, 'observe was called');
     assert.ok(intersectionOptions, 'options passed to IntersectionObserver');
-    assert.ok(intersectionOptions.threshold, 'threshold included in default options');
-    assert.equal(intersectionOptions.threshold[0], 1, 'default threshold is 1');
+    assert.equal(typeof intersectionOptions, 'object', 'default options is an object');
+    assert.equal(Object.keys(intersectionOptions).length, 0, 'default options is an empty object');
 
     let [element] = observeStub.args[0];
 
@@ -66,13 +66,14 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     assert.ok(this.intersectStub.calledOnceWith(fakeEntry, fakeObserver), 'handler fired with correct parameters');
   });
 
-  test('modifier passes custom threshold to IntersectionObserver', async function (assert) {
+  test('modifier passes custom options to IntersectionObserver', async function (assert) {
     this.threshold = [0];
+    this.options = { threshold: this.threshold };
 
-    await render(hbs`<div {{did-intersect this.intersectStub this.threshold}}></div>`);
+    await render(hbs`<div {{did-intersect this.intersectStub this.options}}></div>`);
 
     assert.ok(intersectionOptions, 'options passed to IntersectionObserver');
-    assert.equal(intersectionOptions.threshold, this.threshold, 'custom threshold included in options');
+    assert.equal(intersectionOptions, this.options, 'options object and passed options object are the same');
   });
 
   test('modifier graceful no-op if IntersectionObserver does not exist', async function (assert) {
