@@ -68,7 +68,7 @@
     "qunit-dom": "^1.2.0",
     "release-it": "^13.6.1",
     "release-it-lerna-changelog": "^2.3.0",
-    "sass": "^1.26.5"
+    "sass": "^1.26.7"
   },
   "engines": {
     "node": "10.* || >= 12"
