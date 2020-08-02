@@ -5,6 +5,8 @@ Scoll-based Modifiers for Ember Applications
 
 Check out the [documentation](https://ember-scroll-modifiers.jhawk.co/)!
 
+We adhere to the [Ember Community Guidelines](https://emberjs.com/guidelines/) for our Code of Conduct.
+
 
 Compatibility
 ------------------------------------------------------------------------------
