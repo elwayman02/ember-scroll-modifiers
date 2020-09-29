@@ -3,7 +3,7 @@
 <div class="docs-bg-white docs-container docs-w-full long-container">
   <DocsDemo as |demo|>
     <demo.example @name="did-intersect.hbs">
-      <p class="intersection-box" {{did-intersect this.didIntersect}}>
+      <p class="intersection-box" {{did-intersect onEnter=this.onEnteringIntersection}}>
         Number of times this box has intersected the screen:
         {{this.numIntersections}}
       </p>

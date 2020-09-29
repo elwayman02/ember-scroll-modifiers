@@ -1,87 +1,89 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
-
-let intersectionCallback;
-let intersectionOptions;
-let observeStub;
-let disconnectStub;
-let MockIntersectionObserver;
+import Service from '@ember/service';
 
 module('Integration | Modifier | did-intersect', function (hooks) {
   setupRenderingTest(hooks);
 
-  let intersectionObserver;
-
   hooks.beforeEach(function () {
-    intersectionCallback = null;
-    intersectionOptions = null;
-    observeStub = sinon.stub();
-    disconnectStub = sinon.stub();
-
-    MockIntersectionObserver = class MockIntersectionObserver {
-      constructor(callback, options) {
-        intersectionCallback = callback;
-        intersectionOptions = options;
+    class MockObserverManager extends Service {
+      constructor() {
+        super(...arguments);
+        this._admin = {};
       }
 
-      observe = observeStub;
-      disconnect = disconnectStub;
+      observe = sinon.stub();
+      unobserve = sinon.stub();
+      addEnterCallback = sinon.stub();
+      addExitCallback = sinon.stub();
     }
 
-    intersectionObserver = window.IntersectionObserver;
-    window.IntersectionObserver = MockIntersectionObserver;
+    this.owner.register('service:ember-scroll-modifiers@observer-manager', MockObserverManager);
 
-    this.intersectStub = sinon.stub();
+    this.observerManagerMock = this.owner.lookup('service:ember-scroll-modifiers@observer-manager');
+    this.enterStub = sinon.stub();
+    this.exitStub = sinon.stub();
   });
 
-  hooks.afterEach(function () {
-    window.IntersectionObserver = intersectionObserver;
+  test('modifier integrates with observer-manager and triggers correct callbacks when onEnter and onExit are provided', async function (assert) {
+    assert.expect(3);
+
+    await render(hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`);
+
+    assert.ok(this.observerManagerMock.observe.calledOnce, 'observerManager received observe call');
+    assert.ok(this.observerManagerMock.addEnterCallback.calledOnce, 'observerManager received enter callback');
+    assert.ok(this.observerManagerMock.addExitCallback.calledOnce, 'observerManager received exit callback');
   });
 
-  test('modifier integrates with IntersectionObserver', async function (assert) {
-    await render(hbs`<div {{did-intersect this.intersectStub}}></div>`);
+  test('modifier triggers addEnterCallback but not addExitCallback if only onEnter is provided', async function (assert) {
+    await render(hbs`<div {{did-intersect onEnter=this.enterStub}}></div>`);
 
-    assert.ok(intersectionCallback, 'IntersectionObserver received callback');
-    assert.ok(observeStub.calledOnce, 'observe was called');
-    assert.ok(intersectionOptions, 'options passed to IntersectionObserver');
-    assert.equal(typeof intersectionOptions, 'object', 'default options is an object');
-    assert.equal(Object.keys(intersectionOptions).length, 0, 'default options is an empty object');
-
-    let [element] = observeStub.args[0];
-
-    assert.ok(element, 'element was passed to observe');
+    assert.ok(this.observerManagerMock.addEnterCallback.calledOnce, 'observerManager received enter callback');
+    assert.notOk(this.observerManagerMock.addExitCallback.calledOnce, 'observerManager did not receive exit callback');
   });
 
-  test('modifier triggers handler when IntersectionObserver fires callback', async function (assert) {
-    await render(hbs`<div {{did-intersect this.intersectStub}}></div>`);
+  test('modifier triggers addExitCallback but not addEnterCallback if only onExit is provided', async function (assert) {
+    await render(hbs`<div {{did-intersect onExit=this.exitStub}}></div>`);
 
-    let fakeEntry = { target: {} };
-    let fakeObserver = { observe: {} };
+    assert.notOk(this.observerManagerMock.addEnterCallback.calledOnce, 'observerManager did not receive enter callback');
+    assert.ok(this.observerManagerMock.addExitCallback.calledOnce, 'observerManager received exit callback');
+  });
 
-    intersectionCallback([fakeEntry], fakeObserver);
+  test('modifier throws assertion if neither onEnter or onExit is provided', async function (assert) {
+    assert.expect(3);
 
-    assert.ok(this.intersectStub.calledOnceWith(fakeEntry, fakeObserver), 'handler fired with correct parameters');
+    setupOnerror((error) => {
+      assert.equal(error.message, "Assertion Failed: onEnter or/and onExit is required")
+    });
+    await render(hbs`<div {{did-intersect}}></div>`);
+
+    assert.notOk(this.observerManagerMock.addEnterCallback.calledOnce, 'observerManager did not receive enter callback');
+    assert.notOk(this.observerManagerMock.addExitCallback.calledOnce, 'observerManager did not receive callback');
   });
 
   test('modifier passes custom options to IntersectionObserver', async function (assert) {
     this.threshold = [0];
     this.options = { threshold: this.threshold };
 
-    await render(hbs`<div {{did-intersect this.intersectStub this.options}}></div>`);
+    await render(hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub options=this.options}}></div>`);
 
-    assert.ok(intersectionOptions, 'options passed to IntersectionObserver');
-    assert.equal(intersectionOptions, this.options, 'options object and passed options object are the same');
+    assert.equal(this.observerManagerMock.observe.args[0][1].threshold[0], 0, 'options received correct parameters');
   });
 
   test('modifier graceful no-op if IntersectionObserver does not exist', async function (assert) {
+    const intersectionObserver = window.IntersectionObserver;
+
     delete window.IntersectionObserver;
 
-    await render(hbs`<div {{did-intersect this.intersectStub}}></div>`);
+    await render(hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`);
 
-    assert.notOk(intersectionCallback, 'no callback received');
-    assert.notOk(observeStub.calledOnce, 'observe was not called');
+    assert.notOk(this.observerManagerMock.observe.calledOnce, 'observerManager did not received observe call');
+    assert.notOk(this.observerManagerMock.addEnterCallback.calledOnce, 'observerManager did not receive enter callback');
+    assert.notOk(this.observerManagerMock.addExitCallback.calledOnce, 'observerManager did not receive enter callback');
+
+    window.IntersectionObserver = intersectionObserver;
   });
 });
