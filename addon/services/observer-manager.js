@@ -2,12 +2,7 @@ import Service from '@ember/service';
 import IntersectionObserverAdmin from 'intersection-observer-admin';
 
 export default class ObserverManagerService extends Service {
-  _admin;
-
-  constructor() {
-    super(...arguments);
-    this._admin = new IntersectionObserverAdmin();
-  }
+  _admin = new IntersectionObserverAdmin();
 
   observe(element, options) {
     this._admin.observe(element, options)
