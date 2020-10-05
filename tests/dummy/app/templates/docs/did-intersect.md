@@ -9,7 +9,7 @@ Powered by [`intersection-observer-admin`](https://github.com/snewcomer/intersec
 You should use this modifier whenever you need to monitor if an element is intersecting another element or the viewport itself.
 It might be useful for implementing features like showing/hiding sticky header, highlighting element(s) when intersected, and tracking.
 
-You **should not** use this modifier until you've exhausted all native solutions. Native solutions based on `html` and `css` should always 
+You **should not** use this modifier until you've exhausted all native solutions. Native solutions based on `html` and `css` should always
 be prioritized when reasonable. For example, a basic sticky header can be implemented using just `position: sticky` in your `css`.
 
 ## Basic Usage
