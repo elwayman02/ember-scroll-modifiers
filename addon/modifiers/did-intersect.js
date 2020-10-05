@@ -5,7 +5,7 @@ import { assert } from '@ember/debug';
 export default class DidIntersectModifier extends Modifier {
   @service('ember-scroll-modifiers@observer-manager') observerManager;
 
-  // A flag that determins if we should use intersection observer or use no-op, e.g IE11, no polyfill.
+  // A flag that determines if we should use intersection observer or use no-op, e.g IE11, no polyfill.
   _isObservable = 'IntersectionObserver' in window;
 
   observe(options) {
