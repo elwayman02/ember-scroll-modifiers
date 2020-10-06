@@ -7,9 +7,7 @@ export default class IndexController extends Controller {
   numIntersections = 0;
 
   @action
-  didIntersect(entry) {
-    if (entry.isIntersecting) {
-      this.numIntersections++;
-    }
+  onEnteringIntersection() {
+    this.numIntersections++;
   }
 }
