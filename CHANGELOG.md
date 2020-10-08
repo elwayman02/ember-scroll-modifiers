@@ -1,3 +1,16 @@
+## v1.0.0 (2020-10-08)
+
+#### :boom: Breaking Change
+* [#182](https://github.com/elwayman02/ember-scroll-modifiers/pull/182) Add intersection-observer-admin service to manage IO and introduce onEnter/onExit handlers ([@ygongdev](https://github.com/ygongdev))
+
+#### :rocket: Enhancement
+* [#182](https://github.com/elwayman02/ember-scroll-modifiers/pull/182) Add intersection-observer-admin service to manage IO and introduce onEnter/onExit handlers ([@ygongdev](https://github.com/ygongdev))
+
+#### Committers: 3
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- Yicheng (Jerry) Gong ([@ygongdev](https://github.com/ygongdev))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v0.1.0 (2020-05-14)
 
 ## v0.0.4 (2020-05-11)
