@@ -4,6 +4,7 @@ import { render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 import Service from '@ember/service';
+import { DEFAULT_OBSERVER_OPTIONS } from 'ember-scroll-modifiers/modifiers/did-intersect';
 
 module('Integration | Modifier | did-intersect', function (hooks) {
   setupRenderingTest(hooks);
@@ -62,6 +63,15 @@ module('Integration | Modifier | did-intersect', function (hooks) {
 
     assert.notOk(this.observerManagerMock.addEnterCallback.calledOnce, 'observerManager did not receive enter callback');
     assert.notOk(this.observerManagerMock.addExitCallback.calledOnce, 'observerManager did not receive callback');
+  });
+
+  test('modifier uses default observer options when none is provided', async function (assert) {
+    assert.expect(1);
+
+    await render(hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`);
+
+    const options = this.observerManagerMock.observe.args[0][1];
+    assert.deepEqual(options, DEFAULT_OBSERVER_OPTIONS, 'options uses correct default options');
   });
 
   test('modifier passes custom options to IntersectionObserver', async function (assert) {
