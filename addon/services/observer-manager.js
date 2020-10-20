@@ -8,8 +8,8 @@ export default class ObserverManagerService extends Service {
     this._admin.observe(element, options)
   }
 
-  unobserve(element) {
-    this._admin.unobserve(element);
+  unobserve(element, options) {
+    this._admin.unobserve(element, options);
   }
 
   addEnterCallback(element, callback) {

@@ -30,8 +30,8 @@ module('Unit | Service | observer-manager', function(hooks) {
   });
 
   test('unobserve', function(assert) {
-    this.observerManager.unobserve('foo');
-    assert.ok(this.observerManager._admin.unobserve.calledWith('foo'), 'unobserve is called with correct parameters');
+    this.observerManager.unobserve('foo', this.options);
+    assert.ok(this.observerManager._admin.unobserve.calledWith('foo', this.options), 'unobserve is called with correct parameters');
   });
 
   test('addEnterCallback', function(assert) {
