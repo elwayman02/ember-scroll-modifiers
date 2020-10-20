@@ -1,3 +1,12 @@
+## v1.0.1 (2020-10-20)
+
+#### :bug: Bug Fix
+* [#197](https://github.com/elwayman02/ember-scroll-modifiers/pull/197) [Bug] Adding default intersection observer options, so unobserve can work properly. ([@ygongdev](https://github.com/ygongdev))
+
+#### Committers: 2
+- Yicheng (Jerry) Gong ([@ygongdev](https://github.com/ygongdev))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v1.0.0 (2020-10-08)
 
 #### :boom: Breaking Change
