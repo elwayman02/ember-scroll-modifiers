@@ -15,7 +15,7 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
-    'plugin:ember/octane'
+    'plugin:ember/recommended'
   ],
   env: {
     browser: true
