@@ -25,6 +25,7 @@ export default class DidIntersectModifier extends Modifier {
     if (!this._isObservable) {
       return;
     }
+
     this.observerManager.unobserve(this.element, this._options);
   }
 
@@ -55,7 +56,8 @@ export default class DidIntersectModifier extends Modifier {
     this.observe();
   }
 
-  willDestroy() {
+  // Move to willDestroy when we want to drop support for versions below ember-modifier 2.x
+  willRemove() {
     this.unobserve();
   }
 }
