@@ -1,6 +1,6 @@
 {
   "name": "ember-scroll-modifiers",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Scroll-based Modifiers for Ember Applications",
   "keywords": [
     "ember-addon",
