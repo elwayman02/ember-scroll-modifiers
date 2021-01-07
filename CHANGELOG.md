@@ -1,3 +1,17 @@
+Version 9 of Highlight.js has reached EOL and is no longer supported.
+Please upgrade or ask whatever dependency you are using to upgrade.
+https://github.com/highlightjs/highlight.js/issues/2877
+
+## v1.2.0 (2021-01-07)
+
+#### :house: Internal
+* [#242](https://github.com/elwayman02/ember-scroll-modifiers/pull/242) Update to 3.24 Blueprint ([@elwayman02](https://github.com/elwayman02))
+* [#240](https://github.com/elwayman02/ember-scroll-modifiers/pull/240) Switch from Travis to GitHub Actions ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 2
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v1.1.1 (2020-12-14)
 
 #### :bug: Bug Fix
