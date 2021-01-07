@@ -2,7 +2,7 @@ import Modifier from 'ember-modifier';
 import { inject as service } from '@ember/service';
 import { assert } from '@ember/debug';
 
-export const DEFAULT_OBSERVER_OPTIONS = {}
+export const DEFAULT_OBSERVER_OPTIONS = {};
 
 export default class DidIntersectModifier extends Modifier {
   @service('ember-scroll-modifiers@observer-manager') observerManager;

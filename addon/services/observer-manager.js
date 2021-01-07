@@ -5,7 +5,7 @@ export default class ObserverManagerService extends Service {
   _admin = new IntersectionObserverAdmin();
 
   observe(element, options) {
-    this._admin.observe(element, options)
+    this._admin.observe(element, options);
   }
 
   unobserve(element, options) {
