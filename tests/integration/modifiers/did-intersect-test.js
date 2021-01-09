@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render, settled, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 import Service from '@ember/service';
@@ -18,8 +18,12 @@ module('Integration | Modifier | did-intersect', function (hooks) {
 
       observe = sinon.stub();
       unobserve = sinon.stub();
-      addEnterCallback = sinon.stub();
-      addExitCallback = sinon.stub();
+      addEnterCallback = sinon.stub().callsFake((element, callback) => {
+        this.onEnterCallback = sinon.spy(callback);
+      });
+      addExitCallback = sinon.stub().callsFake((element, callback) => {
+        this.onExitCallback = sinon.spy(callback);
+      });
     }
 
     this.owner.register(
@@ -32,6 +36,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
     this.enterStub = sinon.stub();
     this.exitStub = sinon.stub();
+    this.maxEnter = 1;
+    this.maxExit = 1;
   });
 
   test('modifier integrates with observer-manager and triggers correct callbacks when onEnter and onExit are provided', async function (assert) {
@@ -155,5 +161,187 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     window.IntersectionObserver = intersectionObserver;
+  });
+
+  test('modifier onEnter callback never exceeds maxEnter if maxEnter is provided', async function (assert) {
+    assert.expect(1);
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter}}></div>`
+    );
+    for (let i = 0; i < this.maxEnter + 1; i++) {
+      this.observerManagerMock.onEnterCallback();
+    }
+
+    assert.equal(
+      this.enterStub.callCount,
+      this.maxEnter,
+      'Enter callback is only called given maxEnter number of times'
+    );
+  });
+
+  test('modifier onExit callback never exceeds maxExit if maxExit is provided', async function (assert) {
+    assert.expect(1);
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxExit=this.maxExit}}></div>`
+    );
+
+    for (let i = 0; i < this.maxExit + 1; i++) {
+      this.observerManagerMock.onExitCallback();
+    }
+
+    assert.equal(
+      this.exitStub.callCount,
+      this.maxExit,
+      'Exit callback is only called given maxEnter number of times'
+    );
+  });
+
+  test('modifier unobserves element when maxEnter and maxExit are both exceeded', async function (assert) {
+    assert.expect(1);
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter maxExit=this.maxExit}}></div>`
+    );
+
+    for (let i = 0; i < this.maxEnter + 1; i++) {
+      this.observerManagerMock.onEnterCallback();
+    }
+
+    for (let i = 0; i < this.maxExit + 1; i++) {
+      this.observerManagerMock.onExitCallback();
+    }
+
+    assert.equal(this.observerManagerMock.unobserve.callCount, 1);
+  });
+
+  test('modifier unobserves element when maxEnter is exceeded and no onExit is provided', async function (assert) {
+    assert.expect(1);
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub maxEnter=this.maxEnter}}></div>`
+    );
+
+    for (let i = 0; i < this.maxEnter + 1; i++) {
+      this.observerManagerMock.onEnterCallback();
+    }
+
+    assert.equal(this.observerManagerMock.unobserve.callCount, 1);
+  });
+
+  test('modifier unobserves element when maxExit is exceeded and no onEnter is provided', async function (assert) {
+    assert.expect(1);
+
+    await render(
+      hbs`<div {{did-intersect onExit=this.exitStub maxExit=this.maxExit}}></div>`
+    );
+
+    for (let i = 0; i < this.maxExit + 1; i++) {
+      this.observerManagerMock.onExitCallback();
+    }
+
+    assert.equal(this.observerManagerMock.unobserve.callCount, 1);
+  });
+
+  test('modifier onEnter and onExit callback can fire without limit if maxEnter and maxExit is not provided', async function (assert) {
+    assert.expect(3);
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
+    );
+
+    const numOfFiredCallback = this.maxEnter + this.maxExit;
+
+    for (let i = 0; i < numOfFiredCallback; i++) {
+      this.observerManagerMock.onEnterCallback();
+      this.observerManagerMock.onExitCallback();
+    }
+
+    assert.equal(
+      this.observerManagerMock.unobserve.callCount,
+      0,
+      'unobserve has never been triggered'
+    );
+
+    assert.equal(
+      this.enterStub.callCount,
+      numOfFiredCallback,
+      'Enter callback has fired more than maxEnter times'
+    );
+    assert.equal(
+      this.exitStub.callCount,
+      numOfFiredCallback,
+      'Exit callback has fired more than maxExit times'
+    );
+  });
+
+  test('modifier trigger addEnterCallback and addExitCallback only once when arguments change', async function (assert) {
+    assert.expect(2);
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter maxExit=this.maxExit}}></div>`
+    );
+
+    this.set('enterStub', sinon.stub());
+    this.set('exitStub', sinon.stub());
+
+    // Wait for re-render to complete
+    await settled();
+
+    assert.equal(this.observerManagerMock.addEnterCallback.callCount, 1);
+    assert.equal(this.observerManagerMock.addExitCallback.callCount, 1);
+  });
+
+  test('modifier triggers correct addEnterCallback and addExitCallback when callbacks change', async function (assert) {
+    assert.expect(6);
+
+    this.newEnterStub = sinon.stub();
+    this.newExitStub = sinon.stub();
+
+    await render(
+      hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
+    );
+
+    this.observerManagerMock.onEnterCallback();
+    this.observerManagerMock.onExitCallback();
+
+    assert.equal(
+      this.enterStub.callCount,
+      1,
+      'initial enter callback is called'
+    );
+    assert.equal(this.exitStub.callCount, 1, 'initial exit callback is called');
+
+    this.oldEnterStub = this.enterStub;
+    this.oldExitStub = this.exitStub;
+
+    this.set('enterStub', this.newEnterStub);
+    this.set('exitStub', this.newExitStub);
+
+    // Wait for re-render to complete
+    await settled();
+
+    this.observerManagerMock.onEnterCallback();
+    this.observerManagerMock.onExitCallback();
+
+    assert.equal(
+      this.oldEnterStub.callCount,
+      1,
+      'no more old enter callback is being made'
+    );
+    assert.equal(
+      this.oldExitStub.callCount,
+      1,
+      'no more old exit callback is being made'
+    );
+
+    assert.equal(
+      this.newEnterStub.callCount,
+      1,
+      'new enter callback is called'
+    );
+
+    assert.equal(this.newExitStub.callCount, 1, 'new exit callback is called');
   });
 });

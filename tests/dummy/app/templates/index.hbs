@@ -3,13 +3,26 @@
 <div class="docs-bg-white docs-container docs-w-full long-container">
   <DocsDemo as |demo|>
     <demo.example @name="did-intersect.hbs">
-      <p class="intersection-box" {{did-intersect onEnter=this.onEnteringIntersection}}>
-        Number of times this box has intersected the screen:
-        {{this.numIntersections}}
+      <p
+        class="intersection-box"
+        {{did-intersect onEnter=this.onEnteringIntersection}}
+      >
+        Number of times this box has intersected the screen: {{this.numIntersections}}
       </p>
     </demo.example>
+    {{demo.snippet "did-intersect.hbs" label="plain example.hbs"}}
 
-    {{demo.snippet "did-intersect.hbs"}}
+    <demo.example @name="did-intersect-with-max-enter.hbs">
+      <pre
+        class="intersection-box"
+        {{did-intersect onEnter=this.onEnteringIntersectionWithMaxEnter maxEnter=this.maxIntersections}}
+      >
+        Number of times this box has intersected the screen: {{this.numIntersectionsWithMaxEnter}}
+
+        The max limit of enter intersection callbacks on this box: {{this.maxIntersections}}
+      </pre>
+    </demo.example>
+    {{demo.snippet "did-intersect-with-max-enter.hbs" label="example with max enter.hbs"}}
   </DocsDemo>
 </div>
 

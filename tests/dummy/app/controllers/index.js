@@ -6,8 +6,18 @@ export default class IndexController extends Controller {
   @tracked
   numIntersections = 0;
 
+  @tracked
+  numIntersectionsWithMaxEnter = 0;
+
+  maxIntersections = 5;
+
   @action
   onEnteringIntersection() {
     this.numIntersections++;
+  }
+
+  @action
+  onEnteringIntersectionWithMaxEnter() {
+    this.numIntersectionsWithMaxEnter++;
   }
 }
