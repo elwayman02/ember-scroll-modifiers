@@ -79,7 +79,7 @@
     "qunit-dom": "^1.6.0",
     "release-it": "^14.2.2",
     "release-it-lerna-changelog": "^3.1.0",
-    "sass": "^1.32.2"
+    "sass": "^1.32.4"
   },
   "resolutions": {
     "ember-cli-clipboard": "^0.15.0"
