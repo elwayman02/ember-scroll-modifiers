@@ -29,6 +29,8 @@ onEnteringIntersection(entry) {
 }
 ```
 
+You can also set a maximum limit on the number of times the callbacks should trigger for each `onEnter` and `onExit` via `maxEnter` and `maxExit` respectively. By default, there is no limit.
+
 **Note:** This function passes over a single element `entry` compared to the vanilla `IntersectionObserver` API that sends an array of elements.
 
 ## Advanced Usage
