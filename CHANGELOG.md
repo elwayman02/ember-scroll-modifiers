@@ -2,6 +2,15 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+## v1.3.0 (2021-01-25)
+
+#### :rocket: Enhancement
+* [#244](https://github.com/elwayman02/ember-scroll-modifiers/pull/244) Adding support for maxEnter and maxExit ([@ygongdev](https://github.com/ygongdev))
+
+#### Committers: 2
+- Yicheng (Jerry) Gong ([@ygongdev](https://github.com/ygongdev))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+
 ## v1.2.0 (2021-01-07)
 
 #### :house: Internal
