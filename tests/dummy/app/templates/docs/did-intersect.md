@@ -44,7 +44,7 @@ You can also set a maximum limit on the number of times the callbacks should tri
 The options supported are documented in the MDN site under [Intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#Intersection_observer_options).
 
 ## Testing
-Since the underlying IntersectionObserver behavior is non-deterministic, we provid a `did-intersect-mock` test helper to help you test `did-intersect` deterministically.
+Since the underlying IntersectionObserver behavior is non-deterministic, we provide a `did-intersect-mock` test helper to help you test `did-intersect` deterministically.
 
 `did-intersect-mock` creates a mock provides 2 APIs
 
