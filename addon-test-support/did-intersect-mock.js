@@ -38,7 +38,7 @@ class MockIntersectionObserver {
 
   /**
    * Force a single element to enter the viewport
-   * @param {DomElement} el
+   * @param {String} el - a DOM selector string
    */
   static enter(el) {
     return MockIntersectionObserver.forceElement(find(el), {
@@ -49,13 +49,12 @@ class MockIntersectionObserver {
 
   /**
    * Force a single element to exit the viewport
-   * @param {DomElement} el
+   * @param {DomElement} el - a DOM Selector string
    */
   static exit(el) {
     return MockIntersectionObserver.forceElement(find(el), {
       isIntersecting: false,
       intersectionRatio: 0,
-      // time: 100,
     });
   }
 
