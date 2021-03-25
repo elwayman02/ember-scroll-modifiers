@@ -60,7 +60,7 @@ class MockIntersectionObserver {
   }
 
   /**
-   * Force an IntersectionObserverEntry targetted at a specific DOM node.
+   * Force an IntersectionObserverEntry targeted at a specific DOM node.
    * Useful when only triggering viewport state on certain elements.
    *
    * @param {DomElement} el
