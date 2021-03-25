@@ -43,6 +43,42 @@ You can also set a maximum limit on the number of times the callbacks should tri
 
 The options supported are documented in the MDN site under [Intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#Intersection_observer_options).
 
+## Testing
+Since the underlying IntersectionObserver behavior is non-deterministic, we provide a `did-intersect-mock` test helper to help you test `did-intersect` deterministically.
+
+`did-intersect-mock` creates a mock provides 2 APIs
+
+1. `enter(elementString)` triggers the `onEnter` callback, given an DOM element string
+2. `exit(elementString)` triggers the `onExit` callback, given an DOM element string
+
+```javascript
+import mockDidIntersect from 'ember-scroll-modifiers/test-support/did-intersect-mock';
+
+...
+const didIntersectMock = mockDidIntersect(sinon);
+
+await render(hbs`
+  <div
+    data-test-did-intersect
+    {{did-intersect onEnter=this.onEnteringIntersection onExit=this.onExitingIntersection}}
+  >
+  </div>
+`)
+...
+await didIntersectMock.enter('[data-test-did-intersect]');
+...
+await didIntersectMock.exit('[data-test-did-intersect]');
+```
+
+Even though, this effectively allows you to trigger the `did-intersect` on demand without requiring real app interactions, you should still do it as best practice.
+
+```javascript
+...
+await triggerEvent('scroll');
+await didIntersectMock.enter('[data-test-did-intersect]');
+...
+```
+
 ## Browser Support
 
 This feature is [supported](https://caniuse.com/#search=intersectionobserver) in the latest versions of every browser except IE 11.
