@@ -1,5 +1,4 @@
 import { assert } from '@ember/debug';
-import { tracked } from '@glimmer/tracking';
 import { settled } from '@ember/test-helpers';
 import Modifier from 'ember-modifier';
 
