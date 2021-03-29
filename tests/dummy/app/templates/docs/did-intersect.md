@@ -74,7 +74,7 @@ Even though, this effectively allows you to trigger the `did-intersect` on deman
 
 ```javascript
 ...
-await triggerEvent('scroll');
+await triggerEvent('[data-test-root-element-selector]', 'scroll');
 await didIntersectMock.enter('[data-test-did-intersect]');
 ...
 ```
