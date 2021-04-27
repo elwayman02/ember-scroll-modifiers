@@ -34,7 +34,7 @@
     "ember-cli-htmlbars": "^5.7.1",
     "ember-decorators-polyfill": "^1.1.5",
     "ember-modifier": "^2.1.1",
-    "intersection-observer-admin": "^0.2.13"
+    "intersection-observer-admin": "^0.3.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
