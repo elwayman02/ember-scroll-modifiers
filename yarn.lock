@@ -9566,10 +9566,10 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
 
-intersection-observer-admin@^0.2.13:
-  version "0.2.13"
-  resolved "https://registry.yarnpkg.com/intersection-observer-admin/-/intersection-observer-admin-0.2.13.tgz#00a021695bf5aef8d198204514d2f849fd27d089"
-  integrity sha512-REIM59IHXPe9U5eTnowurzzfhgqVkSImZJnOSJZTAJ0LnyJqw8S/eD5s8ZYneQfm9JszhGIBwudF9gF02A3BpQ==
+intersection-observer-admin@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer-admin/-/intersection-observer-admin-0.3.0.tgz#b317469813aee4fadac64c53e917a4046d935f40"
+  integrity sha512-S5CsK0o52tVJWGALZdk/sCAewWEQMLc2iemPjAnxmSwk/9Bul0PAQrjwX/KWg/xYN4nm3x/LgLOEPTNKEBlGyQ==
 
 into-stream@^3.1.0:
   version "3.1.0"
