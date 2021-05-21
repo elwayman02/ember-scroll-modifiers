@@ -17,7 +17,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     sandbox.restore();
   });
 
-  test('it renders when shouldScroll is true', async function (assert) {
+  test('it renders and passes options when shouldScroll is true', async function (assert) {
     this.options = { test: true };
 
     await render(
