@@ -21,4 +21,4 @@ You should use this modifier whenever you need to have an element scrolled into 
 
 ## Browser Support
 
-This feature is [supported](https://caniuse.com/?search=scrollIntoView) in the latest versions of every browser, with partial support in IE11.
+This feature is [supported](https://caniuse.com/?search=scrollIntoView) in the latest versions of every browser.
