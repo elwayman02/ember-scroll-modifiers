@@ -8,10 +8,10 @@ export default modifier(function scrollIntoView(
   const { options, shouldScroll } = named;
   let hasBeenRemoved;
 
-  const trustedPromise = Promise.resolve(shouldScroll);
+  const shouldScrollPromise = Promise.resolve(shouldScroll);
 
-  trustedPromise.then((result) => {
-    if (result && element && !hasBeenRemoved) {
+  shouldScrollPromise.then((shouldScrollValue) => {
+    if (shouldScrollValue && element && !hasBeenRemoved) {
       element.scrollIntoView(options);
     }
   });
