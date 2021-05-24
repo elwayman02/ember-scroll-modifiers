@@ -9,6 +9,19 @@
   }
 }
 
+.scroll-into-view {
+  border: 1px dotted black;
+  padding: 50px 16px;
+  text-align: center;
+
+  button {
+    border-radius: 4px;
+    padding: .5em;
+    background-color: orangered;
+    color: white;
+  }
+}
+
 // prevent copy button from overlapping code
 pre {
   padding-right: 60px !important;

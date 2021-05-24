@@ -11,6 +11,9 @@ export default class IndexController extends Controller {
 
   maxIntersections = 5;
 
+  @tracked
+  shouldScrollIntoView = false;
+
   @action
   onEnteringIntersection() {
     this.numIntersections++;
@@ -19,5 +22,10 @@ export default class IndexController extends Controller {
   @action
   onEnteringIntersectionWithMaxEnter() {
     this.numIntersectionsWithMaxEnter++;
+  }
+
+  @action
+  onScrollIntoViewTrigger() {
+    this.shouldScrollIntoView = true;
   }
 }

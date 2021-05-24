@@ -23,7 +23,20 @@
       </pre>
     </demo.example>
     {{demo.snippet "did-intersect-with-max-enter.hbs" label="example with max enter.hbs"}}
+
+    <demo.example @name="scroll-into-view.hbs">
+      <div
+        class="scroll-into-view"
+        {{scroll-into-view shouldScroll=this.shouldScrollIntoView}}
+      >
+        <button type="button" class="scroll-into-view__button" {{on "click" this.onScrollIntoViewTrigger}}>
+          Trigger Scroll-into-view on click
+        </button>
+      </div>
+    </demo.example>
+    {{demo.snippet "scroll-into-view.hbs" label="scroll-into-view example.hbs"}}
   </DocsDemo>
+
 </div>
 
 <footer>
