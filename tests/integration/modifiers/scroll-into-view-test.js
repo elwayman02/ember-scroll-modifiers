@@ -52,6 +52,11 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       hbs`<div {{scroll-into-view options=this.options shouldScroll=this.shouldScroll}}></div>`
     );
 
+    assert.ok(
+      this.scrollIntoViewSpy.notCalled,
+      'scrollIntoView was not called'
+    );
+
     await this.resolve(true);
 
     assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
