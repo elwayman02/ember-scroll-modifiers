@@ -45,22 +45,28 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
   test('it renders when shouldScroll resolves to true', async function (assert) {
     this.options = { test: true };
-    this.shouldScroll = Promise.resolve(true);
+    this.resolve;
+    this.shouldScroll = new Promise((resolve) => (this.resolve = resolve));
 
     await render(
       hbs`<div {{scroll-into-view options=this.options shouldScroll=this.shouldScroll}}></div>`
     );
+
+    await this.resolve(true);
 
     assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
   });
 
   test('it does not render when shouldScroll resolves to false', async function (assert) {
     this.options = { test: true };
-    this.shouldScroll = Promise.resolve(false);
+    this.resolve;
+    this.shouldScroll = new Promise((resolve) => (this.resolve = resolve));
 
     await render(
       hbs`<div {{scroll-into-view options=this.options shouldScroll=this.shouldScroll}}></div>`
     );
+
+    await this.resolve(false);
 
     assert.notOk(
       this.scrollIntoViewSpy.called,
