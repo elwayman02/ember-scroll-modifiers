@@ -45,8 +45,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
   test('it renders when shouldScroll resolves to true', async function (assert) {
     this.options = { test: true };
-    this.resolve;
-    this.shouldScroll = new Promise((resolve) => (this.resolve = resolve));
+    let resolvePromise;
+    this.shouldScroll = new Promise((resolve) => (resolvePromise = resolve));
 
     await render(
       hbs`<div {{scroll-into-view options=this.options shouldScroll=this.shouldScroll}}></div>`
@@ -57,21 +57,21 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       'scrollIntoView was not called'
     );
 
-    await this.resolve(true);
+    await resolvePromise(true);
 
     assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
   });
 
   test('it does not render when shouldScroll resolves to false', async function (assert) {
     this.options = { test: true };
-    this.resolve;
-    this.shouldScroll = new Promise((resolve) => (this.resolve = resolve));
+    let resolvePromise;
+    this.shouldScroll = new Promise((resolve) => (resolvePromise = resolve));
 
     await render(
       hbs`<div {{scroll-into-view options=this.options shouldScroll=this.shouldScroll}}></div>`
     );
 
-    await this.resolve(false);
+    await resolvePromise(false);
 
     assert.notOk(
       this.scrollIntoViewSpy.called,
@@ -81,8 +81,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
   test('it does not call scrollIntoView if destroyed before shouldScroll is resolved', async function (assert) {
     this.options = { test: true };
-    this.resolve;
-    this.shouldScroll = new Promise((resolve) => (this.resolve = resolve));
+    let resolvePromise;
+    this.shouldScroll = new Promise((resolve) => (resolvePromise = resolve));
 
     await render(
       hbs`<div {{scroll-into-view options=this.options shouldScroll=this.shouldScroll}}></div>`
@@ -90,7 +90,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
     await clearRender();
 
-    await this.resolve(true);
+    await resolvePromise(true);
 
     assert.notOk(
       this.scrollIntoViewSpy.called,
