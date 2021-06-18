@@ -3,7 +3,7 @@ ember-scroll-modifiers
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4592380c-39ca-493a-91f9-49e08bd4b59b/deploy-status)](https://app.netlify.com/sites/cocky-jackson-54cc4d/deploys)
 
-Scoll-based Modifiers for Ember Applications
+Scroll-based Modifiers for Ember Applications
 
 Check out the [documentation](https://ember-scroll-modifiers.jhawk.co/)!
 
