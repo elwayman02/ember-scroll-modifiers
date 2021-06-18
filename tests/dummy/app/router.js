@@ -9,6 +9,7 @@ export default class Router extends AddonDocsRouter {
 Router.map(function () {
   docsRoute(this, function () {
     this.route('did-intersect');
+    this.route('scroll-into-view');
   });
 
   this.route('not-found', { path: '/*path' });
