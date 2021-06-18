@@ -2,6 +2,20 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+## v2.0.0 (2021-06-18)
+
+#### :bug: Bug Fix
+* [#335](https://github.com/elwayman02/ember-scroll-modifiers/pull/335) Add ember-data to fix documentation site ([@elwayman02](https://github.com/elwayman02))
+
+#### :memo: Documentation
+* [#335](https://github.com/elwayman02/ember-scroll-modifiers/pull/335) Add ember-data to fix documentation site ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 4
+- Abe Adam ([@abeadam](https://github.com/abeadam))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+- [@jdkahn](https://github.com/jdkahn)
+
 ## v1.4.0 (2021-03-26)
 
 ## v1.3.0 (2021-01-25)
