@@ -16,13 +16,21 @@ module('Integration | Modifier | did-intersect', function (hooks) {
         this._admin = {};
       }
 
-      observe = sinon.stub();
-      unobserve = sinon.stub();
+      observe = sinon.stub().callsFake(() => {
+        this.isObserving = true;
+      });
+      unobserve = sinon.stub().callsFake(() => {
+        this.isObserving = false;
+      });
       addEnterCallback = sinon.stub().callsFake((element, callback) => {
-        this.onEnterCallback = sinon.spy(callback);
+        this.onEnterCallback = sinon.spy(() => {
+          if (this.isObserving) callback();
+        });
       });
       addExitCallback = sinon.stub().callsFake((element, callback) => {
-        this.onExitCallback = sinon.spy(callback);
+        this.onExitCallback = sinon.spy(() => {
+          if (this.isObserving) callback();
+        });
       });
     }
 
@@ -343,5 +351,47 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     assert.equal(this.newExitStub.callCount, 1, 'new exit callback is called');
+  });
+
+  module('modifier accepts `isObserving` argument', function () {
+    test('with a truth(y) value', async function (assert) {
+      assert.expect(2);
+
+      await render(hbs`
+        <div
+          {{did-intersect
+            isObserving=true
+            onEnter=this.enterStub
+            onExit=this.exitStub
+          }}
+        ></div>
+      `);
+
+      this.observerManagerMock.onEnterCallback();
+      this.observerManagerMock.onExitCallback();
+
+      assert.ok(this.enterStub.calledOnce, 'the enter callback is invoked');
+      assert.ok(this.exitStub.calledOnce, 'the onExit callback is invoked');
+    });
+
+    test('with a false(y) value', async function (assert) {
+      assert.expect(2);
+
+      await render(hbs`
+        <div
+          {{did-intersect
+            isObserving=false
+            onEnter=this.enterStub
+            onExit=this.exitStub
+          }}
+        ></div>
+      `);
+
+      this.observerManagerMock.onEnterCallback();
+      this.observerManagerMock.onExitCallback();
+
+      assert.ok(this.enterStub.notCalled, 'the enter callback is not invoked');
+      assert.ok(this.exitStub.notCalled, 'the onExit callback is not invoked');
+    });
   });
 });
