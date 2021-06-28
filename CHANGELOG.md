@@ -2,6 +2,24 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+## v3.0.0 (2021-06-28)
+
+#### :boom: Breaking Change
+* [#403](https://github.com/elwayman02/ember-scroll-modifiers/pull/403) Ember 3.27 Blueprint Updates (Drop Ember 3.16 Support) ([@elwayman02](https://github.com/elwayman02))
+
+#### :rocket: Enhancement
+* [#397](https://github.com/elwayman02/ember-scroll-modifiers/pull/397) Allow programmatic control of observation ([@chriskrycho](https://github.com/chriskrycho))
+
+#### :memo: Documentation
+* [#404](https://github.com/elwayman02/ember-scroll-modifiers/pull/404) Document the rest of the did-intersect API ([@chriskrycho](https://github.com/chriskrycho))
+
+#### :house: Internal
+* [#403](https://github.com/elwayman02/ember-scroll-modifiers/pull/403) Ember 3.27 Blueprint Updates (Drop Ember 3.16 Support) ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 2
+- Chris Krycho ([@chriskrycho](https://github.com/chriskrycho))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v2.0.0 (2021-06-18)
 
 #### :bug: Bug Fix
