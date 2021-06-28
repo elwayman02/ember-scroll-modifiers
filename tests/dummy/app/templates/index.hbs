@@ -24,12 +24,31 @@
     </demo.example>
     {{demo.snippet "did-intersect-with-max-enter.hbs" label="example with max enter.hbs"}}
 
+    <demo.example @name="did-intersect-with-is-observing.hbs">
+      <div
+        class="intersection-box"
+        {{did-intersect
+          isObserving=this.isObserving
+          onEnter=this.onEnteringWithIsObserving
+        }}
+      >
+        <p>Number of times this box has intersected the screen: {{this.numIntersectionsWithIsObserving}}</p>
+
+        <p>isObserving: {{this.isObserving}}</p>
+
+        <button type='button' class="action-button" {{on "click" this.toggleIsObserving}}>
+          {{if this.isObserving "Stop" "Start"}} observing
+        </button>
+      </div>
+    </demo.example>
+    {{demo.snippet "did-intersect-with-is-observing.hbs" label="example with isObserving.hbs"}}
+
     <demo.example @name="scroll-into-view.hbs">
       <div
         class="scroll-into-view"
         {{scroll-into-view shouldScroll=this.shouldScrollIntoView}}
       >
-        <button type="button" class="scroll-into-view__button" {{on "click" this.onScrollIntoViewTrigger}}>
+        <button type="button" class="action-button" {{on "click" this.onScrollIntoViewTrigger}}>
           Trigger Scroll-into-view on click
         </button>
       </div>

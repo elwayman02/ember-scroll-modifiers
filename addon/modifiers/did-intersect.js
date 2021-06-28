@@ -77,7 +77,14 @@ export default class DidIntersectModifier extends Modifier {
       return;
     }
 
-    let { onEnter, onExit, maxEnter, maxExit, options } = this.args.named;
+    let {
+      onEnter,
+      onExit,
+      maxEnter,
+      maxExit,
+      options,
+      isObserving = true,
+    } = this.args.named;
 
     assert('onEnter or/and onExit is required', onEnter || onExit);
 
@@ -161,7 +168,11 @@ export default class DidIntersectModifier extends Modifier {
       this._options = options;
     }
 
-    this.observe();
+    if (isObserving) {
+      this.observe();
+    } else {
+      this.unobserve();
+    }
   }
 
   // Move to willDestroy when we want to drop support for versions below ember-modifier 2.x

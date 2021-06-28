@@ -12,6 +12,12 @@ export default class IndexController extends Controller {
   maxIntersections = 5;
 
   @tracked
+  isObserving = true;
+
+  @tracked
+  numIntersectionsWithIsObserving = 0;
+
+  @tracked
   shouldScrollIntoView = false;
 
   @action
@@ -22,6 +28,16 @@ export default class IndexController extends Controller {
   @action
   onEnteringIntersectionWithMaxEnter() {
     this.numIntersectionsWithMaxEnter++;
+  }
+
+  @action
+  toggleIsObserving() {
+    this.isObserving = !this.isObserving;
+  }
+
+  @action
+  onEnteringWithIsObserving() {
+    this.numIntersectionsWithIsObserving++;
   }
 
   @action
