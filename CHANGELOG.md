@@ -2,6 +2,19 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+
+## v3.1.0 (2021-08-05)
+
+#### :rocket: Enhancement
+* [#406](https://github.com/elwayman02/ember-scroll-modifiers/pull/406) creating test helper for scroll into view ([@abeadam](https://github.com/abeadam))
+
+#### :memo: Documentation
+* [#421](https://github.com/elwayman02/ember-scroll-modifiers/pull/421) Change author url to https ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 2
+- Abe Adam ([@abeadam](https://github.com/abeadam))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v3.0.0 (2021-06-28)
 
 #### :boom: Breaking Change
