@@ -3,6 +3,15 @@ Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
 
+
+## v3.1.1 (2021-10-12)
+
+#### :house: Internal
+* [#473](https://github.com/elwayman02/ember-scroll-modifiers/pull/473) Ember 3.28 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v3.1.0 (2021-08-05)
 
 #### :rocket: Enhancement
