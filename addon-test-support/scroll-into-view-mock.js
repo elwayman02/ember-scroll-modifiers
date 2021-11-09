@@ -5,7 +5,7 @@ export default function mockScrollIntoView() {
   let mockScrollIntoViewFunction = function () {
     elementsInvokedOn.push(this);
   };
-  // maually mocking native function
+  // manually mocking native function
   let preExistingScrollFunction = window.Element.prototype.scrollIntoView;
   window.Element.prototype.scrollIntoView = mockScrollIntoViewFunction;
   // helper fuctions that will be returned
