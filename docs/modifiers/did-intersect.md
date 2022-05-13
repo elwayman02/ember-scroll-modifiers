@@ -16,7 +16,7 @@ be prioritized when reasonable. For example, a basic sticky header can be implem
 
 `did-intersect` expects at least one of the 2 callback handlers, `onEnter` and `onExit`::
 
-```handlebars
+```handlebars{data-execute=false}
 <div {{did-intersect onEnter=this.onEnteringIntersection onExit=this.onExitingIntersection}}></div>
 ```
 
@@ -39,7 +39,7 @@ You can also set a maximum limit on the number of times the callbacks should tri
 
 `did-intersect` also supports passing an `options` object into IntersectionObserver:
 
-```handlebars
+```handlebars{data-execute=false}
   <div {{did-intersect onEnter=this.onEnteringIntersection options=(hash rootMargin='-100px' threshold=1)}}></div>
 ```
 

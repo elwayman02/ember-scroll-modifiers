@@ -21,6 +21,22 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    fastboot: {
+      hostWhitelist: [
+        'ember-scroll-modifiers.jhawk.co',
+        /(.*)cocky-jackson-54cc4d.netlify.app/,
+        /^localhost:\d+$/,
+      ],
+    },
+
+    'field-guide': {
+      name: 'Ember Scroll Modifiers',
+      copyright: 'Copyright (c) 2022 Jordan Hawker',
+      github: 'https://github.com/elwayman02/ember-scroll-modifiers',
+    },
+
+    historySupportMiddleware: true,
   };
 
   if (environment === 'development') {
