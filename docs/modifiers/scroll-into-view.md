@@ -12,7 +12,7 @@ You should use this modifier whenever you need to have an element scrolled into 
 
 `scroll-into-view` expects the named `shouldScroll` parameter and an optional `options` named parameter. See [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) for the list of possible values and properties of `options`.
 
-```handlebars
+```handlebars{data-execute=false}
 <div {{scroll-into-view shouldScroll=this.shouldScrollPromise options=true}}></div>
 ```
 
