@@ -37,14 +37,14 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
-    "@ember/test-helpers": "^2.6.0",
+    "@ember/test-helpers": "^2.7.0",
     "@embroider/test-setup": "^1.5.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~4.3.0",
-    "ember-cli-dependency-checker": "^3.2.0",
+    "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-deprecation-workflow": "^2.0.0",
     "ember-cli-fastboot": "^3.3.0",
     "ember-cli-inject-live-reload": "^2.1.0",
@@ -78,9 +78,9 @@
     "prettier": "^2.6.1",
     "qunit": "^2.18.0",
     "qunit-dom": "^2.0.0",
-    "release-it": "^14.11.6",
+    "release-it": "^14.14.3",
     "release-it-lerna-changelog": "^4.0.1",
-    "sass": "^1.43.4",
+    "sass": "^1.51.0",
     "webpack": "^5.72.1"
   },
   "engines": {
