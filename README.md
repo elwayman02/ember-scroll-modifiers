@@ -13,10 +13,10 @@ We adhere to the [Ember Community Guidelines](https://emberjs.com/guidelines/) f
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.20 or above
-* Ember CLI v3.20 or above
-* Node.js v12 or above
-* [All N-1 Browsers except IE](https://caniuse.com/#feat=intersectionobserver)
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v14 or above
+* [All N-1 Browsers](https://caniuse.com/#feat=intersectionobserver)
 
 
 Installation
