@@ -10,23 +10,10 @@ window.deprecationWorkflow.config = {
   // If we uncomment the line below, any unhandled error i.e a new error introduced would fail the tests.
   // throwOnUnhandled: true,
   workflow: [
-    // If we want tests to fail, we need to modify the handler to 'throw'
-    {
-      handler: 'silence',
-      matchId: 'deprecated-run-loop-and-computed-dot-access',
-    },
-    {
-      handler: 'silence',
-      matchId: 'ember-glimmer.link-to.positional-arguments',
-    },
-    { handler: 'silence', matchId: 'ember-keyboard.first-responder-inputs' },
-    { handler: 'silence', matchId: 'ember.built-in-components.import' },
-    {
-      handler: 'silence',
-      matchId: 'ember.built-in-components.legacy-arguments',
-    },
-    { handler: 'silence', matchId: 'ember.built-in-components.reopen' },
-    { handler: 'silence', matchId: 'manager-capabilities.modifiers-3-13' },
+    { handler: 'silence', matchId: 'ember-modifier.function-based-options' },
+    { handler: 'silence', matchId: 'ember-modifier.no-args-property' },
+    { handler: 'silence', matchId: 'ember-modifier.no-element-property' },
+    { handler: 'silence', matchId: 'ember-modifier.use-modify' },
     { handler: 'silence', matchId: 'this-property-fallback' },
   ],
 };
