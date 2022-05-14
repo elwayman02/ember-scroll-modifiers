@@ -4,6 +4,21 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v4.0.0 (2022-05-14)
+
+#### :boom: Breaking Change
+* [#619](https://github.com/elwayman02/ember-scroll-modifiers/pull/619) Ember 4 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### :memo: Documentation
+* [#612](https://github.com/elwayman02/ember-scroll-modifiers/pull/612) Field Guide migration ([@elwayman02](https://github.com/elwayman02))
+
+#### :house: Internal
+* [#619](https://github.com/elwayman02/ember-scroll-modifiers/pull/619) Ember 4 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v3.1.1 (2021-10-12)
 
 #### :house: Internal
