@@ -53,7 +53,7 @@ module(
         await this.didIntersectMock.enter('[data-test-did-intersect]');
       }
 
-      assert.equal(this.enterStub.callCount, this.maxEnter);
+      assert.strictEqual(this.enterStub.callCount, this.maxEnter);
     });
 
     test('Did intersect mock triggers onExit never exceeds maxExit if maxExit is provided', async function (assert) {
@@ -67,7 +67,7 @@ module(
         await this.didIntersectMock.exit('[data-test-did-intersect]');
       }
 
-      assert.equal(this.exitStub.callCount, this.maxExit);
+      assert.strictEqual(this.exitStub.callCount, this.maxExit);
     });
 
     test('Did intersect mock fire without limit if maxEnter and maxExit is not provided', async function (assert) {
@@ -84,12 +84,12 @@ module(
         this.didIntersectMock.exit('[data-test-did-intersect]');
       }
 
-      assert.equal(
+      assert.strictEqual(
         this.enterStub.callCount,
         numOfFiredCallback,
         'Enter callback has fired more than maxEnter times'
       );
-      assert.equal(
+      assert.strictEqual(
         this.exitStub.callCount,
         numOfFiredCallback,
         'Exit callback has fired more than maxExit times'
