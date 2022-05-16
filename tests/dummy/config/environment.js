@@ -5,7 +5,7 @@ module.exports = function (environment) {
     modulePrefix: 'dummy',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'history',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -21,6 +21,22 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    fastboot: {
+      hostWhitelist: [
+        'ember-scroll-modifiers.jhawk.co',
+        /(.*)cocky-jackson-54cc4d.netlify.app/,
+        /^localhost:\d+$/,
+      ],
+    },
+
+    'field-guide': {
+      name: 'Ember Scroll Modifiers',
+      copyright: 'Copyright (c) 2022 Jordan Hawker',
+      github: 'https://github.com/elwayman02/ember-scroll-modifiers',
+    },
+
+    historySupportMiddleware: true,
   };
 
   if (environment === 'development') {
@@ -44,9 +60,6 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.locationType = 'hash';
-    // Allow ember-cli-addon-docs to update the rootURL in compiled assets
-    //ENV.rootURL = 'ADDON_DOCS_ROOT_URL';
     // here you can enable a production-specific feature
   }
 

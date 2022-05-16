@@ -13,10 +13,10 @@ We adhere to the [Ember Community Guidelines](https://emberjs.com/guidelines/) f
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.8 or above
-* Ember CLI v2.13 or above
-* Node.js v10 or above
-* [All N-1 Browsers except IE](https://caniuse.com/#feat=intersectionobserver)
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v14 or above
+* [All N-1 Browsers](https://caniuse.com/#feat=intersectionobserver)
 
 
 Installation
@@ -25,6 +25,12 @@ Installation
 ```
 ember install ember-scroll-modifiers
 ```
+
+
+Usage
+------------------------------------------------------------------------------
+
+[Longer description of how to use the addon in apps.]
 
 
 Contributing

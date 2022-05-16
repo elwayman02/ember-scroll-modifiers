@@ -2,6 +2,75 @@ Version 9 of Highlight.js has reached EOL and is no longer supported.
 Please upgrade or ask whatever dependency you are using to upgrade.
 https://github.com/highlightjs/highlight.js/issues/2877
 
+
+
+
+## v4.0.0 (2022-05-14)
+
+#### :boom: Breaking Change
+* [#619](https://github.com/elwayman02/ember-scroll-modifiers/pull/619) Ember 4 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### :memo: Documentation
+* [#612](https://github.com/elwayman02/ember-scroll-modifiers/pull/612) Field Guide migration ([@elwayman02](https://github.com/elwayman02))
+
+#### :house: Internal
+* [#619](https://github.com/elwayman02/ember-scroll-modifiers/pull/619) Ember 4 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
+## v3.1.1 (2021-10-12)
+
+#### :house: Internal
+* [#473](https://github.com/elwayman02/ember-scroll-modifiers/pull/473) Ember 3.28 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
+## v3.1.0 (2021-08-05)
+
+#### :rocket: Enhancement
+* [#406](https://github.com/elwayman02/ember-scroll-modifiers/pull/406) creating test helper for scroll into view ([@abeadam](https://github.com/abeadam))
+
+#### :memo: Documentation
+* [#421](https://github.com/elwayman02/ember-scroll-modifiers/pull/421) Change author url to https ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 2
+- Abe Adam ([@abeadam](https://github.com/abeadam))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
+## v3.0.0 (2021-06-28)
+
+#### :boom: Breaking Change
+* [#403](https://github.com/elwayman02/ember-scroll-modifiers/pull/403) Ember 3.27 Blueprint Updates (Drop Ember 3.16 Support) ([@elwayman02](https://github.com/elwayman02))
+
+#### :rocket: Enhancement
+* [#397](https://github.com/elwayman02/ember-scroll-modifiers/pull/397) Allow programmatic control of observation ([@chriskrycho](https://github.com/chriskrycho))
+
+#### :memo: Documentation
+* [#404](https://github.com/elwayman02/ember-scroll-modifiers/pull/404) Document the rest of the did-intersect API ([@chriskrycho](https://github.com/chriskrycho))
+
+#### :house: Internal
+* [#403](https://github.com/elwayman02/ember-scroll-modifiers/pull/403) Ember 3.27 Blueprint Updates (Drop Ember 3.16 Support) ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 2
+- Chris Krycho ([@chriskrycho](https://github.com/chriskrycho))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
+## v2.0.0 (2021-06-18)
+
+#### :bug: Bug Fix
+* [#335](https://github.com/elwayman02/ember-scroll-modifiers/pull/335) Add ember-data to fix documentation site ([@elwayman02](https://github.com/elwayman02))
+
+#### :memo: Documentation
+* [#335](https://github.com/elwayman02/ember-scroll-modifiers/pull/335) Add ember-data to fix documentation site ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 4
+- Abe Adam ([@abeadam](https://github.com/abeadam))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
+- [@jdkahn](https://github.com/jdkahn)
+
 ## v1.4.0 (2021-03-26)
 
 ## v1.3.0 (2021-01-25)

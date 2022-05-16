@@ -16,7 +16,7 @@ be prioritized when reasonable. For example, a basic sticky header can be implem
 
 `did-intersect` expects at least one of the 2 callback handlers, `onEnter` and `onExit`::
 
-```handlebars
+```handlebars{data-execute=false}
 <div {{did-intersect onEnter=this.onEnteringIntersection onExit=this.onExitingIntersection}}></div>
 ```
 
@@ -35,13 +35,25 @@ You can also set a maximum limit on the number of times the callbacks should tri
 
 ## Advanced Usage
 
+### Options
+
 `did-intersect` also supports passing an `options` object into IntersectionObserver:
 
-```handlebars
+```handlebars{data-execute=false}
   <div {{did-intersect onEnter=this.onEnteringIntersection options=(hash rootMargin='-100px' threshold=1)}}></div>
 ```
 
 The options supported are documented in the MDN site under [Intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#Intersection_observer_options).
+
+### Other arguments
+
+Besides `onEnter`, `onExit`, and `options`, `{{did-intersect}}` accepts the following named arguments:
+
+- `maxEnter`: a maximum number of times to allow the `IntersectionObserver` to be triggered for entering the viewport
+
+- `maxExit`: a maximum number of times to allow the `IntersectionObserver` to be triggered for entering the viewport
+
+- `isObserving`: whether to allow the `IntersectionObserver` to trigger at all. Useful for times when you want to programmatically control enabling and disabling observation of an element based on some tracked state in your own code.
 
 ## Testing
 Since the underlying IntersectionObserver behavior is non-deterministic, we provide a `did-intersect-mock` test helper to help you test `did-intersect` deterministically.

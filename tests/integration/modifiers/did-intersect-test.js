@@ -16,13 +16,21 @@ module('Integration | Modifier | did-intersect', function (hooks) {
         this._admin = {};
       }
 
-      observe = sinon.stub();
-      unobserve = sinon.stub();
+      observe = sinon.stub().callsFake(() => {
+        this.isObserving = true;
+      });
+      unobserve = sinon.stub().callsFake(() => {
+        this.isObserving = false;
+      });
       addEnterCallback = sinon.stub().callsFake((element, callback) => {
-        this.onEnterCallback = sinon.spy(callback);
+        this.onEnterCallback = sinon.spy(() => {
+          if (this.isObserving) callback();
+        });
       });
       addExitCallback = sinon.stub().callsFake((element, callback) => {
-        this.onExitCallback = sinon.spy(callback);
+        this.onExitCallback = sinon.spy(() => {
+          if (this.isObserving) callback();
+        });
       });
     }
 
@@ -91,7 +99,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     assert.expect(3);
 
     setupOnerror((error) => {
-      assert.equal(
+      assert.strictEqual(
         error.message,
         'Assertion Failed: onEnter or/and onExit is required'
       );
@@ -131,7 +139,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub options=this.options}}></div>`
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.observerManagerMock.observe.args[0][1].threshold[0],
       0,
       'options received correct parameters'
@@ -173,7 +181,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       this.observerManagerMock.onEnterCallback();
     }
 
-    assert.equal(
+    assert.strictEqual(
       this.enterStub.callCount,
       this.maxEnter,
       'Enter callback is only called given maxEnter number of times'
@@ -191,7 +199,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       this.observerManagerMock.onExitCallback();
     }
 
-    assert.equal(
+    assert.strictEqual(
       this.exitStub.callCount,
       this.maxExit,
       'Exit callback is only called given maxEnter number of times'
@@ -213,7 +221,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       this.observerManagerMock.onExitCallback();
     }
 
-    assert.equal(this.observerManagerMock.unobserve.callCount, 1);
+    assert.strictEqual(this.observerManagerMock.unobserve.callCount, 1);
   });
 
   test('modifier unobserves element when maxEnter is exceeded and no onExit is provided', async function (assert) {
@@ -227,7 +235,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       this.observerManagerMock.onEnterCallback();
     }
 
-    assert.equal(this.observerManagerMock.unobserve.callCount, 1);
+    assert.strictEqual(this.observerManagerMock.unobserve.callCount, 1);
   });
 
   test('modifier unobserves element when maxExit is exceeded and no onEnter is provided', async function (assert) {
@@ -241,7 +249,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       this.observerManagerMock.onExitCallback();
     }
 
-    assert.equal(this.observerManagerMock.unobserve.callCount, 1);
+    assert.strictEqual(this.observerManagerMock.unobserve.callCount, 1);
   });
 
   test('modifier onEnter and onExit callback can fire without limit if maxEnter and maxExit is not provided', async function (assert) {
@@ -258,18 +266,18 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       this.observerManagerMock.onExitCallback();
     }
 
-    assert.equal(
+    assert.strictEqual(
       this.observerManagerMock.unobserve.callCount,
       0,
       'unobserve has never been triggered'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.enterStub.callCount,
       numOfFiredCallback,
       'Enter callback has fired more than maxEnter times'
     );
-    assert.equal(
+    assert.strictEqual(
       this.exitStub.callCount,
       numOfFiredCallback,
       'Exit callback has fired more than maxExit times'
@@ -289,8 +297,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     // Wait for re-render to complete
     await settled();
 
-    assert.equal(this.observerManagerMock.addEnterCallback.callCount, 1);
-    assert.equal(this.observerManagerMock.addExitCallback.callCount, 1);
+    assert.strictEqual(this.observerManagerMock.addEnterCallback.callCount, 1);
+    assert.strictEqual(this.observerManagerMock.addExitCallback.callCount, 1);
   });
 
   test('modifier triggers correct addEnterCallback and addExitCallback when callbacks change', async function (assert) {
@@ -306,12 +314,16 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     this.observerManagerMock.onEnterCallback();
     this.observerManagerMock.onExitCallback();
 
-    assert.equal(
+    assert.strictEqual(
       this.enterStub.callCount,
       1,
       'initial enter callback is called'
     );
-    assert.equal(this.exitStub.callCount, 1, 'initial exit callback is called');
+    assert.strictEqual(
+      this.exitStub.callCount,
+      1,
+      'initial exit callback is called'
+    );
 
     this.oldEnterStub = this.enterStub;
     this.oldExitStub = this.exitStub;
@@ -325,23 +337,69 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     this.observerManagerMock.onEnterCallback();
     this.observerManagerMock.onExitCallback();
 
-    assert.equal(
+    assert.strictEqual(
       this.oldEnterStub.callCount,
       1,
       'no more old enter callback is being made'
     );
-    assert.equal(
+    assert.strictEqual(
       this.oldExitStub.callCount,
       1,
       'no more old exit callback is being made'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.newEnterStub.callCount,
       1,
       'new enter callback is called'
     );
 
-    assert.equal(this.newExitStub.callCount, 1, 'new exit callback is called');
+    assert.strictEqual(
+      this.newExitStub.callCount,
+      1,
+      'new exit callback is called'
+    );
+  });
+
+  module('modifier accepts `isObserving` argument', function () {
+    test('with a truth(y) value', async function (assert) {
+      assert.expect(2);
+
+      await render(hbs`
+        <div
+          {{did-intersect
+            isObserving=true
+            onEnter=this.enterStub
+            onExit=this.exitStub
+          }}
+        ></div>
+      `);
+
+      this.observerManagerMock.onEnterCallback();
+      this.observerManagerMock.onExitCallback();
+
+      assert.ok(this.enterStub.calledOnce, 'the enter callback is invoked');
+      assert.ok(this.exitStub.calledOnce, 'the onExit callback is invoked');
+    });
+
+    test('with a false(y) value', async function (assert) {
+      assert.expect(2);
+
+      await render(hbs`
+        <div
+          {{did-intersect
+            isObserving=false
+            onEnter=this.enterStub
+            onExit=this.exitStub
+          }}
+        ></div>
+      `);
+
+      this.observerManagerMock.onEnterCallback();
+      this.observerManagerMock.onExitCallback();
+
+      assert.ok(this.enterStub.notCalled, 'the enter callback is not invoked');
+      assert.ok(this.exitStub.notCalled, 'the onExit callback is not invoked');
+    });
   });
 });
