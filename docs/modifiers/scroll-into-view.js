@@ -3,18 +3,24 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class EsButtonComponent extends Component {
+  @tracked shouldScrollWithOffset;
   @tracked shouldScroll;
   @tracked offset = 25;
 
   @action
-  onScrollToElementWithOffset() {
+  onScrollIntoView() {
     this.shouldScroll = true;
+  }
+
+  @action
+  onScrollIntoViewWithOffset() {
+    this.shouldScrollWithOffset = true;
   }
 
   @action
   onOffsetChange(event) {
     // clear the shouldScroll value to prevent scrolling on offset change
-    this.shouldScroll = false;
+    this.shouldScrollWithOffset = false;
     this.offset = event.target.value;
   }
 }

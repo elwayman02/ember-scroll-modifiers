@@ -12,7 +12,20 @@ export default modifier(function scrollIntoView(
 
   shouldScrollPromise.then((shouldScrollValue) => {
     if (shouldScrollValue && element && !hasBeenRemoved) {
-      element.scrollIntoView(options);
+      if (!options?.offset) {
+        element.scrollIntoView(options);
+      } else {
+        const { behavior = 'auto', offset = 0, left = 0 } = options;
+
+        window?.scrollTo({
+          behavior,
+          top:
+            element.getBoundingClientRect().top -
+            document.body.getBoundingClientRect().top -
+            offset,
+          left,
+        });
+      }
     }
   });
 
