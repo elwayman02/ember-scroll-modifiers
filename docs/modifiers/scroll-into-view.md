@@ -27,7 +27,7 @@ You should use this modifier whenever you need to have an element scrolled into 
 
 ### Usage with offset
 
-When passing in an offset, it will call [scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo), and the `options` parameter is designed to correspond to its `options`. The `options.behavior` operates the same, however, instead of `top` and `left` there are `topOffset` and `leftOffset`, respectively. If an offset value is not set then the value passed to `scrollTo` is 0, e.g. `options = { topOffset: 10 }` results in `element.scrollTo({ top: [computedValue], left: 0 })`. Experiment with the below example, you may need to zoom and resize the window to see a horizontal scrollbar.
+When passing in an offset, it will call [scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo), and the `options` parameter is designed to correspond to its `options`. The `options.behavior` operates the same, however, instead of `top` and `left` there are `topOffset` and `leftOffset`, respectively. As with `top` and `left`, `topOffset` and `leftOffset` are in pixels. If an offset value is not set then the value passed to `scrollTo` is 0, e.g. `options = { topOffset: 10 }` results in `element.scrollTo({ top: [computedValue], left: 0 })`. Experiment with the below example, you may need to zoom and resize the window to see a horizontal scrollbar.
 
 
 ```handlebars
