@@ -5,6 +5,18 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v4.1.0 (2022-05-18)
+
+#### :rocket: Enhancement
+* [#622](https://github.com/elwayman02/ember-scroll-modifiers/pull/622) Add offset support for scroll-into-view ([@jdkahn](https://github.com/jdkahn))
+
+#### :memo: Documentation
+* [#622](https://github.com/elwayman02/ember-scroll-modifiers/pull/622) Add offset support for scroll-into-view ([@jdkahn](https://github.com/jdkahn))
+
+#### Committers: 1
+- [@jdkahn](https://github.com/jdkahn)
+
 ## v4.0.0 (2022-05-14)
 
 #### :boom: Breaking Change
