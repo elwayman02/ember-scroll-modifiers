@@ -12,17 +12,31 @@ export default modifier(function scrollIntoView(
 
   shouldScrollPromise.then((shouldScrollValue) => {
     if (shouldScrollValue && element && !hasBeenRemoved) {
-      if (!options?.offset) {
+      if (
+        options?.topOffset === undefined &&
+        options?.leftOffset === undefined
+      ) {
         element.scrollIntoView(options);
       } else {
-        const { behavior = 'auto', offset = 0, left = 0 } = options;
+        const { behavior = 'auto', topOffset, leftOffset } = options;
+
+        const left =
+          leftOffset === undefined
+            ? 0
+            : element.getBoundingClientRect().left -
+              document.body.getBoundingClientRect().left -
+              leftOffset;
+
+        const top =
+          topOffset === undefined
+            ? 0
+            : element.getBoundingClientRect().top -
+              document.body.getBoundingClientRect().top -
+              topOffset;
 
         window?.scrollTo({
           behavior,
-          top:
-            element.getBoundingClientRect().top -
-            document.body.getBoundingClientRect().top -
-            offset,
+          top,
           left,
         });
       }

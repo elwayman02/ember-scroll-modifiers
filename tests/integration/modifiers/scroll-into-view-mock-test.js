@@ -49,9 +49,9 @@ module(
 
     test('scroll into view returns correct parameters with using offset', async function (assert) {
       this.options = {
-        offset: 10,
         behavior: 'auto',
-        left: 10,
+        leftOffset: 10,
+        topOffset: 20,
       };
 
       await render(

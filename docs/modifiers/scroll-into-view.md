@@ -1,11 +1,11 @@
 # scroll-into-view
 
-This modifier scrolls to the associated element. By default it uses `scrollIntoView`, but if an offset is passed as an option it uses `scrollTo` and calculates the `options.top` attribute.
+This modifier scrolls to the associated element. By default it uses `scrollIntoView`, but if a top or left offset is passed as an option it uses `scrollTo` and calculates the `options.top` and/or `options.left` attribute.
 
 
 ## When you should use this modifier
 
-You should use this modifier whenever you need to have an element scrolled into view. If there is a element, such as a fixed header, passing in an `offset` will scroll to the element minus the `offset` value.
+You should use this modifier whenever you need to have an element scrolled into view. If there is a element, such as a fixed header or sidebar, passing in a `topOffset` or `leftOffset` will scroll to the element minus the that offset value.
 
 
 
@@ -27,11 +27,19 @@ You should use this modifier whenever you need to have an element scrolled into 
 
 ### Usage with offset
 
-When passing in an offset, it will call `scrollTo`. See [scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo) for the list of possible values and properties of `options`.
+When passing in an offset, it will call [scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo), and the `options` parameter is designed to correspond to its `options`. The `options.behavior` operates the same, however, instead of `top` and `left` there are `topOffset` and `leftOffset`, respectively. If an offset value is not set then the value passed to `scrollTo` is 0, e.g. `options = { topOffset: 10 }` results in `element.scrollTo({ top: [computedValue], left: 0 })`. Experiment with the below example, you may need to zoom and resize the window to see a horizontal scrollbar.
+
 
 ```handlebars
-  <div {{scroll-into-view shouldScroll=this.shouldScrollWithOffset options=(hash offset=this.offset behavior="smooth")}}>
-    <input type="number" value={{this.offset}} {{on "change" this.onOffsetChange}}>
+  <div {{scroll-into-view shouldScroll=this.shouldScrollWithOffset options=(hash topOffset=this.topOffset leftOffset=this.leftOffset behavior="smooth")}}>
+    <div>
+      <label for="topOffset">Top Offset: </label>
+      <input name="topOffset" type="number" value={{this.topOffset}} {{on "change" this.onTopOffsetChange}}>
+    </div>
+    <div>
+      <label for="leftOffset">Left Offset: </label>
+      <input name="leftOffset" type="number" value={{this.leftOffset}} {{on "change" this.onLeftOffsetChange}}>
+    </div>
     <button type="button" {{on "click" this.onScrollIntoViewWithOffset}}>
       Trigger scroll-into-view with offset on click
     </button>

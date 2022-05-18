@@ -28,25 +28,34 @@ export default function mockScrollIntoView() {
       element = selector;
     }
 
-    if (!options.offset) {
+    if (options?.topOffset === undefined && options?.leftOffset === undefined) {
       return elementsInvokedOn.includes(element);
     }
 
     if (!element || !document) {
       return;
     }
-    const { behavior = 'smooth', offset = 0, left = 0 } = options;
+    const { behavior = 'smooth', leftOffset, topOffset } = options;
+
+    const elementLeft =
+      leftOffset === undefined
+        ? 0
+        : element.getBoundingClientRect().left -
+          document.body.getBoundingClientRect().left -
+          leftOffset;
 
     const elementTop =
-      element.getBoundingClientRect().top -
-      document.body.getBoundingClientRect().top -
-      offset;
+      topOffset === undefined
+        ? 0
+        : element.getBoundingClientRect().top -
+          document.body.getBoundingClientRect().top -
+          topOffset;
 
     return elementsInvokedOn.some((calledOptions) => {
       return (
         behavior === calledOptions.behavior &&
         elementTop === calledOptions.top &&
-        left === calledOptions.left
+        elementLeft === calledOptions.left
       );
     });
   };

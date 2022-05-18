@@ -5,7 +5,8 @@ import { action } from '@ember/object';
 export default class EsButtonComponent extends Component {
   @tracked shouldScrollWithOffset;
   @tracked shouldScroll;
-  @tracked offset = 25;
+  @tracked topOffset = 25;
+  @tracked leftOffset = 25;
 
   @action
   onScrollIntoView() {
@@ -18,9 +19,16 @@ export default class EsButtonComponent extends Component {
   }
 
   @action
-  onOffsetChange(event) {
+  onTopOffsetChange(event) {
     // clear the shouldScroll value to prevent scrolling on offset change
     this.shouldScrollWithOffset = false;
-    this.offset = event.target.value;
+    this.topOffset = event.target.value;
+  }
+
+  @action
+  onLeftOffsetChange(event) {
+    // clear the shouldScroll value to prevent scrolling on offset change
+    this.shouldScrollWithOffset = false;
+    this.leftOffset = event.target.value;
   }
 }

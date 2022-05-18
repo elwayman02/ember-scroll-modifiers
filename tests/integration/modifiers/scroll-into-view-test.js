@@ -98,25 +98,20 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     );
   });
 
-  module('with offset', function (_hooks) {
-    _hooks.beforeEach(function () {
-      this.scrollToSpy = sandbox.spy(window, 'scrollTo');
-      this.getBoundingClientRectStub = sandbox.stub(
+  module('with offsets', function (offsetHooks) {
+    offsetHooks.beforeEach(function () {
+      this.scrollToSpy = sinon.spy(window, 'scrollTo');
+      this.getBoundingClientRectStub = sinon.stub(
         Element.prototype,
         'getBoundingClientRect'
       );
-      this.getBoundingClientRectStub.onCall(0).returns({ top: 100 });
-      this.getBoundingClientRectStub.onCall(1).returns({ top: 25 });
+
+      this.getBoundingClientRectStub.returns({ left: 100, top: 100 });
     });
 
-    _hooks.afterEach(function () {
-      this.scrollToSpy = null;
-      sandbox.restore();
-    });
-
-    test('it renders and passes default options to scrollTo', async function (assert) {
+    test('it renders and passes default `behavior` to scrollTo', async function (assert) {
       this.options = {
-        offset: 50,
+        topOffset: 50,
       };
 
       await render(
@@ -128,19 +123,12 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         'auto',
         'scrollTo was called with correct params'
       );
-
-      assert.strictEqual(
-        this.scrollToSpy.args[0][0].left,
-        0,
-        'scrollTo was called with correct params'
-      );
     });
 
-    test('it renders and passes behavior and left options to scrollTo', async function (assert) {
+    test('it renders and passes behavior to scrollTo', async function (assert) {
       this.options = {
-        offset: 50,
         behavior: 'smooth',
-        left: 10,
+        topOffset: 50,
       };
 
       await render(
@@ -152,18 +140,19 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         'smooth',
         'scrollTo was called with correct params'
       );
-
-      assert.strictEqual(
-        this.scrollToSpy.args[0][0].left,
-        10,
-        'scrollTo was called with correct params'
-      );
     });
 
     test('it renders and calculates correct top offset for scrollTo when offset is passed in', async function (assert) {
       this.options = {
-        offset: 50,
+        topOffset: 50,
+        leftOffset: 40,
       };
+
+      this.getBoundingClientRectStub.onCall(0).returns({ left: 100 });
+      this.getBoundingClientRectStub.onCall(1).returns({ left: 25 });
+
+      this.getBoundingClientRectStub.onCall(2).returns({ top: 100 });
+      this.getBoundingClientRectStub.onCall(3).returns({ top: 25 });
 
       await render(
         hbs`<div id="test" {{scroll-into-view shouldScroll=true options=this.options}}></div>`
@@ -173,7 +162,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         this.scrollToSpy.args[0][0],
         {
           behavior: 'auto',
-          left: 0,
+          left: 35,
           top: 25,
         },
         'scrollTo was called with correct params'
@@ -182,7 +171,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
     test('it does not call scrollTo when shouldScroll is false', async function (assert) {
       this.options = {
-        offset: 50,
+        topOffset: 50,
+        leftOffset: 40,
       };
 
       await render(
@@ -194,7 +184,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
     test('it renders when shouldScroll resolves to true', async function (assert) {
       this.options = {
-        offset: 50,
+        topOffset: 50,
+        leftOffset: 40,
       };
 
       let resolvePromise;
@@ -213,7 +204,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
 
     test('it does not render when shouldScroll resolves to false', async function (assert) {
       this.options = {
-        offset: 50,
+        topOffset: 50,
+        leftOffset: 40,
       };
 
       let resolvePromise;
