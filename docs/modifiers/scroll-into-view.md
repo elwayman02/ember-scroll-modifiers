@@ -1,19 +1,49 @@
 # scroll-into-view
 
-This modifier calls `scrollIntoView` on the modified element.
+This modifier scrolls to the associated element. By default it uses `scrollIntoView`, but if a top or left offset is passed as an option it uses `scrollTo` and calculates the `options.top` and/or `options.left` attribute.
 
 
 ## When you should use this modifier
 
-You should use this modifier whenever you need to have an element scrolled into view on element insert.
+You should use this modifier whenever you need to have an element scrolled into view. If there is a element, such as a fixed header or sidebar, passing in a `topOffset` or `leftOffset` will scroll to the element minus the that offset value.
+
 
 
 ## Basic Usage
 
 `scroll-into-view` expects the named `shouldScroll` parameter and an optional `options` named parameter. See [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) for the list of possible values and properties of `options`.
 
-```handlebars{data-execute=false}
-<div {{scroll-into-view shouldScroll=this.shouldScrollPromise options=true}}></div>
+
+```handlebars
+  <div {{scroll-into-view shouldScroll=this.shouldScroll options=(hash behavior="smooth")}}>
+    <button type="button" {{on "click" this.onScrollIntoView}}>
+      Trigger scroll-into-view on click
+    </button>
+  </div>
+```
+
+`shouldScroll` can be either a Boolean or a Promise that resolves to a truthy or falsy value. It does not handle a rejected Promise.
+
+
+### Usage with offset
+
+When passing in an offset, it will call [scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo), and the `options` parameter is designed to correspond to its `options`. The `options.behavior` operates the same, however, instead of `top` and `left` there are `topOffset` and `leftOffset`, respectively. As with `top` and `left`, `topOffset` and `leftOffset` are in pixels. If an offset value is not set then the value passed to `scrollTo` is 0, e.g. `options = { topOffset: 10 }` results in `element.scrollTo({ top: [computedValue], left: 0 })`. Experiment with the below example, you may need to zoom and resize the window to see a horizontal scrollbar.
+
+
+```handlebars
+  <div {{scroll-into-view shouldScroll=this.shouldScrollWithOffset options=(hash topOffset=this.topOffset leftOffset=this.leftOffset behavior="smooth")}}>
+    <div>
+      <label for="topOffset">Top Offset: </label>
+      <input name="topOffset" type="number" value={{this.topOffset}} {{on "change" this.onTopOffsetChange}}>
+    </div>
+    <div>
+      <label for="leftOffset">Left Offset: </label>
+      <input name="leftOffset" type="number" value={{this.leftOffset}} {{on "change" this.onLeftOffsetChange}}>
+    </div>
+    <button type="button" {{on "click" this.onScrollIntoViewWithOffset}}>
+      Trigger scroll-into-view with offset on click
+    </button>
+  </div>
 ```
 
 `shouldScroll` can be either a Boolean or a Promise that resolves to a truthy or falsy value. It does not handle a rejected Promise.
@@ -45,9 +75,19 @@ function('test scroll into view', (assert) => {
   ...
   assert.ok(this.mockHelperFunctions.scrollIntoViewCalledWith('[data-test-scroll-into-view-selector]'), 'element scrolled into view');
 });
+
+function('test scroll into view with offset', (assert) => {
+  ...
+  await render(
+    hbs`<div {{scroll-into-view shouldScroll=true options=(hash offset=25)}} data-test-scroll-into-view-selector></div>`
+  );
+  ...
+  assert.ok(this.mockHelperFunctions.scrollIntoViewCalledWith('[data-test-scroll-into-view-selector]', { behavior: 'smooth', top: 25, left: 0 }), 'scrolled to element');
+});
 ```
 
 
 ## Browser Support
 
 This feature is [supported](https://caniuse.com/?search=scrollIntoView) in the latest versions of every browser.
+This feature is [supported](https://caniuse.com/?search=scrollTo) in the latest versions of every browser.

@@ -97,4 +97,127 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       'scrollIntoView was not called'
     );
   });
+
+  module('with offsets', function (offsetHooks) {
+    offsetHooks.beforeEach(function () {
+      this.scrollToSpy = sinon.spy(window, 'scrollTo');
+      this.getBoundingClientRectStub = sinon.stub(
+        Element.prototype,
+        'getBoundingClientRect'
+      );
+
+      this.getBoundingClientRectStub.returns({ left: 100, top: 100 });
+    });
+
+    test('it renders and passes default `behavior` to scrollTo', async function (assert) {
+      this.options = {
+        topOffset: 50,
+      };
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true options=this.options}}></div>`
+      );
+
+      assert.strictEqual(
+        this.scrollToSpy.args[0][0].behavior,
+        'auto',
+        'scrollTo was called with correct params'
+      );
+    });
+
+    test('it renders and passes behavior to scrollTo', async function (assert) {
+      this.options = {
+        behavior: 'smooth',
+        topOffset: 50,
+      };
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true options=this.options}}></div>`
+      );
+
+      assert.strictEqual(
+        this.scrollToSpy.args[0][0].behavior,
+        'smooth',
+        'scrollTo was called with correct params'
+      );
+    });
+
+    test('it renders and calculates correct top offset for scrollTo when offset is passed in', async function (assert) {
+      this.options = {
+        topOffset: 50,
+        leftOffset: 40,
+      };
+
+      this.getBoundingClientRectStub.onCall(0).returns({ left: 100 });
+      this.getBoundingClientRectStub.onCall(1).returns({ left: 25 });
+
+      this.getBoundingClientRectStub.onCall(2).returns({ top: 100 });
+      this.getBoundingClientRectStub.onCall(3).returns({ top: 25 });
+
+      await render(
+        hbs`<div id="test" {{scroll-into-view shouldScroll=true options=this.options}}></div>`
+      );
+
+      assert.deepEqual(
+        this.scrollToSpy.args[0][0],
+        {
+          behavior: 'auto',
+          left: 35,
+          top: 25,
+        },
+        'scrollTo was called with correct params'
+      );
+    });
+
+    test('it does not call scrollTo when shouldScroll is false', async function (assert) {
+      this.options = {
+        topOffset: 50,
+        leftOffset: 40,
+      };
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=false options=this.options}}></div>`
+      );
+
+      assert.notOk(this.scrollToSpy.called, 'scrollTo was not called');
+    });
+
+    test('it renders when shouldScroll resolves to true', async function (assert) {
+      this.options = {
+        topOffset: 50,
+        leftOffset: 40,
+      };
+
+      let resolvePromise;
+      this.shouldScroll = new Promise((resolve) => (resolvePromise = resolve));
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=this.shouldScroll options=this.options}}></div>`
+      );
+
+      assert.ok(this.scrollToSpy.notCalled, 'scrollTo was not called');
+
+      await resolvePromise(true);
+
+      assert.ok(this.scrollToSpy.called, 'scrollTo was called');
+    });
+
+    test('it does not render when shouldScroll resolves to false', async function (assert) {
+      this.options = {
+        topOffset: 50,
+        leftOffset: 40,
+      };
+
+      let resolvePromise;
+      this.shouldScroll = new Promise((resolve) => (resolvePromise = resolve));
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=this.shouldScroll options=this.options}}></div>`
+      );
+
+      await resolvePromise(false);
+
+      assert.ok(this.scrollToSpy.notCalled, 'scrollTo was not called');
+    });
+  });
 });
