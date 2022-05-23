@@ -6715,10 +6715,10 @@ fb-watchman@^2.0.0, fb-watchman@^2.0.1:
   dependencies:
     bser "2.1.1"
 
-field-guide-default-template@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/field-guide-default-template/-/field-guide-default-template-2.0.0.tgz#5f5e93a62d01fb04b1aa28c4ca961aa8bdd79f3e"
-  integrity sha512-UFtkC0RBNgEzvXgBchRExaQPvNP0Xe6KTMWBvw+sZQ6Rf+I1qmkWcAiWSbW+mjbI0ymG3/rUf2wTZiXzTkI1HA==
+field-guide-default-template@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/field-guide-default-template/-/field-guide-default-template-3.0.0.tgz#a42117fe97f0f34c0f39b4ed910583defd4c7a73"
+  integrity sha512-/ul1WX0cEndKRW+yn/DxGXDVsCSLw09wRvjz1Zcs0aIp/U+whsxuVtzxUsD312wgDhbGd7goaFCR2URIR0f+4g==
   dependencies:
     broccoli-funnel "^3.0.3"
     ember-angle-bracket-invocation-polyfill "^3.0.1"
