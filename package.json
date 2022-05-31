@@ -80,7 +80,7 @@
     "qunit-dom": "^2.0.0",
     "release-it": "^14.14.3",
     "release-it-lerna-changelog": "^4.0.1",
-    "sass": "^1.51.0",
+    "sass": "^1.52.1",
     "webpack": "^5.72.1"
   },
   "engines": {
