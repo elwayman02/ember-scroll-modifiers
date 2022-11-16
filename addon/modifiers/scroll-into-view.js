@@ -18,23 +18,37 @@ export default modifier(function scrollIntoView(
       ) {
         element.scrollIntoView(options);
       } else {
-        const { behavior = 'auto', topOffset, leftOffset } = options;
+        const {
+          behavior = 'auto',
+          topOffset,
+          leftOffset,
+          scrollContainerId,
+        } = options;
 
-        const left =
-          leftOffset === undefined
-            ? 0
-            : element.getBoundingClientRect().left -
-              document.body.getBoundingClientRect().left -
-              leftOffset;
+        let top = topOffset;
+        let left = leftOffset;
+        if (scrollContainerId === undefined) {
+          left =
+            leftOffset === undefined
+              ? 0
+              : element.getBoundingClientRect().left -
+                document.body.getBoundingClientRect().left -
+                leftOffset;
 
-        const top =
-          topOffset === undefined
-            ? 0
-            : element.getBoundingClientRect().top -
-              document.body.getBoundingClientRect().top -
-              topOffset;
+          top =
+            topOffset === undefined
+              ? 0
+              : element.getBoundingClientRect().top -
+                document.body.getBoundingClientRect().top -
+                topOffset;
+        }
 
-        window?.scrollTo({
+        const scrollContainer =
+          scrollContainerId !== undefined
+            ? document.getElementById(scrollContainerId)
+            : window;
+
+        scrollContainer?.scrollTo({
           behavior,
           top,
           left,
