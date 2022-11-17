@@ -25,16 +25,23 @@ export default modifier(function scrollIntoView(
           scrollContainerId,
         } = options;
 
-        let top = topOffset;
-        let left = leftOffset;
-        if (scrollContainerId === undefined) {
+        const scrollContainer =
+          scrollContainerId !== undefined
+            ? document.getElementById(scrollContainerId)
+            : window;
+        let left, top;
+        if (scrollContainerId !== undefined) {
+          left =
+            element.offsetLeft - scrollContainer.offsetLeft - (leftOffset ?? 0);
+          top =
+            element.offsetTop - scrollContainer.offsetTop - (topOffset ?? 0);
+        } else {
           left =
             leftOffset === undefined
               ? 0
               : element.getBoundingClientRect().left -
                 document.body.getBoundingClientRect().left -
                 leftOffset;
-
           top =
             topOffset === undefined
               ? 0
@@ -42,11 +49,6 @@ export default modifier(function scrollIntoView(
                 document.body.getBoundingClientRect().top -
                 topOffset;
         }
-
-        const scrollContainer =
-          scrollContainerId !== undefined
-            ? document.getElementById(scrollContainerId)
-            : window;
 
         scrollContainer?.scrollTo({
           behavior,

@@ -51,18 +51,25 @@ When passing in an offset, it will call [scrollTo](https://developer.mozilla.org
 A custom scroll container id can be passed. This allows scrolling in nested scroll containers instead of the main window.
 
 ```handlebars
-  <div {{scroll-into-view shouldScroll=this.shouldScrollWithCustom options=(hash topOffset=this.topOffsetCustom scrollContainerId='custom-scroll-container')}}>
-    <div>
-      <label for="topOffset">Top Offset: </label>
-      <input name="topOffset" type="number" value={{this.topOffsetCustom}} {{on "change" this.onTopOffsetChangeCustom}}>
-    </div>
-    <div id="custom-scroll-container" style="width: 200px; height: 150px; overflow-y: scroll;">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis ut nisi interdum bibendum. Ut at massa tincidunt, bibendum ipsum ut, convallis velit. Vestibulum eleifend elit ut laoreet aliquet. Aenean ac nulla varius, molestie arcu non, vestibulum quam. Sed euismod augue at porttitor ornare. Donec lobortis ante arcu, non porta sapien malesuada sit amet. Mauris vestibulum velit mauris, nec rhoncus leo rhoncus nec. Aenean eu diam aliquam, ultricies lectus sit amet, laoreet nulla.
-    </div>
-    <button type="button" {{on "click" this.onScrollIntoViewWithCustom}}>
-      Trigger scroll-into-view with offset on click
-    </button>
+  <div>
+    <label for="topOffset">Top Offset: </label>
+    <input name="topOffset" type="number" value={{this.topOffsetCustom}} {{on "change" this.onTopOffsetChangeCustom}}>
   </div>
+  <div id="custom-scroll-container" style="width: 200px; height: 150px; overflow-y: scroll;">
+    <div style="background-color: red; height: 100px;">Item 1</div>
+    <div style="background-color: green; height: 100px;">Item 2</div>
+    <div
+      style="background-color: blue; height: 100px;"
+      {{scroll-into-view shouldScroll=this.shouldScrollWithCustom options=(hash topOffset=this.topOffsetCustom scrollContainerId='custom-scroll-container')}}
+    >
+      Item 3
+    </div>
+    <div style="background-color: yellow; height: 100px;">Item 4</div>
+    <div style="height: 100px;">Item 5</div>
+  </div>
+  <button type="button" {{on "click" this.onScrollIntoViewWithCustom}}>
+    Trigger scroll-into-view with offset on click
+  </button>
 ```
 
 
