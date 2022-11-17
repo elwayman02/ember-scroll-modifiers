@@ -255,5 +255,57 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         'scrollTo was called with correct params'
       );
     });
+
+    test('it renders and calculates correct offsets for scrollTo', async function (assert) {
+      this.options = {
+        topOffset: 50,
+        leftOffset: 40,
+        scrollContainerId: 'custom-scroll-container',
+      };
+      const offsetContainer = {
+        offsetTop: 200,
+        offsetLeft: 100,
+      };
+      const offsetElement = {
+        offsetTop: 300,
+        offsetLeft: 200,
+      };
+      let offsetTopCall = -1;
+      let offsetLeftCall = -1;
+
+      this.offsetTopStub = sinon
+        .stub(HTMLElement.prototype, 'offsetTop')
+        .get(() => {
+          offsetTopCall += 1;
+          return offsetTopCall === 0
+            ? offsetElement.offsetTop
+            : offsetContainer.offsetTop;
+        });
+      this.offsetLeftStub = sinon
+        .stub(HTMLElement.prototype, 'offsetLeft')
+        .get(() => {
+          offsetLeftCall += 1;
+          return offsetLeftCall === 0
+            ? offsetElement.offsetLeft
+            : offsetContainer.offsetLeft;
+        });
+
+      await render(
+        hbs`
+        <div id="custom-scroll-container">
+          <div {{scroll-into-view shouldScroll=true options=this.options}}/>
+        </div>`
+      );
+
+      assert.deepEqual(
+        this.scrollToSpy.args[0][0],
+        {
+          behavior: 'auto',
+          left: 60,
+          top: 50,
+        },
+        'scrollTo was called with correct params'
+      );
+    });
   });
 });
