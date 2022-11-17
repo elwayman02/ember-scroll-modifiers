@@ -25,17 +25,15 @@ export default modifier(function scrollIntoView(
           scrollContainerId,
         } = options;
 
-        const scrollContainer =
-          scrollContainerId !== undefined
-            ? document.getElementById(scrollContainerId)
-            : window;
-        let left, top;
+        let scrollContainer, left, top;
         if (scrollContainerId !== undefined) {
+          scrollContainer = document.getElementById(scrollContainerId);
           left =
             element.offsetLeft - scrollContainer.offsetLeft - (leftOffset ?? 0);
           top =
             element.offsetTop - scrollContainer.offsetTop - (topOffset ?? 0);
         } else {
+          scrollContainer = window;
           left =
             leftOffset === undefined
               ? 0
