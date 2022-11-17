@@ -48,7 +48,7 @@ When passing in an offset, it will call [scrollTo](https://developer.mozilla.org
 
 `shouldScroll` can be either a Boolean or a Promise that resolves to a truthy or falsy value. It does not handle a rejected Promise.
 
-A custom scroll container id can be passed. This allows scrolling in nested scroll containers instead of the main window.
+A custom scroll container id can be passed. This allows scrolling in nested scroll containers with an offset instead of the main window.
 
 ```handlebars
   <div>
