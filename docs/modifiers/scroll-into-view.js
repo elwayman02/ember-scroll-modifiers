@@ -8,7 +8,7 @@ export default class EsButtonComponent extends Component {
   @tracked shouldScroll;
   @tracked topOffset = 25;
   @tracked leftOffset = 25;
-  @tracked topOffsetCustom = 100;
+  @tracked topOffsetCustom = 50;
 
   @action
   onScrollIntoView() {
