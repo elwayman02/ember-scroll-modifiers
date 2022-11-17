@@ -220,4 +220,40 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       assert.ok(this.scrollToSpy.notCalled, 'scrollTo was not called');
     });
   });
+
+  module('with offsets and custom scroll container', function (offsetHooks) {
+    const sandbox = sinon.createSandbox();
+    offsetHooks.beforeEach(function () {
+      this.scrollToSpy = sandbox.spy(Element.prototype, 'scrollTo');
+    });
+    offsetHooks.afterEach(function () {
+      this.scrollToSpy = null;
+      sandbox.restore();
+    });
+
+    test('it renders and passes default `behavior` to scrollTo', async function (assert) {
+      this.options = {
+        topOffset: 50,
+        scrollContainerId: 'custom-scroll-container',
+      };
+
+      await render(
+        hbs`
+        <div id="custom-scroll-container">
+          <div {{scroll-into-view shouldScroll=true options=this.options}}/>
+        </div>`
+      );
+
+      assert.strictEqual(
+        this.scrollToSpy.thisValues[0].id,
+        'custom-scroll-container',
+        'scrollTo was called on the custom scroll container'
+      );
+      assert.strictEqual(
+        this.scrollToSpy.args[0][0].behavior,
+        'auto',
+        'scrollTo was called with correct params'
+      );
+    });
+  });
 });
