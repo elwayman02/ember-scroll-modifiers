@@ -222,13 +222,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
   });
 
   module('with offsets and custom scroll container', function (offsetHooks) {
-    const sandbox = sinon.createSandbox();
     offsetHooks.beforeEach(function () {
-      this.scrollToSpy = sandbox.spy(Element.prototype, 'scrollTo');
-    });
-    offsetHooks.afterEach(function () {
-      this.scrollToSpy = null;
-      sandbox.restore();
+      this.scrollToSpy = sinon.spy(Element.prototype, 'scrollTo');
     });
 
     test('it renders and passes default `behavior` to scrollTo', async function (assert) {
