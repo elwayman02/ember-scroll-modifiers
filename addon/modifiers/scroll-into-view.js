@@ -1,10 +1,8 @@
 import { modifier } from 'ember-modifier';
 
-export default modifier(function scrollIntoView(
-  element,
-  positional,
-  named = {}
-) {
+export default modifier(scrollIntoView, { eager: false });
+
+function scrollIntoView(element, positional, named = {}) {
   const { options, shouldScroll } = named;
   let hasBeenRemoved;
 
@@ -46,4 +44,4 @@ export default modifier(function scrollIntoView(
   return () => {
     hasBeenRemoved = true;
   };
-});
+}
