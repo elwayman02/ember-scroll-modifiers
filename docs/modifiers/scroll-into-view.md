@@ -48,6 +48,30 @@ When passing in an offset, it will call [scrollTo](https://developer.mozilla.org
 
 `shouldScroll` can be either a Boolean or a Promise that resolves to a truthy or falsy value. It does not handle a rejected Promise.
 
+A custom scroll container id can be passed. This allows scrolling in nested scroll containers with an offset instead of the main window.
+
+```handlebars
+  <div>
+    <label for="topOffset">Top Offset: </label>
+    <input name="topOffset" type="number" value={{this.topOffsetCustom}} {{on "change" this.onTopOffsetChangeCustom}}>
+  </div>
+  <div id="custom-scroll-container" style="width: 200px; height: 150px; overflow-y: scroll;">
+    <div style="background-color: red; height: 100px;">Item 1</div>
+    <div style="background-color: green; height: 100px;">Item 2</div>
+    <div
+      style="background-color: blue; height: 100px;"
+      {{scroll-into-view shouldScroll=this.shouldScrollWithCustom options=(hash topOffset=this.topOffsetCustom scrollContainerId='custom-scroll-container')}}
+    >
+      Item 3
+    </div>
+    <div style="background-color: yellow; height: 100px;">Item 4</div>
+    <div style="height: 100px;">Item 5</div>
+  </div>
+  <button type="button" {{on "click" this.onScrollIntoViewWithCustom}}>
+    Trigger scroll-into-view with offset on click
+  </button>
+```
+
 
 ## Testing
 `scroll-into-view-mock` provides a function that will mock the native browser `scrollIntoView` and allow testing which elements invoked the modifier
