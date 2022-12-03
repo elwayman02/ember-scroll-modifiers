@@ -6917,10 +6917,10 @@ field-guide-default-template@^3.0.0:
     ember-cli-babel "^7.26.6"
     ember-cli-htmlbars "^5.7.1"
 
-field-guide@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/field-guide/-/field-guide-2.3.0.tgz#e36746f7bb61060b360b6b66d39b3b79643d3ce1"
-  integrity sha512-tZHk6pDiPDJHA2Eqnmn0nT3RRX+VIl104UIpZh3bfd8hQqYNO7FcOCl/ii8QAG8Fke8XSUyUMspZUuHI1ojDgA==
+field-guide@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/field-guide/-/field-guide-2.4.0.tgz#4e38b994b9b41f5bf5216f783d2735f3125a7efc"
+  integrity sha512-L//8/b3eMFQzBR/HjSgAr420mx4Q0+iVlSgNzrO1J2bf+0RCD9UtfzA8vOg5j9mxwtRFa7SzZjLxH52ZUbXAng==
   dependencies:
     "@embroider/util" "^0.43.5"
     "@glimmer/component" "^1.0.4"
