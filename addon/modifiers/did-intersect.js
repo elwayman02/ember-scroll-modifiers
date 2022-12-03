@@ -1,9 +1,14 @@
 import Modifier from 'ember-modifier';
+import { registerDestructor } from '@ember/destroyable';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 
 export const DEFAULT_OBSERVER_OPTIONS = {};
+
+function cleanup(instance) {
+  instance.unobserve.call(instance);
+}
 
 export default class DidIntersectModifier extends Modifier {
   @service('ember-scroll-modifiers@observer-manager') observerManager;
@@ -35,6 +40,14 @@ export default class DidIntersectModifier extends Modifier {
   _hasSetupEnterCallback = false;
 
   _hasSetupExitCallback = false;
+
+  // the element
+  element;
+
+  constructor(owner, args) {
+    super(owner, args);
+    registerDestructor(this, cleanup);
+  }
 
   get _isExceedingMaxEnters() {
     if (!Number.isInteger(this._maxEnterIntersections)) {
@@ -68,11 +81,9 @@ export default class DidIntersectModifier extends Modifier {
     this.observerManager.unobserve(this.element, this._options);
   }
 
-  didUpdateArguments() {
-    this.unobserve();
-  }
+  modify(element, positional, named) {
+    this.element = element;
 
-  didReceiveArguments() {
     if (!this._isObservable) {
       return;
     }
@@ -84,7 +95,7 @@ export default class DidIntersectModifier extends Modifier {
       maxExit,
       options,
       isObserving = true,
-    } = this.args.named;
+    } = named;
 
     assert('onEnter or/and onExit is required', onEnter || onExit);
 
@@ -173,10 +184,5 @@ export default class DidIntersectModifier extends Modifier {
     } else {
       this.unobserve();
     }
-  }
-
-  // Move to willDestroy when we want to drop support for versions below ember-modifier 2.x
-  willRemove() {
-    this.unobserve();
   }
 }
