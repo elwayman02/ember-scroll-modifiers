@@ -36,12 +36,12 @@
     "intersection-observer-admin": "^0.3.3"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.8.1",
     "@embroider/test-setup": "^2.0.2",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~4.8.0",
     "ember-cli-dependency-checker": "^3.3.1",
@@ -63,7 +63,7 @@
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^5.1.1",
     "ember-try": "^2.0.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-ember": "^11.2.1",
     "eslint-plugin-node": "^11.1.0",
