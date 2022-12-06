@@ -20,10 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-          cache: yarn
+        uses: volta-cli/action@v4
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Lint
@@ -38,10 +35,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-          cache: yarn
+      - name: Install Node
+        uses: volta-cli/action@v4
       - name: Install Dependencies
         run: yarn install --no-lockfile
       - name: Run Tests
@@ -74,10 +69,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
-          cache: yarn
+        uses: volta-cli/action@v4
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Run Tests
