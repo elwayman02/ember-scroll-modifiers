@@ -15,14 +15,12 @@ jobs:
   test:
     name: "Tests"
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-          cache: yarn
+        uses: volta-cli/action@v4
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Lint
@@ -33,13 +31,12 @@ jobs:
   floating:
     name: "Floating Dependencies"
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-          cache: yarn
+      - uses: actions/checkout@v3
+      - name: Install Node
+        uses: volta-cli/action@v4
       - name: Install Dependencies
         run: yarn install --no-lockfile
       - name: Run Tests
@@ -49,13 +46,14 @@ jobs:
     name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
     needs: "test"
+    timeout-minutes: 10
 
     strategy:
       fail-fast: false
       matrix:
         try-scenario:
-          - ember-lts-3.24
           - ember-lts-3.28
+          - ember-lts-4.4
           - ember-release
           - ember-classic
           - embroider-safe
@@ -69,12 +67,9 @@ jobs:
             experimental: true
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-          cache: yarn
+        uses: volta-cli/action@v4
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Run Tests

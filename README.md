@@ -1,5 +1,4 @@
-ember-scroll-modifiers
-==============================================================================
+# ember-scroll-modifiers
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4592380c-39ca-493a-91f9-49e08bd4b59b/deploy-status)](https://app.netlify.com/sites/cocky-jackson-54cc4d/deploys)
 
@@ -10,36 +9,31 @@ Check out the [documentation](https://ember-scroll-modifiers.jhawk.co/)!
 We adhere to the [Ember Community Guidelines](https://emberjs.com/guidelines/) for our Code of Conduct.
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
-* Ember.js v3.24 or above
-* Ember CLI v3.24 or above
+* Ember.js v3.28 or above
+* Ember CLI v3.28 or above
 * Node.js v14 or above
 * [All N-1 Browsers](https://caniuse.com/#feat=intersectionobserver)
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install ember-scroll-modifiers
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 [Longer description of how to use the addon in apps.]
 
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
