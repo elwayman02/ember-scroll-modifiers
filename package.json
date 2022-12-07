@@ -1,6 +1,6 @@
 {
   "name": "ember-scroll-modifiers",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Scroll-based Modifiers for Ember Applications",
   "keywords": [
     "ember-addon",
@@ -82,7 +82,9 @@
     "sass": "^1.56.1",
     "webpack": "^5.75.0"
   },
-  "fastbootDependencies": [ "crypto" ],
+  "fastbootDependencies": [
+    "crypto"
+  ],
   "engines": {
     "node": "14.* || 16.* || >= 18"
   },

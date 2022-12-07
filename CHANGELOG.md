@@ -6,6 +6,29 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v5.0.0 (2022-12-07)
+
+#### :boom: Breaking Change
+* [#741](https://github.com/elwayman02/ember-scroll-modifiers/pull/741) Ember 4.8 Upgrade ([@elwayman02](https://github.com/elwayman02))
+* [#723](https://github.com/elwayman02/ember-scroll-modifiers/pull/723) Migrate to ember modifier v4 api ([@fpauser](https://github.com/fpauser))
+
+#### :rocket: Enhancement
+* [#713](https://github.com/elwayman02/ember-scroll-modifiers/pull/713) #712: Support nested scroll containers when using offset ([@IgnaceMaes](https://github.com/IgnaceMaes))
+
+#### :memo: Documentation
+* [#743](https://github.com/elwayman02/ember-scroll-modifiers/pull/743) Fix Fastboot Dependencies ([@elwayman02](https://github.com/elwayman02))
+
+#### :house: Internal
+* [#743](https://github.com/elwayman02/ember-scroll-modifiers/pull/743) Fix Fastboot Dependencies ([@elwayman02](https://github.com/elwayman02))
+* [#742](https://github.com/elwayman02/ember-scroll-modifiers/pull/742) ESLint v8 ([@elwayman02](https://github.com/elwayman02))
+* [#741](https://github.com/elwayman02/ember-scroll-modifiers/pull/741) Ember 4.8 Upgrade ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 3
+- Falk Pauser ([@fpauser](https://github.com/fpauser))
+- Ignace Maes ([@IgnaceMaes](https://github.com/IgnaceMaes))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v4.1.0 (2022-05-18)
 
 #### :rocket: Enhancement
