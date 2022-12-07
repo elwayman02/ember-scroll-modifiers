@@ -82,6 +82,7 @@
     "sass": "^1.56.1",
     "webpack": "^5.75.0"
   },
+  "fastbootDependencies": [ "crypto" ],
   "engines": {
     "node": "14.* || 16.* || >= 18"
   },
