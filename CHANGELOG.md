@@ -7,6 +7,15 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v5.0.1 (2022-12-08)
+
+#### :house: Internal
+* [#744](https://github.com/elwayman02/ember-scroll-modifiers/pull/744) Ember 4.9 Blueprint Updates ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v5.0.0 (2022-12-07)
 
 #### :boom: Breaking Change
