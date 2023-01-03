@@ -8,6 +8,15 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v6.0.0 (2023-01-03)
+
+#### :house: Internal
+* [#745](https://github.com/elwayman02/ember-scroll-modifiers/pull/745) Update Release Config ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v5.0.1 (2022-12-08)
 
 #### :house: Internal
