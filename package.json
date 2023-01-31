@@ -31,7 +31,7 @@
   "dependencies": {
     "ember-auto-import": "^2.5.0",
     "ember-cli-babel": "^7.26.11",
-    "ember-cli-htmlbars": "^6.1.1",
+    "ember-cli-htmlbars": "^6.2.0",
     "ember-modifier": "^4.0.0",
     "intersection-observer-admin": "^0.3.3"
   },
