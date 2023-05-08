@@ -79,7 +79,7 @@
     "release-it": "^15.10.3",
     "release-it-lerna-changelog": "^5.0.0",
     "sass": "^1.62.1",
-    "webpack": "^5.81.0"
+    "webpack": "^5.82.0"
   },
   "fastbootDependencies": [
     "crypto"
