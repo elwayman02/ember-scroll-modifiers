@@ -9,6 +9,19 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v7.0.0 (2023-05-17)
+
+#### :boom: Breaking Change
+* [#853](https://github.com/elwayman02/ember-scroll-modifiers/pull/853) Drop Ember 3.28, Node 14 ([@elwayman02](https://github.com/elwayman02))
+
+#### :rocket: Enhancement
+* [#852](https://github.com/elwayman02/ember-scroll-modifiers/pull/852) Allow `ember-source` v5 in `peerDependencies` ([@boris-petrov](https://github.com/boris-petrov))
+
+#### Committers: 2
+- Boris Petrov ([@boris-petrov](https://github.com/boris-petrov))
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v6.0.0 (2023-01-03)
 
 #### :house: Internal
