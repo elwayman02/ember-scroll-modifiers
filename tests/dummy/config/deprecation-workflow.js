@@ -8,6 +8,6 @@
 window.deprecationWorkflow = window.deprecationWorkflow || {};
 window.deprecationWorkflow.config = {
   // If we uncomment the line below, any unhandled error i.e a new error introduced would fail the tests.
-  // throwOnUnhandled: true,
-  workflow: [{ handler: 'silence', matchId: 'this-property-fallback' }],
+  throwOnUnhandled: true,
+  workflow: [{ handler: 'silence', matchId: 'ember-string.add-package' }],
 };
