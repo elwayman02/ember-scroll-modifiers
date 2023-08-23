@@ -37,14 +37,12 @@ module(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );
       await this.didIntersectMock.enter('[data-test-did-intersect]', {
-        x: 1,
-        y: 1,
+        time: 100,
       });
 
       assert.ok(
         this.enterStub.calledWithMatch({
-          x: 1,
-          y: 1,
+          time: 100,
         })
       );
     });
@@ -68,14 +66,12 @@ module(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );
       await this.didIntersectMock.exit('[data-test-did-intersect]', {
-        x: 1,
-        y: 1,
+        time: 100,
       });
 
       assert.ok(
         this.exitStub.calledWithMatch({
-          x: 1,
-          y: 1,
+          time: 100,
         })
       );
     });
