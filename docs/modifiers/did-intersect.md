@@ -92,7 +92,7 @@ await didIntersectMock.enter('[data-test-did-intersect]');
 ...
 ```
 
-You can also construct and pass additional state for IntersectionObserverEntry, `enter(elementString, IntersectionObserverEntry)`, `exit(elementString, IntersectionObserverEntry)`
+You can also construct and pass you own IntersectionObserverEntry, `enter(elementString, IntersectionObserverEntry)`, `exit(elementString, IntersectionObserverEntry)`
 
 ```javascript
 ...
