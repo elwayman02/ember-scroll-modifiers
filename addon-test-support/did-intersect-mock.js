@@ -45,7 +45,7 @@ class MockIntersectionObserver {
     return MockIntersectionObserver.forceElement(find(el), {
       isIntersecting: true,
       intersectionRatio: 1,
-      ...state
+      ...state,
     });
   }
 
@@ -58,7 +58,7 @@ class MockIntersectionObserver {
     return MockIntersectionObserver.forceElement(find(el), {
       isIntersecting: false,
       intersectionRatio: 0,
-      ...state
+      ...state,
     });
   }
 
