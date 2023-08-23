@@ -2,7 +2,7 @@
 
 This modifier triggers a callback when intersection events are observed on the target element.
 
-Powered by [`intersection-observer-admin`](https://github.com/snewcomer/intersection-observer-admin)  for performance.
+Powered by [`intersection-observer-admin`](https://github.com/snewcomer/intersection-observer-admin) for performance.
 
 ## When you should use this modifier
 
@@ -56,6 +56,7 @@ Besides `onEnter`, `onExit`, and `options`, `{{did-intersect}}` accepts the foll
 - `isObserving`: whether to allow the `IntersectionObserver` to trigger at all. Useful for times when you want to programmatically control enabling and disabling observation of an element based on some tracked state in your own code.
 
 ## Testing
+
 Since the underlying IntersectionObserver behavior is non-deterministic, we provide a `did-intersect-mock` test helper to help you test `did-intersect` deterministically.
 
 `did-intersect-mock` creates a mock provides 2 APIs
@@ -88,6 +89,15 @@ Even though, this effectively allows you to trigger the `did-intersect` on deman
 ...
 await triggerEvent('[data-test-root-element-selector]', 'scroll');
 await didIntersectMock.enter('[data-test-did-intersect]');
+...
+```
+
+You can also construct and pass you own IntersectionObserverEntry, `enter(elementString, IntersectionObserverEntry)`, `exit(elementString, IntersectionObserverEntry)`
+
+```javascript
+...
+await didIntersectMock.enter('[data-test-did-intersect]', {time: 100});
+await didIntersectMock.exit('[data-test-did-intersect]', {time: 100});
 ...
 ```
 

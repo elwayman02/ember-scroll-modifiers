@@ -39,22 +39,26 @@ class MockIntersectionObserver {
   /**
    * Force a single element to enter the viewport
    * @param {String} el - a DOM selector string
+   * @param {IntersectionObserverEntry} [state] Additional state to be passed as the IntersectionObserverEntry
    */
-  static enter(el) {
+  static enter(el, state) {
     return MockIntersectionObserver.forceElement(find(el), {
       isIntersecting: true,
       intersectionRatio: 1,
+      ...state,
     });
   }
 
   /**
    * Force a single element to exit the viewport
    * @param {DomElement} el - a DOM Selector string
+   * @param {IntersectionObserverEntry} [state] Additional state to be passed as the IntersectionObserverEntry
    */
-  static exit(el) {
+  static exit(el, state) {
     return MockIntersectionObserver.forceElement(find(el), {
       isIntersecting: false,
       intersectionRatio: 0,
+      ...state,
     });
   }
 

@@ -30,6 +30,23 @@ module(
       assert.notOk(this.exitStub.calledOnce);
     });
 
+    test('Did intersect mock triggers onEnter with additional state correctly', async function (assert) {
+      assert.expect(1);
+
+      await render(
+        hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
+      );
+      await this.didIntersectMock.enter('[data-test-did-intersect]', {
+        time: 100,
+      });
+
+      assert.ok(
+        this.enterStub.calledWithMatch({
+          time: 100,
+        })
+      );
+    });
+
     test('Did intersect mock triggers onExit correctly', async function (assert) {
       assert.expect(2);
 
@@ -40,6 +57,23 @@ module(
 
       assert.notOk(this.enterStub.calledOnce);
       assert.ok(this.exitStub.calledOnce);
+    });
+
+    test('Did intersect mock triggers onExit with additional state correctly', async function (assert) {
+      assert.expect(1);
+
+      await render(
+        hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
+      );
+      await this.didIntersectMock.exit('[data-test-did-intersect]', {
+        time: 100,
+      });
+
+      assert.ok(
+        this.exitStub.calledWithMatch({
+          time: 100,
+        })
+      );
     });
 
     test('Did intersect mock triggers onExit never exceeds maxEnter if maxEnter is provided', async function (assert) {
