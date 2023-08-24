@@ -30,6 +30,8 @@
 /tests/
 /yarn-error.log
 /yarn.lock
+/.yarn
+/.idea
 .gitkeep
 
 # ember-try
