@@ -18,32 +18,32 @@ module(
 
     test('scroll into view returns correct parameters', async function (assert) {
       await render(
-        hbs`<div {{scroll-into-view shouldScroll=true}} data-test-scroll-into-view-selector></div><div data-test-scroll-into-view-not-modified></div><div {{scroll-into-view shouldScroll=false}} data-test-scroll-into-view-not-scrolled></div>`
+        hbs`<div {{scroll-into-view shouldScroll=true}} data-test-scroll-into-view-selector></div><div data-test-scroll-into-view-not-modified></div><div {{scroll-into-view shouldScroll=false}} data-test-scroll-into-view-not-scrolled></div>`,
       );
 
       assert.ok(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
-          '[data-test-scroll-into-view-selector]'
+          '[data-test-scroll-into-view-selector]',
         ),
-        'ScrollIntoiViewCalledWith should return true for the given element selector'
+        'ScrollIntoiViewCalledWith should return true for the given element selector',
       );
       assert.ok(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
           find('[data-test-scroll-into-view-selector]'),
-          'ScrollIntoiViewCalledWith should return true for the given element'
-        )
+          'ScrollIntoiViewCalledWith should return true for the given element',
+        ),
       );
       assert.notOk(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
           '[data-test-scroll-into-view-not-modified]',
-          "ScrollIntoViewCalledWith should return false if the element doesn't have the modifier"
-        )
+          "ScrollIntoViewCalledWith should return false if the element doesn't have the modifier",
+        ),
       );
       assert.notOk(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
           '[data-test-scroll-into-view-not-scrolled]',
-          'ScrollIntoViewCalledWith should return false if the modifier was not triggered'
-        )
+          'ScrollIntoViewCalledWith should return false if the modifier was not triggered',
+        ),
       );
     });
 
@@ -57,35 +57,35 @@ module(
       await render(
         hbs`<div style="height: 10px" {{scroll-into-view shouldScroll=true options=this.options}} data-test-scroll-into-view-selector></div>
         <div style="height: 10px" data-test-scroll-into-view-not-modified></div>
-        <div style="height: 10px" {{scroll-into-view shouldScroll=false options=this.options}} data-test-scroll-into-view-not-scrolled></div>`
+        <div style="height: 10px" {{scroll-into-view shouldScroll=false options=this.options}} data-test-scroll-into-view-not-scrolled></div>`,
       );
 
       assert.ok(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
           '[data-test-scroll-into-view-selector]',
-          this.options
+          this.options,
         ),
-        'scrollIntoViewCalledWith should return true for the given element selector'
+        'scrollIntoViewCalledWith should return true for the given element selector',
       );
       assert.ok(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
           find('[data-test-scroll-into-view-selector]'),
-          this.options
+          this.options,
         ),
-        'scrollIntoViewCalledWith should return true for the given element'
+        'scrollIntoViewCalledWith should return true for the given element',
       );
       assert.notOk(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
-          '[data-test-scroll-into-view-not-modified]'
+          '[data-test-scroll-into-view-not-modified]',
         ),
-        "scrollIntoViewCalledWith should return false if the element doesn't have the modifier"
+        "scrollIntoViewCalledWith should return false if the element doesn't have the modifier",
       );
       assert.notOk(
         this.mockHelperFunctions.scrollIntoViewCalledWith(
-          '[data-test-scroll-into-view-not-scrolled]'
+          '[data-test-scroll-into-view-not-scrolled]',
         ),
-        'scrollIntoViewCalledWith should return false if the modifier was not triggered'
+        'scrollIntoViewCalledWith should return false if the modifier was not triggered',
       );
     });
-  }
+  },
 );
