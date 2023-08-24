@@ -10,6 +10,21 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v7.1.0 (2023-08-24)
+
+#### :rocket: Enhancement
+* [#932](https://github.com/elwayman02/ember-scroll-modifiers/pull/932) fix(issue-510): support Additional state to be passed as the IntersectionObserverEntry ([@xinlli](https://github.com/xinlli))
+
+#### :house: Internal
+* [#937](https://github.com/elwayman02/ember-scroll-modifiers/pull/937) Don't publish yarn/idea folders ([@elwayman02](https://github.com/elwayman02))
+* [#936](https://github.com/elwayman02/ember-scroll-modifiers/pull/936) Prettier v8 ([@elwayman02](https://github.com/elwayman02))
+* [#935](https://github.com/elwayman02/ember-scroll-modifiers/pull/935) eslint-plugin-qunit v8 ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 2
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- [@xinlli](https://github.com/xinlli)
+
 ## v7.0.0 (2023-05-17)
 
 #### :boom: Breaking Change
