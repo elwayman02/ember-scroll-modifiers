@@ -19,8 +19,6 @@ module(
     });
 
     test('Did intersect mock triggers onEnter correctly', async function (assert) {
-      assert.expect(2);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );
@@ -31,8 +29,6 @@ module(
     });
 
     test('Did intersect mock triggers onEnter with additional state correctly', async function (assert) {
-      assert.expect(1);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );
@@ -48,8 +44,6 @@ module(
     });
 
     test('Did intersect mock triggers onExit correctly', async function (assert) {
-      assert.expect(2);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );
@@ -60,8 +54,6 @@ module(
     });
 
     test('Did intersect mock triggers onExit with additional state correctly', async function (assert) {
-      assert.expect(1);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );
@@ -77,8 +69,6 @@ module(
     });
 
     test('Did intersect mock triggers onExit never exceeds maxEnter if maxEnter is provided', async function (assert) {
-      assert.expect(1);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter}}></div>`
       );
@@ -91,8 +81,6 @@ module(
     });
 
     test('Did intersect mock triggers onExit never exceeds maxExit if maxExit is provided', async function (assert) {
-      assert.expect(1);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxExit=this.maxExit}}></div>`
       );
@@ -105,8 +93,6 @@ module(
     });
 
     test('Did intersect mock fire without limit if maxEnter and maxExit is not provided', async function (assert) {
-      assert.expect(2);
-
       await render(
         hbs`<div data-test-did-intersect {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
       );

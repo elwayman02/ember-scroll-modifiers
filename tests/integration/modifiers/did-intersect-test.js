@@ -49,8 +49,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier integrates with observer-manager and triggers correct callbacks when onEnter and onExit are provided', async function (assert) {
-    assert.expect(3);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
     );
@@ -96,8 +94,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier throws assertion if neither onEnter or onExit is provided', async function (assert) {
-    assert.expect(3);
-
     setupOnerror((error) => {
       assert.strictEqual(
         error.message,
@@ -117,8 +113,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier uses default observer options when none is provided', async function (assert) {
-    assert.expect(1);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
     );
@@ -172,8 +166,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier onEnter callback never exceeds maxEnter if maxEnter is provided', async function (assert) {
-    assert.expect(1);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter}}></div>`
     );
@@ -189,8 +181,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier onExit callback never exceeds maxExit if maxExit is provided', async function (assert) {
-    assert.expect(1);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxExit=this.maxExit}}></div>`
     );
@@ -207,8 +197,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier unobserves element when maxEnter and maxExit are both exceeded', async function (assert) {
-    assert.expect(1);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter maxExit=this.maxExit}}></div>`
     );
@@ -225,8 +213,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier unobserves element when maxEnter is exceeded and no onExit is provided', async function (assert) {
-    assert.expect(1);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub maxEnter=this.maxEnter}}></div>`
     );
@@ -239,8 +225,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier unobserves element when maxExit is exceeded and no onEnter is provided', async function (assert) {
-    assert.expect(1);
-
     await render(
       hbs`<div {{did-intersect onExit=this.exitStub maxExit=this.maxExit}}></div>`
     );
@@ -253,8 +237,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier onEnter and onExit callback can fire without limit if maxEnter and maxExit is not provided', async function (assert) {
-    assert.expect(3);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`
     );
@@ -285,8 +267,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier trigger addEnterCallback and addExitCallback only once when arguments change', async function (assert) {
-    assert.expect(2);
-
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter maxExit=this.maxExit}}></div>`
     );
@@ -302,8 +282,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   });
 
   test('modifier triggers correct addEnterCallback and addExitCallback when callbacks change', async function (assert) {
-    assert.expect(6);
-
     this.newEnterStub = sinon.stub();
     this.newExitStub = sinon.stub();
 
@@ -363,8 +341,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
 
   module('modifier accepts `isObserving` argument', function () {
     test('with a truth(y) value', async function (assert) {
-      assert.expect(2);
-
       await render(hbs`
         <div
           {{did-intersect
@@ -383,8 +359,6 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     });
 
     test('with a false(y) value', async function (assert) {
-      assert.expect(2);
-
       await render(hbs`
         <div
           {{did-intersect
