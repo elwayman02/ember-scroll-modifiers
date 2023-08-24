@@ -7,7 +7,7 @@ module('Unit | Service | observer-manager', function (hooks) {
 
   hooks.beforeEach(function () {
     this.observerManager = this.owner.lookup(
-      'service:ember-scroll-modifiers@observer-manager'
+      'service:ember-scroll-modifiers@observer-manager',
     );
 
     sinon.stub(this.observerManager._admin, 'observe');
@@ -25,7 +25,7 @@ module('Unit | Service | observer-manager', function (hooks) {
   test('Creation', function (assert) {
     assert.ok(
       this.observerManager._admin,
-      'intersection-observer-admin is created'
+      'intersection-observer-admin is created',
     );
   });
 
@@ -33,7 +33,7 @@ module('Unit | Service | observer-manager', function (hooks) {
     this.observerManager.observe('foo', this.options);
     assert.ok(
       this.observerManager._admin.observe.calledWith('foo', this.options),
-      'observe is called with correct parameters'
+      'observe is called with correct parameters',
     );
   });
 
@@ -41,7 +41,7 @@ module('Unit | Service | observer-manager', function (hooks) {
     this.observerManager.unobserve('foo', this.options);
     assert.ok(
       this.observerManager._admin.unobserve.calledWith('foo', this.options),
-      'unobserve is called with correct parameters'
+      'unobserve is called with correct parameters',
     );
   });
 
@@ -50,9 +50,9 @@ module('Unit | Service | observer-manager', function (hooks) {
     assert.ok(
       this.observerManager._admin.addEnterCallback.calledWith(
         'foo',
-        this.callback
+        this.callback,
       ),
-      'addEnterCallback is called with correct parameters'
+      'addEnterCallback is called with correct parameters',
     );
   });
 
@@ -61,9 +61,9 @@ module('Unit | Service | observer-manager', function (hooks) {
     assert.ok(
       this.observerManager._admin.addExitCallback.calledWith(
         'foo',
-        this.callback
+        this.callback,
       ),
-      'addExitCallback is called with correct parameters'
+      'addExitCallback is called with correct parameters',
     );
   });
 });
