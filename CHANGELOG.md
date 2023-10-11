@@ -11,6 +11,22 @@ https://github.com/highlightjs/highlight.js/issues/2877
 
 
 
+
+## v7.1.1 (2023-10-11)
+
+#### :rocket: Enhancement
+* [#854](https://github.com/elwayman02/ember-scroll-modifiers/pull/854) Ember 5 Support ([@elwayman02](https://github.com/elwayman02))
+
+#### :bug: Bug Fix
+* [#962](https://github.com/elwayman02/ember-scroll-modifiers/pull/962) Partially fix embroider builds ([@elwayman02](https://github.com/elwayman02))
+
+#### :house: Internal
+* [#854](https://github.com/elwayman02/ember-scroll-modifiers/pull/854) Ember 5 Support ([@elwayman02](https://github.com/elwayman02))
+* [#962](https://github.com/elwayman02/ember-scroll-modifiers/pull/962) Partially fix embroider builds ([@elwayman02](https://github.com/elwayman02))
+
+#### Committers: 1
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+
 ## v7.1.0 (2023-08-24)
 
 #### :rocket: Enhancement
