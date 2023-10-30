@@ -82,7 +82,7 @@
     "qunit-dom": "^2.0.0",
     "release-it": "^15.11.0",
     "release-it-lerna-changelog": "^5.0.0",
-    "sass": "^1.69.0",
+    "sass": "^1.69.5",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.2",
