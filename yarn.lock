@@ -2136,12 +2136,12 @@
     ember-cli-version-checker "^5.1.2"
     semver "^7.3.5"
 
-"@embroider/addon-shim@^1.0.0", "@embroider/addon-shim@^1.8.4":
-  version "1.8.6"
-  resolved "https://registry.yarnpkg.com/@embroider/addon-shim/-/addon-shim-1.8.6.tgz#b676991b4fa32c3a98dc7db7dc6cd655029c3f09"
-  integrity sha512-siC9kP78uucEbpDcVyxjkwa76pcs5rVzDVpWO4PDc9EAXRX+pzmUuSTLAK3GztUwx7/PWhz1BenAivqdSvSgfg==
+"@embroider/addon-shim@^1.8.4", "@embroider/addon-shim@^1.8.7":
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/@embroider/addon-shim/-/addon-shim-1.8.7.tgz#ba2dcb0647ed2cb0c500c835326266b89ceec595"
+  integrity sha512-JGOQNRj3UR0NdWEg8MsM2eqPLncEwSB1IX+rwntIj22TEKj8biqx7GDgSbeH+ZedijmCh354Hf2c5rthrdzUAw==
   dependencies:
-    "@embroider/shared-internals" "^2.2.3"
+    "@embroider/shared-internals" "^2.5.1"
     broccoli-funnel "^3.0.8"
     semver "^7.3.8"
 
@@ -2227,10 +2227,10 @@
     semver "^7.3.5"
     typescript-memoize "^1.0.1"
 
-"@embroider/shared-internals@^2.2.3":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-2.4.0.tgz#0e9fdb0b2df9bad45fab8c54cbb70d8a2cbf01fc"
-  integrity sha512-pFE05ebenWMC9XAPRjadYCXXb6VmqjkhYN5uqkhPo+VUmMHnx7sZYYxqGjxfVuhC/ghS/BNlOffOCXDOoE7k7g==
+"@embroider/shared-internals@^2.5.1":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-2.5.2.tgz#5cd49c6164147c68fe9d6994ef5cccb47e138bb4"
+  integrity sha512-jNDJ9YlV6Qp9Na9v17qirUewVuq6T0t32nn+bbnFlCRTvmllKluZdYPSC5RuRnEZKTloVYRSF0+f1rgkTIEvxQ==
   dependencies:
     babel-import-util "^2.0.0"
     debug "^4.3.2"
@@ -7280,12 +7280,13 @@ ember-modifier@^4.1.0:
     ember-cli-normalize-entity-name "^1.0.0"
     ember-cli-string-utils "^1.1.0"
 
-ember-page-title@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/ember-page-title/-/ember-page-title-8.0.0.tgz#544377cee81bc4b7664fe903bc3e3e59f93ca3cc"
-  integrity sha512-4bu8CpoPObJZNUogwIjpntxS3jMDlZ1eoJsZUuktcCgOI7LfZocuYbu9LnLM215QjEOV0TxGDWwJck1l8cWKeg==
+ember-page-title@^8.2.2:
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/ember-page-title/-/ember-page-title-8.2.2.tgz#3c69288e4e740b5a5deba26f2b3486d088fac673"
+  integrity sha512-DpIVgDaYstMSvHuhjG8QRnyfFD+E9/uy9GXO35kzmHaCg2hGB4e5Z6jcfitk8qh/lp5VRX8Tpl4HTBX+CKwMWw==
   dependencies:
-    "@embroider/addon-shim" "^1.0.0"
+    "@embroider/addon-shim" "^1.8.7"
+    "@simple-dom/document" "^1.4.0"
 
 ember-prism@^0.10.0:
   version "0.10.0"
