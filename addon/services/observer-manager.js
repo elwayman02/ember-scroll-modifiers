@@ -23,4 +23,9 @@ export default class ObserverManagerService extends Service {
   willDestroy() {
     this._admin.destroy();
   }
+
+  removeElement(element) {
+    this._admin.elementRegistry.removeElement(element);
+    this._admin.registry.removeElement(element);
+  }
 }

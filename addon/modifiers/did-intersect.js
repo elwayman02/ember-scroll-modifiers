@@ -8,6 +8,11 @@ export const DEFAULT_OBSERVER_OPTIONS = {};
 
 function cleanup(instance) {
   instance.unobserve.call(instance);
+  instance.observerManager.removeElement(instance.element);
+  instance.observerManager.removeElement(window);
+  instance.onEnter = null;
+  instance.onExit = null;
+  instance.element = null;
 }
 
 export default class DidIntersectModifier extends Modifier {
