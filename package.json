@@ -38,7 +38,7 @@
     "intersection-observer-admin": "^0.3.3"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.15",
+    "@babel/eslint-parser": "^7.24.8",
     "@babel/plugin-proposal-decorators": "^7.23.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.0.1",
