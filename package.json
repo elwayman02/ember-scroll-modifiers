@@ -40,6 +40,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-proposal-decorators": "^7.23.0",
+    "@babel/plugin-transform-class-static-block": "^7.24.7",
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.0.1",
     "@ember/test-helpers": "^2.9.4",
