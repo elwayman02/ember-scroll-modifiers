@@ -314,7 +314,9 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       );
 
       assert.true(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
-      assert.dom('[data-test-focus-selector]').isFocused('First focusable element has focus');
+      assert
+        .dom('[data-test-focus-selector]')
+        .isFocused('First focusable element has focus');
     });
 
     test('it does not focus when shouldFocusAfterScroll is false', async function (assert) {
@@ -324,7 +326,9 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         </div>`,
       );
 
-      assert.dom('[data-test-focus-selector]').isNotFocused('Focusable element does not have focus');
+      assert
+        .dom('[data-test-focus-selector]')
+        .isNotFocused('Focusable element does not have focus');
     });
 
     test('it does not focus when focusable element is not found', async function (assert) {
@@ -334,7 +338,9 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         </div>`,
       );
 
-      assert.dom('[data-test-non-focus-selector]').isNotFocused('Non-focusable element does not have focus');
+      assert
+        .dom('[data-test-non-focus-selector]')
+        .isNotFocused('Non-focusable element does not have focus');
     });
 
     test('it focuses on given focusable element', async function (assert) {
@@ -345,7 +351,9 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         </div>`,
       );
 
-      assert.dom('[data-test-focus-selector]').isFocused('Given focusable element has focus');
+      assert
+        .dom('[data-test-focus-selector]')
+        .isFocused('Given focusable element has focus');
     });
 
     test('it focuses on first focusable element when given focusable element is not found', async function (assert) {
@@ -356,7 +364,9 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         </div>`,
       );
 
-      assert.dom('[data-test-focus-selector]').isFocused('First focusable element has focus');
+      assert
+        .dom('[data-test-focus-selector]')
+        .isFocused('First focusable element has focus');
     });
   });
 });
