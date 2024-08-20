@@ -29,14 +29,15 @@ export default modifier(scrollIntoView, { eager: false });
  * ```
  */
 function scrollIntoView(element, positional, named = {}) {
-  const { options, shouldScroll, shouldFocusAfterScroll, focusSelector } = named;
+  const { options, shouldScroll, shouldFocusAfterScroll, focusSelector } =
+    named;
   const DEFAULT_FOCUSABLE_ELEMENTS = [
     'button:not(:disabled)',
     '[href]',
     'input:not(:disabled)',
     'select:not(:disabled)',
     'textarea:not(:disabled)',
-    '[tabindex]:not([tabindex="-1"]):not(:disabled)'
+    '[tabindex]:not([tabindex="-1"]):not(:disabled)',
   ];
   let hasBeenRemoved;
 
@@ -91,10 +92,12 @@ function scrollIntoView(element, positional, named = {}) {
         if (typeof focusSelector === 'string') {
           focusElement = element.querySelector(focusSelector);
         }
-        focusElement = focusElement ?? element.querySelector(DEFAULT_FOCUSABLE_ELEMENTS.join(', '));
+        focusElement =
+          focusElement ??
+          element.querySelector(DEFAULT_FOCUSABLE_ELEMENTS.join(', '));
         if (focusElement) {
           // Prevent scrolling while setting focus to avoid overriding the above scroll behavior.
-          focusElement.focus({preventScroll:true});
+          focusElement.focus({ preventScroll: true });
         }
       }
     }

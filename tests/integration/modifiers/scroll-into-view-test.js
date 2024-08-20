@@ -305,7 +305,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     });
   });
 
-  module('with focus', function (focusHooks) {
+  module('with focus', function () {
     test('it scrolls and focuses on first focusable element', async function (assert) {
       await render(
         hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true}}>
