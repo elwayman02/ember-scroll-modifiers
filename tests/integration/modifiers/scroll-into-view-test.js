@@ -1,7 +1,8 @@
+import { clearRender, render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, clearRender } from '@ember/test-helpers';
+
 import { hbs } from 'ember-cli-htmlbars';
+import { setupRenderingTest } from 'ember-qunit';
 import sinon from 'sinon';
 
 module('Integration | Modifier | scroll-into-view', function (hooks) {
@@ -301,6 +302,71 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
         },
         'scrollTo was called with correct params',
       );
+    });
+  });
+
+  module('with focus', function () {
+    test('it scrolls and focuses on first focusable element', async function (assert) {
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true}}>
+          <button data-test-focus-selector />
+        </div>`,
+      );
+
+      assert.true(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
+      assert
+        .dom('[data-test-focus-selector]')
+        .isFocused('First focusable element has focus');
+    });
+
+    test('it does not focus when shouldFocusAfterScroll is false', async function (assert) {
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=false}}>
+          <button data-test-focus-selector />
+        </div>`,
+      );
+
+      assert
+        .dom('[data-test-focus-selector]')
+        .isNotFocused('Focusable element does not have focus');
+    });
+
+    test('it does not focus when focusable element is not found', async function (assert) {
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true}}>
+          <div data-test-non-focus-selector />
+        </div>`,
+      );
+
+      assert
+        .dom('[data-test-non-focus-selector]')
+        .isNotFocused('Non-focusable element does not have focus');
+    });
+
+    test('it focuses on given focusable element', async function (assert) {
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true focusSelector='[data-test-focus-selector]'}}>
+          <button />
+          <button data-test-focus-selector />
+        </div>`,
+      );
+
+      assert
+        .dom('[data-test-focus-selector]')
+        .isFocused('Given focusable element has focus');
+    });
+
+    test('it focuses on first focusable element when given focusable element is not found', async function (assert) {
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true focusSelector='[data-test-bad-selector]'}}>
+          <button data-test-focus-selector />
+          <button />
+        </div>`,
+      );
+
+      assert
+        .dom('[data-test-focus-selector]')
+        .isFocused('First focusable element has focus');
     });
   });
 });

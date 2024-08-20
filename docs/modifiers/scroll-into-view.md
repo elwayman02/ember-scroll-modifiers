@@ -24,6 +24,41 @@ You should use this modifier whenever you need to have an element scrolled into 
 
 `shouldScroll` can be either a Boolean or a Promise that resolves to a truthy or falsy value. It does not handle a rejected Promise.
 
+### Usage with focus
+
+When passing in `shouldFocusAfterScroll` as true, it will set focus to the first focusable element found.
+
+```handlebars
+  <div {{scroll-into-view shouldScroll=this.shouldScrollWithFocus options=(hash behavior="smooth") shouldFocusAfterScroll=this.shouldFocusAfterScroll}}>
+    <div>
+      <label for="firstFocusableElement">First Focusable Element: </label>
+      <input name="firstFocusableElement" type="text">
+    </div>
+    <button type="button" {{on "click" this.onScrollIntoViewWithFocus}}>
+      Trigger scroll-into-view and set focus on click
+    </button>
+  </div>
+```
+> Warning: While setting focus, `scroll-into-view` tries to prevent overriding its scroll behavior via [preventScroll](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#preventscroll). However, it is not guaranteed in browsers that do not [support](https://caniuse.com/mdn-api_htmlelement_focus_options_preventscroll_parameter) `preventScroll`. As such, page will scroll to the focused element and `smooth` scroll behavior will be lost in such cases.
+
+### Usage with focus element
+
+When passing in `shouldFocusAfterScroll` as true and `focusSelector`, it will set focus to the given focusable element.
+
+```handlebars
+  <div {{scroll-into-view shouldScroll=this.shouldScrollWithFocusElement options=(hash behavior="smooth") shouldFocusAfterScroll=this.shouldFocusAfterScrollWithFocusElement focusSelector="select:not(:disabled)"}}>
+    <button type="button" {{on "click" this.onScrollIntoViewWithFocusElement}}>
+      Trigger scroll-into-view and set focus on given element on click
+    </button>
+    <div>
+      <label for="givenFocusableElement">Given Focusable Element: </label>
+      <select name="givenFocusableElement">
+        <option>Item 1</option>
+        <option>Item 2</option>
+      </select>
+    </div>
+  </div>
+```
 
 ### Usage with offset
 
