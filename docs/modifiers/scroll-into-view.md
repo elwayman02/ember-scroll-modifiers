@@ -39,7 +39,7 @@ When passing in `shouldFocusAfterScroll` as true, it will set focus to the first
     </button>
   </div>
 ```
-> Warning: While setting focus, `scroll-into-view` tries to prevent overriding its scroll behavior via [preventScroll](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#preventscroll). However, it is not guaranteed in browsers that do not [support](https://caniuse.com/mdn-api_htmlelement_focus_options_preventscroll_parameter) `preventScroll`. As such, page will scroll to the focussed element and `smooth` scroll behavior will be lost in such cases.
+> Warning: While setting focus, `scroll-into-view` tries to prevent overriding its scroll behavior via [preventScroll](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#preventscroll). However, it is not guaranteed in browsers that do not [support](https://caniuse.com/mdn-api_htmlelement_focus_options_preventscroll_parameter) `preventScroll`. As such, page will scroll to the focused element and `smooth` scroll behavior will be lost in such cases.
 
 ### Usage with focus element
 
