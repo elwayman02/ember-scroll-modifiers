@@ -92,6 +92,7 @@ function scrollIntoView(element, positional, named = {}) {
         if (typeof focusSelector === 'string') {
           focusElement = element.querySelector(focusSelector);
         }
+        // When provided focusable element doesn't exist, fallback to first focusable element
         focusElement =
           focusElement ??
           element.querySelector(DEFAULT_FOCUSABLE_ELEMENTS.join(', '));
