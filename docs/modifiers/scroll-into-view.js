@@ -1,11 +1,15 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class EsButtonComponent extends Component {
   @tracked shouldScrollWithOffset;
   @tracked shouldScrollWithCustom;
   @tracked shouldScroll;
+  @tracked shouldScrollWithFocus;
+  @tracked shouldScrollWithFocusElement;
+  @tracked shouldFocusAfterScroll;
+  @tracked shouldFocusAfterScrollWithFocusElement;
   @tracked topOffset = 25;
   @tracked leftOffset = 25;
   @tracked topOffsetCustom = 50;
@@ -13,6 +17,18 @@ export default class EsButtonComponent extends Component {
   @action
   onScrollIntoView() {
     this.shouldScroll = true;
+  }
+
+  @action
+  onScrollIntoViewWithFocus() {
+    this.shouldScrollWithFocus = true;
+    this.shouldFocusAfterScroll = true;
+  }
+
+  @action
+  onScrollIntoViewWithFocusElement() {
+    this.shouldScrollWithFocusElement = true;
+    this.shouldFocusAfterScrollWithFocusElement = true;
   }
 
   @action
