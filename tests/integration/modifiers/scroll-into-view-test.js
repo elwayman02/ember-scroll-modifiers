@@ -1,21 +1,18 @@
 import { clearRender, render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
-
 import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'ember-qunit';
 import sinon from 'sinon';
 
 module('Integration | Modifier | scroll-into-view', function (hooks) {
   setupRenderingTest(hooks);
-  const sandbox = sinon.createSandbox();
 
   hooks.beforeEach(function () {
-    this.scrollIntoViewSpy = sandbox.spy(Element.prototype, 'scrollIntoView');
+    this.scrollIntoViewSpy = sinon.spy(Element.prototype, 'scrollIntoView');
   });
 
   hooks.afterEach(function () {
     this.scrollIntoViewSpy = null;
-    sandbox.restore();
   });
 
   test('it renders and passes options when shouldScroll is true', async function (assert) {
