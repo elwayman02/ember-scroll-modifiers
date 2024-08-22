@@ -1,15 +1,24 @@
-Version 9 of Highlight.js has reached EOL and is no longer supported.
-Please upgrade or ask whatever dependency you are using to upgrade.
-https://github.com/highlightjs/highlight.js/issues/2877
+## v7.2.0 (2024-08-22)
 
+#### :rocket: Enhancement
+* [#1099](https://github.com/elwayman02/ember-scroll-modifiers/pull/1099) Allow ember-modifier v3 & bump intersection-observer-admin ([@elwayman02](https://github.com/elwayman02))
+* [#1091](https://github.com/elwayman02/ember-scroll-modifiers/pull/1091) [A11y] Set focus on scroll-into-view ([@rajbirsingh83](https://github.com/rajbirsingh83))
+* [#854](https://github.com/elwayman02/ember-scroll-modifiers/pull/854) Ember 5 Support ([@elwayman02](https://github.com/elwayman02))
 
+#### :bug: Bug Fix
+* [#962](https://github.com/elwayman02/ember-scroll-modifiers/pull/962) Partially fix embroider builds ([@elwayman02](https://github.com/elwayman02))
 
+#### :house: Internal
+* [#1100](https://github.com/elwayman02/ember-scroll-modifiers/pull/1100) Remove sinon sandbox ([@elwayman02](https://github.com/elwayman02))
+* [#1099](https://github.com/elwayman02/ember-scroll-modifiers/pull/1099) Allow ember-modifier v3 & bump intersection-observer-admin ([@elwayman02](https://github.com/elwayman02))
+* [#1098](https://github.com/elwayman02/ember-scroll-modifiers/pull/1098) Ember 5.11 Blueprint Updates ([@elwayman02](https://github.com/elwayman02))
+* [#965](https://github.com/elwayman02/ember-scroll-modifiers/pull/965) Node 18 ([@elwayman02](https://github.com/elwayman02))
+* [#854](https://github.com/elwayman02/ember-scroll-modifiers/pull/854) Ember 5 Support ([@elwayman02](https://github.com/elwayman02))
+* [#962](https://github.com/elwayman02/ember-scroll-modifiers/pull/962) Partially fix embroider builds ([@elwayman02](https://github.com/elwayman02))
 
-
-
-
-
-
+#### Committers: 2
+- Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
+- [@rajbirsingh83](https://github.com/rajbirsingh83)
 
 ## v7.1.0 (2023-08-24)
 
