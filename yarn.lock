@@ -66,28 +66,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.25.2.tgz#e41928bd33475305c586f6acbbb7e3ade7a6f7f5"
   integrity sha512-bYcppcpKBvX4znYaPEeFau03bp89ShqNMLs+rmdptMw+heSZh9+z84d2YG+K7cYLbWwzdjtDoW/uqZmPjulClQ==
 
-"@babel/core@^7.1.6", "@babel/core@^7.12.0", "@babel/core@^7.16.10", "@babel/core@^7.16.7", "@babel/core@^7.3.4":
-  version "7.23.0"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.23.0.tgz#f8259ae0e52a123eb40f552551e647b506a94d83"
-  integrity sha512-97z/ju/Jy1rZmDxybphrBuI+jtJjFVoz7Mr9yUQVVVi+DNZE333uFQeMOqcCIy1x3WYBIbWftUSLmbNXNT7qFQ==
-  dependencies:
-    "@ampproject/remapping" "^2.2.0"
-    "@babel/code-frame" "^7.22.13"
-    "@babel/generator" "^7.23.0"
-    "@babel/helper-compilation-targets" "^7.22.15"
-    "@babel/helper-module-transforms" "^7.23.0"
-    "@babel/helpers" "^7.23.0"
-    "@babel/parser" "^7.23.0"
-    "@babel/template" "^7.22.15"
-    "@babel/traverse" "^7.23.0"
-    "@babel/types" "^7.23.0"
-    convert-source-map "^2.0.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.2"
-    json5 "^2.2.3"
-    semver "^6.3.1"
-
-"@babel/core@^7.24.4":
+"@babel/core@^7.1.6", "@babel/core@^7.12.0", "@babel/core@^7.16.10", "@babel/core@^7.16.7", "@babel/core@^7.23.2", "@babel/core@^7.24.4", "@babel/core@^7.3.4":
   version "7.25.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.25.2.tgz#ed8eec275118d7613e77a352894cd12ded8eba77"
   integrity sha512-BBt3opiCOxUr9euZ5/ro/Xv8/V7yJ5bjYMqG/C1YAo8MIKAnumZalCN+msbci3Pigy4lIQfPUpfMM27HMGaYEA==
@@ -579,15 +558,6 @@
     "@babel/helper-function-name" "^7.22.5"
     "@babel/template" "^7.22.15"
     "@babel/types" "^7.22.19"
-
-"@babel/helpers@^7.23.0":
-  version "7.23.2"
-  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.23.2.tgz#2832549a6e37d484286e15ba36a5330483cac767"
-  integrity sha512-lzchcp8SjTSVe/fPmLwtWVBFC7+Tbn8LGHDVfDp9JGxpAY5opSaEFgt8UQvrnECWOTdji2mOWMz1rOhkHscmGQ==
-  dependencies:
-    "@babel/template" "^7.22.15"
-    "@babel/traverse" "^7.23.2"
-    "@babel/types" "^7.23.0"
 
 "@babel/helpers@^7.25.0":
   version "7.25.0"
@@ -1962,7 +1932,7 @@
     "@babel/parser" "^7.25.0"
     "@babel/types" "^7.25.0"
 
-"@babel/traverse@^7.1.6", "@babel/traverse@^7.20.1", "@babel/traverse@^7.20.5", "@babel/traverse@^7.21.2", "@babel/traverse@^7.23.0", "@babel/traverse@^7.23.2", "@babel/traverse@^7.4.5":
+"@babel/traverse@^7.1.6", "@babel/traverse@^7.20.1", "@babel/traverse@^7.20.5", "@babel/traverse@^7.21.2", "@babel/traverse@^7.4.5":
   version "7.23.2"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.23.2.tgz#329c7a06735e144a506bdb2cad0268b7f46f4ad8"
   integrity sha512-azpe59SQ48qG6nu2CzcMLbxUudtN+dOM9kDbUqGq3HXUJRlo7i8fvPoxQUzYgLZ4cMVmuZgm8vvBpNeRhd6XSw==
@@ -5084,7 +5054,7 @@ broccoli-plugin@^2.1.0:
     rimraf "^2.3.4"
     symlink-or-copy "^1.1.8"
 
-broccoli-plugin@^4.0.0, broccoli-plugin@^4.0.2, broccoli-plugin@^4.0.3, broccoli-plugin@^4.0.5, broccoli-plugin@^4.0.7:
+broccoli-plugin@^4.0.0, broccoli-plugin@^4.0.2, broccoli-plugin@^4.0.3, broccoli-plugin@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/broccoli-plugin/-/broccoli-plugin-4.0.7.tgz#dd176a85efe915ed557d913744b181abe05047db"
   integrity sha512-a4zUsWtA1uns1K7p9rExYVYG99rdKeGRymW0qOCNkvDPHQxVi3yVyJHhQbM3EZwdt2E0mnhr5e0c/bPpJ7p3Wg==
@@ -7132,15 +7102,13 @@ ember-cli-dependency-checker@^3.3.2:
     resolve "^1.22.0"
     semver "^5.7.1"
 
-ember-cli-deprecation-workflow@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-deprecation-workflow/-/ember-cli-deprecation-workflow-2.1.0.tgz#f0d38ece7ac0ab7b3f83790a3a092e3472f58cff"
-  integrity sha512-Ay9P9iKMJdY4Gq5XPowh3HqqeAzLfwBRj1oB1ZKkDW1fryZQWBN4pZuRnjnB+3VWZjBnZif5e7Pacc7YNW9hWg==
+ember-cli-deprecation-workflow@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/ember-cli-deprecation-workflow/-/ember-cli-deprecation-workflow-3.0.2.tgz#3b9f08e0917c69e11bd317410b70e02be556898f"
+  integrity sha512-Wjw4nNn1GMKLjKo/CrdFNaYSEW3qOuJYnBh7l8uO84EyWOYYvOLp9Ef4kGwaeehRgK8qDNcdzTFdPO6TD/aFIg==
   dependencies:
-    broccoli-funnel "^3.0.3"
-    broccoli-merge-trees "^4.2.0"
-    broccoli-plugin "^4.0.5"
-    ember-cli-htmlbars "^5.3.2"
+    "@babel/core" "^7.23.2"
+    ember-cli-babel "^8.2.0"
 
 ember-cli-fastboot@^4.1.5:
   version "4.1.5"
