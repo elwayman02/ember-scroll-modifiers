@@ -56,6 +56,7 @@ jobs:
           - ember-lts-4.8
           - ember-lts-4.12
           - ember-lts-5.4
+          - ember-test-helpers-v3
           - ember-release
           - embroider-safe
         experimental: [false]
