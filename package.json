@@ -74,7 +74,7 @@
     "eslint-plugin-ember": "^12.2.0",
     "eslint-plugin-n": "^17.10.2",
     "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-qunit": "^8.1.1",
+    "eslint-plugin-qunit": "^8.1.2",
     "field-guide": "^2.4.0",
     "field-guide-default-template": "^3.0.0",
     "loader.js": "^4.7.0",
