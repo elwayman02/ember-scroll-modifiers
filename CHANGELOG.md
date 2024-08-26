@@ -1,3 +1,9 @@
+
+## v7.2.1 (2024-08-26)
+
+#### :bug: Bug Fix
+* [#1106](https://github.com/elwayman02/ember-scroll-modifiers/pull/1106) [skip netlify]: Bump @ember/test-helpers from 3.3.1 to 4.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
 ## v7.2.0 (2024-08-22)
 
 #### :rocket: Enhancement
