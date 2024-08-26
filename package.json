@@ -37,6 +37,14 @@
     "ember-modifier": "^3.0.0 || ^4.0.0",
     "intersection-observer-admin": "^0.3.4"
   },
+  "peerDependencies": {
+    "@ember/test-helpers": "^3.0.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ember/test-helpers": {
+      "optional": false
+    }
+  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-proposal-decorators": "^7.24.7",
