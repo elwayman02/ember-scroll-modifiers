@@ -11,6 +11,6 @@ window.deprecationWorkflow.config = {
   throwOnUnhandled: true,
   workflow: [
     { handler: 'silence', matchId: 'ember-string.add-package' },
-    { handler: 'silence', matchId: 'component-template-resolving' }
+    { handler: 'silence', matchId: 'component-template-resolving' },
   ],
 };
