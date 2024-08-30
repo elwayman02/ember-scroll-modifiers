@@ -424,7 +424,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       );
     });
 
-    test('it does not set behvior when not passed as option', async function (assert) {
+    test('it does not set behavior when not passed as option', async function (assert) {
       window.matchMedia = sinon.stub().returns({ matches: true });
       this.options = { test: 'test' };
 
