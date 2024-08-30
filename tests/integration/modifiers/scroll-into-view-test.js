@@ -441,7 +441,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       );
     });
 
-    test('it does not override default behvior when not passed as option with offset', async function (assert) {
+    test('it does not override default behavior when not passed as option with offset', async function (assert) {
       window.matchMedia = sinon.stub().returns({ matches: true });
       this.options = { test: 'test', topOffset: 50 };
 
