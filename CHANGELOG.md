@@ -10,7 +10,6 @@
 
 #### :house: Internal
 * [#1113](https://github.com/elwayman02/ember-scroll-modifiers/pull/1113)  Added deprecation workflow for component-template-resolving  ([@hiTyagi](https://github.com/hiTyagi))
-* [#1](https://github.com/elwayman02/ember-scroll-modifiers/pull/1) Bump ember-cli-template-lint from 1.0.0 to 2.0.2 ([@dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 #### Committers: 1
 - Himanshu Tyagi ([@hiTyagi](https://github.com/hiTyagi))
