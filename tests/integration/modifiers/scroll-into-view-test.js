@@ -8,6 +8,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
+    window.matchMedia = sinon.stub().returns({ matches: false });
     this.scrollIntoViewSpy = sinon.spy(Element.prototype, 'scrollIntoView');
   });
 
@@ -364,6 +365,131 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
       assert
         .dom('[data-test-focus-selector]')
         .isFocused('First focusable element has focus');
+    });
+  });
+
+  module('prefers-reduced-motion', function (motionHooks) {
+    motionHooks.beforeEach(function () {
+      this.scrollToSpyMotion = sinon.spy(window, 'scrollTo');
+
+      this.smoothOptions = { behavior: 'smooth' };
+      this.instantOptions = { behavior: 'instant' };
+    });
+
+    test('it handles prefers-reduced-motion setting enabled', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: true });
+
+      await render(
+        hbs`<div {{scroll-into-view options=this.smoothOptions shouldScroll=true}}></div>`,
+      );
+
+      assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
+
+      assert.deepEqual(
+        this.scrollIntoViewSpy.args[0][0],
+        this.instantOptions,
+        'scrollIntoView was called with correct params',
+      );
+    });
+
+    test('it handles prefers-reduced-motion setting disabled and request behavior smooth', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: false });
+
+      await render(
+        hbs`<div {{scroll-into-view options=this.smoothOptions shouldScroll=true}}></div>`,
+      );
+
+      assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
+
+      assert.deepEqual(
+        this.scrollIntoViewSpy.args[0][0],
+        this.smoothOptions,
+        'scrollIntoView was called with correct params',
+      );
+    });
+
+    test('it handles prefers-reduced-motion setting disabled and request behavior instant', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: false });
+
+      await render(
+        hbs`<div {{scroll-into-view options=this.instantOptions shouldScroll=true}}></div>`,
+      );
+
+      assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
+
+      assert.deepEqual(
+        this.scrollIntoViewSpy.args[0][0],
+        this.instantOptions,
+        'scrollIntoView was called with correct params',
+      );
+    });
+
+    test('it does not set behavior when not passed as option', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: true });
+      this.options = { test: 'test' };
+
+      await render(
+        hbs`<div {{scroll-into-view options=this.options shouldScroll=true}}></div>`,
+      );
+
+      assert.ok(this.scrollIntoViewSpy.called, 'scrollIntoView was called');
+
+      assert.deepEqual(
+        this.scrollIntoViewSpy.args[0][0],
+        this.options,
+        'scrollIntoView was called with correct params',
+      );
+    });
+
+    test('it does not override default behavior when not passed as option with offset', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: true });
+      this.options = { test: 'test', topOffset: 50 };
+
+      await render(
+        hbs`<div {{scroll-into-view options=this.options shouldScroll=true}}></div>`,
+      );
+
+      assert.strictEqual(
+        this.scrollToSpyMotion.args[0][0].behavior,
+        'auto',
+        'scrollTo was called with correct behavior',
+      );
+    });
+
+    test('it handles prefers-reduced-motion setting enabled with offset present', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: true });
+      this.options = {
+        ...this.smoothOptions,
+        topOffset: 50,
+      };
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true options=this.options}}></div>`,
+      );
+
+      assert.strictEqual(
+        this.scrollToSpyMotion.args[0][0].behavior,
+        this.instantOptions.behavior,
+        'scrollTo was called with correct behavior',
+      );
+    });
+
+    test('it handles prefers-reduced-motion setting disabled with offset present', async function (assert) {
+      window.matchMedia = sinon.stub().returns({ matches: false });
+      this.options = {
+        ...this.smoothOptions,
+        topOffset: 50,
+      };
+
+      await render(
+        hbs`<div {{scroll-into-view shouldScroll=true options=this.options}}></div>`,
+      );
+
+      assert.strictEqual(
+        this.scrollToSpyMotion.args[0][0].behavior,
+        this.smoothOptions.behavior,
+        'scrollTo was called with correct behavior',
+      );
     });
   });
 });
