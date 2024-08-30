@@ -45,18 +45,22 @@ function scrollIntoView(element, positional, named = {}) {
 
   shouldScrollPromise.then((shouldScrollValue) => {
     if (shouldScrollValue && element && !hasBeenRemoved) {
+      let { behavior = 'auto' } = options || {};
+      behavior =
+        behavior === 'smooth' &&
+        window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
+          ? 'instant'
+          : behavior;
       if (
         options?.topOffset === undefined &&
         options?.leftOffset === undefined
       ) {
-        element.scrollIntoView(options);
+        element.scrollIntoView({
+          ...options,
+          ...(options?.behavior && { behavior }),
+        });
       } else {
-        const {
-          behavior = 'auto',
-          topOffset,
-          leftOffset,
-          scrollContainerId,
-        } = options;
+        const { topOffset, leftOffset, scrollContainerId } = options;
 
         let scrollContainer, left, top;
         if (scrollContainerId !== undefined) {
