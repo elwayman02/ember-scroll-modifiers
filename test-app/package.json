@@ -100,12 +100,11 @@
     "crypto"
   ],
   "engines": {
-    "node": "16.* || >= 18"
+    "node": ">= 18",
+    "yarn": "use pnpm",
+    "npm": "use pnpm"
   },
-  "volta": {
-    "node": "18.20.4",
-    "yarn": "1.22.22"
-  },
+  "packageManager": "pnpm@9.5.0",
   "ember": {
     "edition": "octane"
   },

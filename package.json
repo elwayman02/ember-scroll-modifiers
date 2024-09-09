@@ -5,10 +5,6 @@
   "repository": "",
   "license": "MIT",
   "author": "",
-  "workspaces": [
-    "ember-scroll-modifiers",
-    "test-app"
-  ],
   "scripts": {
     "build": "pnpm --filter ember-scroll-modifiers run build",
     "lint": "pnpm --filter ember-scroll-modifiers run lint",
@@ -21,5 +17,6 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
-  }
+  },
+  "packageManager": "pnpm@9.5.0"
 }

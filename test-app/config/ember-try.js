@@ -5,10 +5,26 @@ const { embroiderSafe, embroiderOptimized } = require('@embroider/test-setup');
 
 module.exports = async function () {
   return {
-    useYarn: true,
+    usePnpm: true,
     scenarios: [
       {
-        name: 'ember-lts-4.4',
+        name: 'ember-3.28',
+        npm: {
+          devDependencies: {
+            'ember-source': '~3.28.0',
+          },
+        },
+      },
+      {
+        name: 'ember-4.0.0',
+        npm: {
+          devDependencies: {
+            'ember-source': '~4.0.0',
+          },
+        },
+      },
+      {
+        name: 'ember-4.4',
         npm: {
           devDependencies: {
             'ember-source': '~4.4.0',
@@ -16,7 +32,7 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-4.8',
+        name: 'ember-4.8',
         npm: {
           devDependencies: {
             'ember-source': '~4.8.0',
@@ -24,7 +40,7 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-4.12',
+        name: 'ember-4.12',
         npm: {
           devDependencies: {
             'ember-source': '~4.12.0',
@@ -32,18 +48,10 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-5.4',
+        name: 'ember-5.4',
         npm: {
           devDependencies: {
             'ember-source': '~5.4.0',
-          },
-        },
-      },
-      {
-        name: 'ember-test-helpers-v3',
-        npm: {
-          devDependencies: {
-            '@ember/test-helpers': '^3.3.1',
           },
         },
       },
@@ -71,8 +79,20 @@ module.exports = async function () {
           },
         },
       },
-      embroiderSafe(),
-      embroiderOptimized(),
+      embroiderSafe({
+        npm: {
+          devDependencies: {
+            'ember-source': await getChannelURL('release'),
+          },
+        },
+      }),
+      embroiderOptimized({
+        npm: {
+          devDependencies: {
+            'ember-source': await getChannelURL('release'),
+          },
+        },
+      }),
     ],
   };
 };
