@@ -1,0 +1,26 @@
+name: Build and Assert Assets Exists
+description: Build the package and assert that file contents exist as we expect
+runs:
+  using: "composite"
+  steps:
+  - name: Build and Assert Output
+    shell: bash
+    run: |-
+      echo '
+        target: ember-scroll-modifiers/
+        setup:
+          run: pnpm build
+          cwd: ./ember-scroll-modifiers
+      # Will use once on TS
+      #   expect: |
+      #     dist/index.mjs
+      #     dist/index.mjs.map
+
+      # ' >> assert-contents.config.yml
+      # npx assert-folder-contents
+
+  - name: Upload dist assets to cache
+    uses: actions/upload-artifact@v4
+    with:
+      name: dist
+      path: ${{ env.dist }}

@@ -1,0 +1,111 @@
+{
+  "name": "ember-scroll-modifiers",
+  "version": "7.3.0",
+  "description": "Scroll-based Modifiers for Ember Applications",
+  "keywords": [
+    "ember-addon",
+    "modifier",
+    "modifiers",
+    "scroll"
+  ],
+  "repository": "https://github.com/elwayman02/ember-scroll-modifiers",
+  "license": "MIT",
+  "author": "Jordan Hawker <hawker.jordan@gmail.com> (https://www.JordanHawker.com)",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "prepack": "rollup --config",
+    "start": "rollup --config --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.9",
+    "decorator-transforms": "^2.0.0",
+    "ember-modifier": "^3.0.0 || ^4.0.0",
+    "intersection-observer-admin": "^0.3.4"
+  },
+  "peerDependencies": {
+    "@ember/test-helpers": ">=4.0.4",
+    "ember-source": "^4.0.0 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ember/test-helpers": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/eslint-parser": "^7.25.1",
+    "@babel/runtime": "^7.25.6",
+    "@embroider/addon-dev": "^5.0.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "babel-plugin-ember-template-compilation": "^2.2.5",
+    "concurrently": "^8.2.2",
+    "ember-template-lint": "^6.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.1.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "rollup": "^4.20.0",
+    "rollup-plugin-copy": "^3.5.0"
+  },
+  "fastbootDependencies": [
+    "crypto"
+  ],
+  "engines": {
+    "node": ">= 18",
+    "yarn": "use pnpm",
+    "npm": "use pnpm"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "app-js": {
+      "./modifiers/did-intersect.js": "./dist/_app_/modifiers/did-intersect.js",
+      "./modifiers/scroll-into-view.js": "./dist/_app_/modifiers/scroll-into-view.js",
+      "./services/observer-manager.js": "./dist/_app_/services/observer-manager.js"
+    },
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2
+  },
+  "homepage": "https://ember-scroll-modifiers.jhawk.co/",
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": false
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js",
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "dist"
+  ]
+}
