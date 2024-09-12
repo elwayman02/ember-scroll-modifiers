@@ -1,5 +1,6 @@
 import { A as emberArray } from '@ember/array';
 import { settled, find } from '@ember/test-helpers';
+import sinon from 'sinon';
 
 /**
  * This replaces the browser's IntersectionObserver with a mocked one that is synchronous
