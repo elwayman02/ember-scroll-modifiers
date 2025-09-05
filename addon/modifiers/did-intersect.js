@@ -1,6 +1,6 @@
 import Modifier from 'ember-modifier';
 import { registerDestructor } from '@ember/destroyable';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 
