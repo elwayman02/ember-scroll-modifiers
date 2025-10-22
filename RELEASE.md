@@ -37,8 +37,8 @@ Once the prep work is completed, the actual release is straight forward:
 # using https://volta.sh
 volta install release-it
 
-# using Yarn
-yarn global add release-it
+# using pnpm
+pnpm add -g release-it
 
 # using npm
 npm install --global release-it
@@ -52,8 +52,8 @@ npm install --global release-it
 * Third, ensure that you have installed your projects dependencies:
 
 ```
-# using yarn
-yarn install
+# using pnpm
+pnpm install
 
 # using npm
 npm install
