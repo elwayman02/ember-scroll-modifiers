@@ -12,6 +12,8 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': '~4.4.0',
+            // Apps using Ember 4.4 can't use ember-qunit 8
+            'ember-qunit': '^7.0.0',
           },
         },
       },
