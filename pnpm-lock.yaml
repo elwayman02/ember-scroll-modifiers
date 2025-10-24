@@ -12,8 +12,8 @@ importers:
         specifier: ^2.10.0
         version: 2.11.1(webpack@5.102.1)
       ember-cli-babel:
-        specifier: ^7.26.11
-        version: 7.26.11
+        specifier: ^8.2.0
+        version: 8.2.0(@babel/core@7.28.4)
       ember-cli-htmlbars:
         specifier: ^6.3.0
         version: 6.3.0
@@ -30,9 +30,6 @@ importers:
       '@babel/plugin-proposal-decorators':
         specifier: ^7.24.7
         version: 7.28.0(@babel/core@7.28.4)
-      '@babel/plugin-transform-class-static-block':
-        specifier: ^7.24.7
-        version: 7.28.3(@babel/core@7.28.4)
       '@ember/optional-features':
         specifier: ^2.1.0
         version: 2.2.0
@@ -16753,7 +16750,7 @@ snapshots:
       got: 12.6.1
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
-      semver: 7.5.1
+      semver: 7.7.3
 
   pako@1.0.11: {}
 
