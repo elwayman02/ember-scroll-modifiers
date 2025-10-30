@@ -1,0 +1,75 @@
+{
+  "name": "ember-scroll-modifiers",
+  "version": "7.3.0",
+  "description": "Scroll-based Modifiers for Ember Applications",
+  "keywords": [
+    "ember-addon",
+    "modifier",
+    "modifiers",
+    "scroll"
+  ],
+  "repository": "https://github.com/elwayman02/ember-scroll-modifiers",
+  "license": "MIT",
+  "author": "Jordan Hawker <hawker.jordan@gmail.com> (https://www.JordanHawker.com)",
+  "scripts": {
+    "lint": "concurrently \"pnpm:lint:*(!fix|hbs)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "ember-auto-import": "^2.10.0",
+    "ember-cli-babel": "^8.2.0",
+    "ember-cli-htmlbars": "^6.3.0",
+    "ember-modifier": "^3.0.0 || ^4.0.0",
+    "intersection-observer-admin": "^0.3.4"
+  },
+  "peerDependencies": {
+    "@ember/test-helpers": ">=3.0.0",
+    "ember-source": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ember/test-helpers": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.2.0",
+    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "release-it": "^15.11.0",
+    "release-it-lerna-changelog": "^5.0.0"
+  },
+  "engines": {
+    "node": "16.* || >= 18"
+  },
+  "volta": {
+    "extends": "../package.json"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "demoURL": "https://ember-scroll-modifiers.jhawk.co/"
+  },
+  "homepage": "https://ember-scroll-modifiers.jhawk.co/",
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": false
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
+  }
+}

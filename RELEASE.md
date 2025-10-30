@@ -62,6 +62,7 @@ npm install
 * And last (but not least 😁) do your release:
 
 ```
+cd ember-scroll-modifiers
 release-it
 ```
 
