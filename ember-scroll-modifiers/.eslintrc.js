@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = {
-  root: true,
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -22,7 +21,23 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    // devDependencies ember-cli, @embroider/test-setup and ember-source-channel-url
+    // are being imported with require(). It's not a problem since these dependencies
+    // are not related to the addon behavior and will end-up being present only in
+    // private packages. Deactivating for now, and this will be cleaned-up at the next
+    // step of the migration.
+    'n/no-unpublished-require': [
+      'error',
+      {
+        allowModules: [
+          'ember-cli',
+          '@embroider/test-setup',
+          'ember-source-channel-url',
+        ],
+      },
+    ],
+  },
   overrides: [
     // node files
     {
