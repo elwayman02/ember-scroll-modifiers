@@ -21,9 +21,13 @@
     "lint:hbs:fix": "pnpm --filter '*' lint:hbs:fix",
     "lint:js": "pnpm --filter '*' lint:js",
     "lint:js:fix": "pnpm --filter '*' lint:js:fix",
-    "start": "pnpm --filter '*' start",
-    "test": "pnpm --filter '*' test",
-    "test:ember": "pnpm --filter '*' test:ember",
-    "test:ember-compatibility": "pnpm --filter '*' test:compatibility"
+    "start": "pnpm --filter 'demo-app' start",
+    "test": "pnpm --filter 'demo-app' test",
+    "test:ember": "pnpm --filter 'demo-app' test:ember",
+    "test:ember-compatibility": "pnpm --filter 'demo-app' test:compatibility"
+  },
+  "volta": {
+    "node": "18.20.4",
+    "pnpm": "10.19.0"
   }
 }

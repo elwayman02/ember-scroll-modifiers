@@ -25,7 +25,17 @@ module.exports = {
   overrides: [
     // node files
     {
-      files: ['./.eslintrc.js', './.prettierrc.js', './index.js'],
+      files: [
+        './.eslintrc.js',
+        './.prettierrc.js',
+        './.stylelintrc.js',
+        './.template-lintrc.js',
+        './ember-cli-build.js',
+        './testem.js',
+        './blueprints/*/index.js',
+        './config/**/*.js',
+        './tests/demo-app/config/**/*.js',
+      ],
       parserOptions: {
         sourceType: 'script',
       },
@@ -34,6 +44,11 @@ module.exports = {
         node: true,
       },
       extends: ['plugin:n/recommended'],
+    },
+    {
+      // test files
+      files: ['tests/**/*-test.{js,ts}'],
+      extends: ['plugin:qunit/recommended'],
     },
   ],
 };

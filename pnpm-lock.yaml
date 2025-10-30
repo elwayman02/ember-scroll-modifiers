@@ -8,23 +8,10 @@ importers:
 
   .: {}
 
-  ember-scroll-modifiers:
-    dependencies:
-      ember-auto-import:
-        specifier: ^2.10.0
-        version: 2.11.1(webpack@5.102.1)
-      ember-cli-babel:
-        specifier: ^8.2.0
-        version: 8.2.0(@babel/core@7.28.4)
-      ember-cli-htmlbars:
-        specifier: ^6.3.0
-        version: 6.3.0
-      ember-modifier:
-        specifier: ^3.0.0 || ^4.0.0
-        version: 4.2.2(@babel/core@7.28.4)
-      intersection-observer-admin:
-        specifier: ^0.3.4
-        version: 0.3.4
+  demo-app:
+    dependenciesMeta:
+      ember-scroll-modifiers:
+        injected: true
     devDependencies:
       '@babel/eslint-parser':
         specifier: ^7.25.1
@@ -56,9 +43,15 @@ importers:
       concurrently:
         specifier: ^9.1.2
         version: 9.2.1
+      ember-auto-import:
+        specifier: ^2.10.0
+        version: 2.11.1(webpack@5.102.1)
       ember-cli:
         specifier: ~5.12.0
         version: 5.12.0(@types/node@24.9.1)(babel-core@6.26.3)(handlebars@4.7.8)(underscore@1.13.7)
+      ember-cli-babel:
+        specifier: ^8.2.0
+        version: 8.2.0(@babel/core@7.28.4)
       ember-cli-clean-css:
         specifier: ^3.0.0
         version: 3.0.0
@@ -71,6 +64,9 @@ importers:
       ember-cli-fastboot:
         specifier: ^4.1.5
         version: 4.1.5(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))
+      ember-cli-htmlbars:
+        specifier: ^6.3.0
+        version: 6.3.0
       ember-cli-inject-live-reload:
         specifier: ^2.1.0
         version: 2.1.0
@@ -98,6 +94,9 @@ importers:
       ember-resolver:
         specifier: ^11.0.1
         version: 11.0.1(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))
+      ember-scroll-modifiers:
+        specifier: workspace:*
+        version: link:../ember-scroll-modifiers
       ember-sinon-qunit:
         specifier: ^6.0.0
         version: 6.0.0
@@ -152,12 +151,6 @@ importers:
       qunit-dom:
         specifier: ^3.2.0
         version: 3.5.0
-      release-it:
-        specifier: ^15.11.0
-        version: 15.11.0(encoding@0.1.13)
-      release-it-lerna-changelog:
-        specifier: ^5.0.0
-        version: 5.0.0(release-it@15.11.0(encoding@0.1.13))
       sass:
         specifier: ^1.77.8
         version: 1.93.2
@@ -173,6 +166,58 @@ importers:
       webpack:
         specifier: ^5.94.0
         version: 5.102.1
+
+  ember-scroll-modifiers:
+    dependencies:
+      '@ember/test-helpers':
+        specifier: '>=3.0.0'
+        version: 4.0.5(@babel/core@7.28.4)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))
+      ember-auto-import:
+        specifier: ^2.10.0
+        version: 2.11.1(webpack@5.102.1)
+      ember-cli-babel:
+        specifier: ^8.2.0
+        version: 8.2.0(@babel/core@7.28.4)
+      ember-cli-htmlbars:
+        specifier: ^6.3.0
+        version: 6.3.0
+      ember-modifier:
+        specifier: ^3.0.0 || ^4.0.0
+        version: 4.2.2(@babel/core@7.28.4)
+      ember-source:
+        specifier: '>=4.0.0'
+        version: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1)
+      intersection-observer-admin:
+        specifier: ^0.3.4
+        version: 0.3.4
+    devDependencies:
+      concurrently:
+        specifier: ^9.1.2
+        version: 9.2.1
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.2(eslint@8.57.1)
+      eslint-plugin-ember:
+        specifier: ^12.2.0
+        version: 12.7.4(@babel/core@7.28.4)(eslint@8.57.1)(typescript@5.9.3)
+      eslint-plugin-n:
+        specifier: ^17.10.2
+        version: 17.23.1(eslint@8.57.1)(typescript@5.9.3)
+      eslint-plugin-prettier:
+        specifier: ^5.2.1
+        version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.6.2)
+      prettier:
+        specifier: ^3.3.3
+        version: 3.6.2
+      release-it:
+        specifier: ^15.11.0
+        version: 15.11.0(encoding@0.1.13)
+      release-it-lerna-changelog:
+        specifier: ^5.0.0
+        version: 5.0.0(release-it@15.11.0(encoding@0.1.13))
 
 packages:
 
