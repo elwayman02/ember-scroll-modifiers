@@ -85,7 +85,7 @@
     "app-js": {
       "./modifiers/did-intersect.js": "./dist/_app_/modifiers/did-intersect.js",
       "./modifiers/scroll-into-view.js": "./dist/_app_/modifiers/scroll-into-view.js",
-      "./services/observer-manager.js": "./dist/_app_/services/observer-manager.js"
+      "./services/scroll-modifiers-observer.js": "./dist/_app_/services/scroll-modifiers-observer.js"
     }
   },
   "homepage": "https://ember-scroll-modifiers.jhawk.co/",

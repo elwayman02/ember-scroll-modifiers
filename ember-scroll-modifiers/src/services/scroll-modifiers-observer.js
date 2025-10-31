@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import IntersectionObserverAdmin from 'intersection-observer-admin';
 
-export default class ObserverManagerService extends Service {
+export default class ScrollModifiersObserverService extends Service {
   _admin = new IntersectionObserverAdmin();
 
   observe(element, options) {
