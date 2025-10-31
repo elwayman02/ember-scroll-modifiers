@@ -6,9 +6,7 @@ module('Unit | Service | observer-manager', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function () {
-    this.observerManager = this.owner.lookup(
-      'service:ember-scroll-modifiers@observer-manager',
-    );
+    this.observerManager = this.owner.lookup('service:observer-manager');
 
     sinon.stub(this.observerManager._admin, 'observe');
     sinon.stub(this.observerManager._admin, 'unobserve');

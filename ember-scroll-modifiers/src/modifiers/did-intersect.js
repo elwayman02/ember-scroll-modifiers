@@ -11,7 +11,7 @@ function cleanup(instance) {
 }
 
 export default class DidIntersectModifier extends Modifier {
-  @service('ember-scroll-modifiers@observer-manager') observerManager;
+  @service observerManager;
 
   onEnter;
 
