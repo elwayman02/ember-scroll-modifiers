@@ -1,3 +1,4 @@
 packages:
   - 'ember-scroll-modifiers'
   - 'demo-app'
+  - 'test-app'

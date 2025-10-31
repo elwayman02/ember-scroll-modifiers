@@ -9,9 +9,6 @@ importers:
   .: {}
 
   demo-app:
-    dependenciesMeta:
-      ember-scroll-modifiers:
-        injected: true
     devDependencies:
       '@babel/eslint-parser':
         specifier: ^7.25.1
@@ -97,9 +94,6 @@ importers:
       ember-scroll-modifiers:
         specifier: workspace:*
         version: link:../ember-scroll-modifiers
-      ember-sinon-qunit:
-        specifier: ^6.0.0
-        version: 6.0.0
       ember-source:
         specifier: ~5.12.0
         version: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1)
@@ -109,9 +103,6 @@ importers:
       ember-template-lint:
         specifier: ^6.0.0
         version: 6.1.0
-      ember-try:
-        specifier: ^3.0.0
-        version: 3.0.0(encoding@0.1.13)
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
@@ -218,6 +209,135 @@ importers:
       release-it-lerna-changelog:
         specifier: ^5.0.0
         version: 5.0.0(release-it@15.11.0(encoding@0.1.13))
+
+  test-app:
+    dependenciesMeta:
+      ember-scroll-modifiers:
+        injected: true
+    devDependencies:
+      '@babel/eslint-parser':
+        specifier: ^7.25.1
+        version: 7.28.4(@babel/core@7.28.4)(eslint@8.57.1)
+      '@babel/plugin-proposal-decorators':
+        specifier: ^7.24.7
+        version: 7.28.0(@babel/core@7.28.4)
+      '@ember/optional-features':
+        specifier: ^2.1.0
+        version: 2.2.0
+      '@ember/string':
+        specifier: ^3.0.1
+        version: 3.1.1
+      '@ember/test-helpers':
+        specifier: ^4.0.2
+        version: 4.0.5(@babel/core@7.28.4)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))
+      '@embroider/test-setup':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@glimmer/component':
+        specifier: ^1.1.2
+        version: 1.1.2(@babel/core@7.28.4)
+      '@glimmer/tracking':
+        specifier: ^1.1.2
+        version: 1.1.2
+      broccoli-asset-rev:
+        specifier: ^3.0.0
+        version: 3.0.0
+      concurrently:
+        specifier: ^9.1.2
+        version: 9.2.1
+      ember-auto-import:
+        specifier: ^2.10.0
+        version: 2.11.1(webpack@5.102.1)
+      ember-cli:
+        specifier: ~5.12.0
+        version: 5.12.0(@types/node@24.9.1)(babel-core@6.26.3)(handlebars@4.7.8)(underscore@1.13.7)
+      ember-cli-babel:
+        specifier: ^8.2.0
+        version: 8.2.0(@babel/core@7.28.4)
+      ember-cli-dependency-checker:
+        specifier: ^3.3.2
+        version: 3.3.3(ember-cli@5.12.0(@types/node@24.9.1)(babel-core@6.26.3)(handlebars@4.7.8)(underscore@1.13.7))
+      ember-cli-htmlbars:
+        specifier: ^6.3.0
+        version: 6.3.0
+      ember-cli-inject-live-reload:
+        specifier: ^2.1.0
+        version: 2.1.0
+      ember-cli-sass:
+        specifier: ^11.0.0
+        version: 11.0.1
+      ember-cli-sri:
+        specifier: ^2.1.1
+        version: 2.1.1
+      ember-cli-terser:
+        specifier: ^4.0.2
+        version: 4.0.2
+      ember-fetch:
+        specifier: ^8.1.2
+        version: 8.1.2(encoding@0.1.13)
+      ember-load-initializers:
+        specifier: ^3.0.1
+        version: 3.0.1(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))
+      ember-qunit:
+        specifier: ^8.1.0
+        version: 8.1.1(@ember/test-helpers@4.0.5(@babel/core@7.28.4)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1)))(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))(qunit@2.24.2)
+      ember-resolver:
+        specifier: ^11.0.1
+        version: 11.0.1(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1))
+      ember-scroll-modifiers:
+        specifier: workspace:*
+        version: link:../ember-scroll-modifiers
+      ember-sinon-qunit:
+        specifier: ^6.0.0
+        version: 6.0.0
+      ember-source:
+        specifier: ~5.12.0
+        version: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.4))(rsvp@4.8.5)(webpack@5.102.1)
+      ember-source-channel-url:
+        specifier: ^3.0.0
+        version: 3.0.0(encoding@0.1.13)
+      ember-template-lint:
+        specifier: ^6.0.0
+        version: 6.1.0
+      ember-try:
+        specifier: ^3.0.0
+        version: 3.0.0(encoding@0.1.13)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.1
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.2(eslint@8.57.1)
+      eslint-plugin-ember:
+        specifier: ^12.2.0
+        version: 12.7.4(@babel/core@7.28.4)(eslint@8.57.1)(typescript@5.9.3)
+      eslint-plugin-n:
+        specifier: ^17.10.2
+        version: 17.23.1(eslint@8.57.1)(typescript@5.9.3)
+      eslint-plugin-prettier:
+        specifier: ^5.2.1
+        version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.6.2)
+      eslint-plugin-qunit:
+        specifier: ^8.1.2
+        version: 8.2.5(eslint@8.57.1)
+      loader.js:
+        specifier: ^4.7.0
+        version: 4.7.0
+      prettier:
+        specifier: ^3.3.3
+        version: 3.6.2
+      qunit:
+        specifier: ^2.22.0
+        version: 2.24.2
+      qunit-dom:
+        specifier: ^3.2.0
+        version: 3.5.0
+      sass:
+        specifier: ^1.77.8
+        version: 1.93.2
+      webpack:
+        specifier: ^5.94.0
+        version: 5.102.1
 
 packages:
 

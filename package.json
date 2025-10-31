@@ -22,9 +22,9 @@
     "lint:js": "pnpm --filter '*' lint:js",
     "lint:js:fix": "pnpm --filter '*' lint:js:fix",
     "start": "pnpm --filter 'demo-app' start",
-    "test": "pnpm --filter 'demo-app' test",
-    "test:ember": "pnpm --filter 'demo-app' test:ember",
-    "test:ember-compatibility": "pnpm --filter 'demo-app' test:compatibility"
+    "test": "pnpm --filter 'test-app' test",
+    "test:ember": "pnpm --filter 'test-app' test:ember",
+    "test:ember-compatibility": "pnpm --filter 'test-app' test:compatibility"
   },
   "volta": {
     "node": "18.20.4",
