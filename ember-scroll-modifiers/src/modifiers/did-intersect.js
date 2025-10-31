@@ -11,7 +11,7 @@ function cleanup(instance) {
 }
 
 export default class DidIntersectModifier extends Modifier {
-  @service('ember-scroll-modifiers@observer-manager') observerManager;
+  @service scrollModifiersObserver;
 
   onEnter;
 
@@ -70,7 +70,7 @@ export default class DidIntersectModifier extends Modifier {
       return;
     }
 
-    this.observerManager.observe(this.element, this._options);
+    this.scrollModifiersObserver.observe(this.element, this._options);
   }
 
   unobserve() {
@@ -78,7 +78,7 @@ export default class DidIntersectModifier extends Modifier {
       return;
     }
 
-    this.observerManager.unobserve(this.element, this._options);
+    this.scrollModifiersObserver.unobserve(this.element, this._options);
   }
 
   modify(element, positional, named) {
@@ -126,7 +126,7 @@ export default class DidIntersectModifier extends Modifier {
       this.onEnter &&
       !this._isExceedingMaxEnters
     ) {
-      this.observerManager.addEnterCallback(this.element, (...args) => {
+      this.scrollModifiersObserver.addEnterCallback(this.element, (...args) => {
         if (this.isDestroying) {
           return;
         }
@@ -153,7 +153,7 @@ export default class DidIntersectModifier extends Modifier {
       this.onExit &&
       !this._isExceedingMaxExits
     ) {
-      this.observerManager.addExitCallback(this.element, (...args) => {
+      this.scrollModifiersObserver.addExitCallback(this.element, (...args) => {
         if (this.isDestroying) {
           return;
         }
