@@ -307,7 +307,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     test('it scrolls and focuses on first focusable element', async function (assert) {
       await render(
         hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true}}>
-          <button data-test-focus-selector />
+          <button data-test-focus-selector type="button" />
         </div>`,
       );
 
@@ -320,7 +320,7 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     test('it does not focus when shouldFocusAfterScroll is false', async function (assert) {
       await render(
         hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=false}}>
-          <button data-test-focus-selector />
+          <button data-test-focus-selector type="button" />
         </div>`,
       );
 
@@ -344,8 +344,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     test('it focuses on given focusable element', async function (assert) {
       await render(
         hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true focusSelector='[data-test-focus-selector]'}}>
-          <button />
-          <button data-test-focus-selector />
+          <button type="button" />
+          <button data-test-focus-selector type="button" />
         </div>`,
       );
 
@@ -357,8 +357,8 @@ module('Integration | Modifier | scroll-into-view', function (hooks) {
     test('it focuses on first focusable element when given focusable element is not found', async function (assert) {
       await render(
         hbs`<div {{scroll-into-view shouldScroll=true shouldFocusAfterScroll=true focusSelector='[data-test-bad-selector]'}}>
-          <button data-test-focus-selector />
-          <button />
+          <button data-test-focus-selector type="button" />
+          <button type="button" />
         </div>`,
       );
 

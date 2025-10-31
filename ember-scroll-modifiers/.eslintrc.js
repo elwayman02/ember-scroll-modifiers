@@ -5,12 +5,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    requireConfigFile: false,
-    babelOptions: {
-      plugins: [
-        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
-      ],
-    },
   },
   plugins: ['ember'],
   extends: [
@@ -25,7 +19,12 @@ module.exports = {
   overrides: [
     // node files
     {
-      files: ['./.eslintrc.js', './.prettierrc.js', './index.js'],
+      files: [
+        './.eslintrc.js',
+        './.prettierrc.js',
+        '**/*.cjs',
+        './addon-main.cjs',
+      ],
       parserOptions: {
         sourceType: 'script',
       },
