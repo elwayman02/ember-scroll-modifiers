@@ -22,6 +22,8 @@
     "lint:js": "pnpm --filter '*' lint:js",
     "lint:js:fix": "pnpm --filter '*' lint:js:fix",
     "start": "pnpm --filter 'demo-app' start",
+    "start:addon": "pnpm --filter 'ember-scroll-modifiers' start",
+    "start:test": "pnpm --filter 'test-app' start",
     "test": "pnpm --filter 'test-app' test",
     "test:ember": "pnpm --filter 'test-app' test:ember",
     "test:ember-compatibility": "pnpm --filter 'test-app' test:compatibility"
