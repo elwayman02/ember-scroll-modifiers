@@ -34,14 +34,9 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       });
     }
 
-    this.owner.register(
-      'service:ember-scroll-modifiers@observer-manager',
-      MockObserverManager,
-    );
+    this.owner.register('service:observer-manager', MockObserverManager);
 
-    this.observerManagerMock = this.owner.lookup(
-      'service:ember-scroll-modifiers@observer-manager',
-    );
+    this.observerManagerMock = this.owner.lookup('service:observer-manager');
     this.enterStub = sinon.stub();
     this.exitStub = sinon.stub();
     this.maxEnter = 1;
