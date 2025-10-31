@@ -11,8 +11,8 @@ importers:
   demo-app:
     devDependencies:
       '@babel/eslint-parser':
-        specifier: ^7.25.1
-        version: 7.28.4(@babel/core@7.28.5)(eslint@8.57.1)
+        specifier: ^7.28.5
+        version: 7.28.5(@babel/core@7.28.5)(eslint@8.57.1)
       '@babel/plugin-proposal-decorators':
         specifier: ^7.24.7
         version: 7.28.0(@babel/core@7.28.5)
@@ -23,8 +23,8 @@ importers:
         specifier: ^3.0.1
         version: 3.1.1
       '@ember/test-helpers':
-        specifier: ^4.0.2
-        version: 4.0.5(@babel/core@7.28.5)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5))
+        specifier: ^5.4.0
+        version: 5.4.0(@babel/core@7.28.5)
       '@embroider/test-setup':
         specifier: ^4.0.0
         version: 4.0.0
