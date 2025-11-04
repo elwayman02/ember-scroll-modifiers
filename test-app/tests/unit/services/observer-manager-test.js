@@ -2,18 +2,18 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import sinon from 'sinon';
 
-module('Unit | Service | observer-manager', function (hooks) {
+module('Unit | Service | scroll-modifiers-observer', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function () {
-    this.observerManager = this.owner.lookup(
-      'service:ember-scroll-modifiers@observer-manager',
+    this.scrollModifiersObserver = this.owner.lookup(
+      'service:scroll-modifiers-observer',
     );
 
-    sinon.stub(this.observerManager._admin, 'observe');
-    sinon.stub(this.observerManager._admin, 'unobserve');
-    sinon.stub(this.observerManager._admin, 'addEnterCallback');
-    sinon.stub(this.observerManager._admin, 'addExitCallback');
+    sinon.stub(this.scrollModifiersObserver._admin, 'observe');
+    sinon.stub(this.scrollModifiersObserver._admin, 'unobserve');
+    sinon.stub(this.scrollModifiersObserver._admin, 'addEnterCallback');
+    sinon.stub(this.scrollModifiersObserver._admin, 'addExitCallback');
 
     this.options = {
       root: undefined,
@@ -24,31 +24,37 @@ module('Unit | Service | observer-manager', function (hooks) {
 
   test('Creation', function (assert) {
     assert.ok(
-      this.observerManager._admin,
+      this.scrollModifiersObserver._admin,
       'intersection-observer-admin is created',
     );
   });
 
   test('observe', function (assert) {
-    this.observerManager.observe('foo', this.options);
+    this.scrollModifiersObserver.observe('foo', this.options);
     assert.ok(
-      this.observerManager._admin.observe.calledWith('foo', this.options),
+      this.scrollModifiersObserver._admin.observe.calledWith(
+        'foo',
+        this.options,
+      ),
       'observe is called with correct parameters',
     );
   });
 
   test('unobserve', function (assert) {
-    this.observerManager.unobserve('foo', this.options);
+    this.scrollModifiersObserver.unobserve('foo', this.options);
     assert.ok(
-      this.observerManager._admin.unobserve.calledWith('foo', this.options),
+      this.scrollModifiersObserver._admin.unobserve.calledWith(
+        'foo',
+        this.options,
+      ),
       'unobserve is called with correct parameters',
     );
   });
 
   test('addEnterCallback', function (assert) {
-    this.observerManager.addEnterCallback('foo', this.callback);
+    this.scrollModifiersObserver.addEnterCallback('foo', this.callback);
     assert.ok(
-      this.observerManager._admin.addEnterCallback.calledWith(
+      this.scrollModifiersObserver._admin.addEnterCallback.calledWith(
         'foo',
         this.callback,
       ),
@@ -57,9 +63,9 @@ module('Unit | Service | observer-manager', function (hooks) {
   });
 
   test('addExitCallback', function (assert) {
-    this.observerManager.addExitCallback('foo', this.callback);
+    this.scrollModifiersObserver.addExitCallback('foo', this.callback);
     assert.ok(
-      this.observerManager._admin.addExitCallback.calledWith(
+      this.scrollModifiersObserver._admin.addExitCallback.calledWith(
         'foo',
         this.callback,
       ),

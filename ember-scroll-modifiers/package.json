@@ -11,16 +11,34 @@
   "repository": "https://github.com/elwayman02/ember-scroll-modifiers",
   "license": "MIT",
   "author": "Jordan Hawker <hawker.jordan@gmail.com> (https://www.JordanHawker.com)",
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "exports": {
+    ".": {
+      "default": "./dist/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs",
+    "./*": {
+      "default": "./dist/*.js"
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "dist"
+  ],
   "scripts": {
+    "build": "rollup --config",
+    "prepublishOnly": "rollup --config",
+    "start": "rollup --config --watch",
     "lint": "concurrently \"pnpm:lint:*(!fix|hbs)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix"
   },
   "dependencies": {
-    "ember-auto-import": "^2.10.0",
-    "ember-cli-babel": "^8.2.0",
-    "ember-cli-htmlbars": "^6.3.0",
+    "@embroider/addon-shim": "^1.10.0",
+    "decorator-transforms": "^2.3.0",
     "ember-modifier": "^3.0.0 || ^4.0.0",
     "intersection-observer-admin": "^0.3.4"
   },
@@ -34,6 +52,11 @@
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@embroider/addon-dev": "^8.1.0",
+    "@embroider/compat": "^4.1.0",
+    "@embroider/macros": "^1.18.0",
+    "@rollup/plugin-babel": "^6.1.0",
     "concurrently": "^9.1.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -42,7 +65,8 @@
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
     "release-it": "^15.11.0",
-    "release-it-lerna-changelog": "^5.0.0"
+    "release-it-lerna-changelog": "^5.0.0",
+    "rollup": "^4.52.5"
   },
   "engines": {
     "node": "16.* || >= 18"
@@ -54,7 +78,15 @@
     "edition": "octane"
   },
   "ember-addon": {
-    "demoURL": "https://ember-scroll-modifiers.jhawk.co/"
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2,
+    "demoURL": "https://ember-scroll-modifiers.jhawk.co/",
+    "app-js": {
+      "./modifiers/did-intersect.js": "./dist/_app_/modifiers/did-intersect.js",
+      "./modifiers/scroll-into-view.js": "./dist/_app_/modifiers/scroll-into-view.js",
+      "./services/scroll-modifiers-observer.js": "./dist/_app_/services/scroll-modifiers-observer.js"
+    }
   },
   "homepage": "https://ember-scroll-modifiers.jhawk.co/",
   "release-it": {

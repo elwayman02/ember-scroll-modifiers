@@ -10,7 +10,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    class MockObserverManager extends Service {
+    class MockScrollModifiersObserver extends Service {
       constructor() {
         super(...arguments);
         this._admin = {};
@@ -35,12 +35,12 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     }
 
     this.owner.register(
-      'service:ember-scroll-modifiers@observer-manager',
-      MockObserverManager,
+      'service:scroll-modifiers-observer',
+      MockScrollModifiersObserver,
     );
 
-    this.observerManagerMock = this.owner.lookup(
-      'service:ember-scroll-modifiers@observer-manager',
+    this.scrollModifiersObserverMock = this.owner.lookup(
+      'service:scroll-modifiers-observer',
     );
     this.enterStub = sinon.stub();
     this.exitStub = sinon.stub();
@@ -48,22 +48,22 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     this.maxExit = 1;
   });
 
-  test('modifier integrates with observer-manager and triggers correct callbacks when onEnter and onExit are provided', async function (assert) {
+  test('modifier integrates with scroll-modifiers-observer and triggers correct callbacks when onEnter and onExit are provided', async function (assert) {
     await render(
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`,
     );
 
     assert.ok(
-      this.observerManagerMock.observe.calledOnce,
-      'observerManager received observe call',
+      this.scrollModifiersObserverMock.observe.calledOnce,
+      'scrollModifiersObserver received observe call',
     );
     assert.ok(
-      this.observerManagerMock.addEnterCallback.calledOnce,
-      'observerManager received enter callback',
+      this.scrollModifiersObserverMock.addEnterCallback.calledOnce,
+      'scrollModifiersObserver received enter callback',
     );
     assert.ok(
-      this.observerManagerMock.addExitCallback.calledOnce,
-      'observerManager received exit callback',
+      this.scrollModifiersObserverMock.addExitCallback.calledOnce,
+      'scrollModifiersObserver received exit callback',
     );
   });
 
@@ -71,12 +71,12 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     await render(hbs`<div {{did-intersect onEnter=this.enterStub}}></div>`);
 
     assert.ok(
-      this.observerManagerMock.addEnterCallback.calledOnce,
-      'observerManager received enter callback',
+      this.scrollModifiersObserverMock.addEnterCallback.calledOnce,
+      'scrollModifiersObserver received enter callback',
     );
     assert.notOk(
-      this.observerManagerMock.addExitCallback.calledOnce,
-      'observerManager did not receive exit callback',
+      this.scrollModifiersObserverMock.addExitCallback.calledOnce,
+      'scrollModifiersObserver did not receive exit callback',
     );
   });
 
@@ -84,12 +84,12 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     await render(hbs`<div {{did-intersect onExit=this.exitStub}}></div>`);
 
     assert.notOk(
-      this.observerManagerMock.addEnterCallback.calledOnce,
-      'observerManager did not receive enter callback',
+      this.scrollModifiersObserverMock.addEnterCallback.calledOnce,
+      'scrollModifiersObserver did not receive enter callback',
     );
     assert.ok(
-      this.observerManagerMock.addExitCallback.calledOnce,
-      'observerManager received exit callback',
+      this.scrollModifiersObserverMock.addExitCallback.calledOnce,
+      'scrollModifiersObserver received exit callback',
     );
   });
 
@@ -103,12 +103,12 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     await render(hbs`<div {{did-intersect}}></div>`);
 
     assert.notOk(
-      this.observerManagerMock.addEnterCallback.calledOnce,
-      'observerManager did not receive enter callback',
+      this.scrollModifiersObserverMock.addEnterCallback.calledOnce,
+      'scrollModifiersObserver did not receive enter callback',
     );
     assert.notOk(
-      this.observerManagerMock.addExitCallback.calledOnce,
-      'observerManager did not receive callback',
+      this.scrollModifiersObserverMock.addExitCallback.calledOnce,
+      'scrollModifiersObserver did not receive callback',
     );
   });
 
@@ -117,7 +117,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`,
     );
 
-    const options = this.observerManagerMock.observe.args[0][1];
+    const options = this.scrollModifiersObserverMock.observe.args[0][1];
     assert.deepEqual(
       options,
       DEFAULT_OBSERVER_OPTIONS,
@@ -134,7 +134,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     assert.strictEqual(
-      this.observerManagerMock.observe.args[0][1].threshold[0],
+      this.scrollModifiersObserverMock.observe.args[0][1].threshold[0],
       0,
       'options received correct parameters',
     );
@@ -150,16 +150,16 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     assert.notOk(
-      this.observerManagerMock.observe.calledOnce,
-      'observerManager did not received observe call',
+      this.scrollModifiersObserverMock.observe.calledOnce,
+      'scrollModifiersObserver did not received observe call',
     );
     assert.notOk(
-      this.observerManagerMock.addEnterCallback.calledOnce,
-      'observerManager did not receive enter callback',
+      this.scrollModifiersObserverMock.addEnterCallback.calledOnce,
+      'scrollModifiersObserver did not receive enter callback',
     );
     assert.notOk(
-      this.observerManagerMock.addExitCallback.calledOnce,
-      'observerManager did not receive enter callback',
+      this.scrollModifiersObserverMock.addExitCallback.calledOnce,
+      'scrollModifiersObserver did not receive enter callback',
     );
 
     window.IntersectionObserver = intersectionObserver;
@@ -170,7 +170,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub maxEnter=this.maxEnter}}></div>`,
     );
     for (let i = 0; i < this.maxEnter + 1; i++) {
-      this.observerManagerMock.onEnterCallback();
+      this.scrollModifiersObserverMock.onEnterCallback();
     }
 
     assert.strictEqual(
@@ -186,7 +186,7 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     for (let i = 0; i < this.maxExit + 1; i++) {
-      this.observerManagerMock.onExitCallback();
+      this.scrollModifiersObserverMock.onExitCallback();
     }
 
     assert.strictEqual(
@@ -202,14 +202,14 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     for (let i = 0; i < this.maxEnter + 1; i++) {
-      this.observerManagerMock.onEnterCallback();
+      this.scrollModifiersObserverMock.onEnterCallback();
     }
 
     for (let i = 0; i < this.maxExit + 1; i++) {
-      this.observerManagerMock.onExitCallback();
+      this.scrollModifiersObserverMock.onExitCallback();
     }
 
-    assert.strictEqual(this.observerManagerMock.unobserve.callCount, 1);
+    assert.strictEqual(this.scrollModifiersObserverMock.unobserve.callCount, 1);
   });
 
   test('modifier unobserves element when maxEnter is exceeded and no onExit is provided', async function (assert) {
@@ -218,10 +218,10 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     for (let i = 0; i < this.maxEnter + 1; i++) {
-      this.observerManagerMock.onEnterCallback();
+      this.scrollModifiersObserverMock.onEnterCallback();
     }
 
-    assert.strictEqual(this.observerManagerMock.unobserve.callCount, 1);
+    assert.strictEqual(this.scrollModifiersObserverMock.unobserve.callCount, 1);
   });
 
   test('modifier unobserves element when maxExit is exceeded and no onEnter is provided', async function (assert) {
@@ -230,10 +230,10 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     );
 
     for (let i = 0; i < this.maxExit + 1; i++) {
-      this.observerManagerMock.onExitCallback();
+      this.scrollModifiersObserverMock.onExitCallback();
     }
 
-    assert.strictEqual(this.observerManagerMock.unobserve.callCount, 1);
+    assert.strictEqual(this.scrollModifiersObserverMock.unobserve.callCount, 1);
   });
 
   test('modifier onEnter and onExit callback can fire without limit if maxEnter and maxExit is not provided', async function (assert) {
@@ -244,12 +244,12 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     const numOfFiredCallback = this.maxEnter + this.maxExit;
 
     for (let i = 0; i < numOfFiredCallback; i++) {
-      this.observerManagerMock.onEnterCallback();
-      this.observerManagerMock.onExitCallback();
+      this.scrollModifiersObserverMock.onEnterCallback();
+      this.scrollModifiersObserverMock.onExitCallback();
     }
 
     assert.strictEqual(
-      this.observerManagerMock.unobserve.callCount,
+      this.scrollModifiersObserverMock.unobserve.callCount,
       0,
       'unobserve has never been triggered',
     );
@@ -277,8 +277,14 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     // Wait for re-render to complete
     await settled();
 
-    assert.strictEqual(this.observerManagerMock.addEnterCallback.callCount, 1);
-    assert.strictEqual(this.observerManagerMock.addExitCallback.callCount, 1);
+    assert.strictEqual(
+      this.scrollModifiersObserverMock.addEnterCallback.callCount,
+      1,
+    );
+    assert.strictEqual(
+      this.scrollModifiersObserverMock.addExitCallback.callCount,
+      1,
+    );
   });
 
   test('modifier triggers correct addEnterCallback and addExitCallback when callbacks change', async function (assert) {
@@ -289,8 +295,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
       hbs`<div {{did-intersect onEnter=this.enterStub onExit=this.exitStub}}></div>`,
     );
 
-    this.observerManagerMock.onEnterCallback();
-    this.observerManagerMock.onExitCallback();
+    this.scrollModifiersObserverMock.onEnterCallback();
+    this.scrollModifiersObserverMock.onExitCallback();
 
     assert.strictEqual(
       this.enterStub.callCount,
@@ -312,8 +318,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
     // Wait for re-render to complete
     await settled();
 
-    this.observerManagerMock.onEnterCallback();
-    this.observerManagerMock.onExitCallback();
+    this.scrollModifiersObserverMock.onEnterCallback();
+    this.scrollModifiersObserverMock.onExitCallback();
 
     assert.strictEqual(
       this.oldEnterStub.callCount,
@@ -351,8 +357,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
         ></div>
       `);
 
-      this.observerManagerMock.onEnterCallback();
-      this.observerManagerMock.onExitCallback();
+      this.scrollModifiersObserverMock.onEnterCallback();
+      this.scrollModifiersObserverMock.onExitCallback();
 
       assert.ok(this.enterStub.calledOnce, 'the enter callback is invoked');
       assert.ok(this.exitStub.calledOnce, 'the onExit callback is invoked');
@@ -369,8 +375,8 @@ module('Integration | Modifier | did-intersect', function (hooks) {
         ></div>
       `);
 
-      this.observerManagerMock.onEnterCallback();
-      this.observerManagerMock.onExitCallback();
+      this.scrollModifiersObserverMock.onEnterCallback();
+      this.scrollModifiersObserverMock.onExitCallback();
 
       assert.ok(this.enterStub.notCalled, 'the enter callback is not invoked');
       assert.ok(this.exitStub.notCalled, 'the onExit callback is not invoked');
