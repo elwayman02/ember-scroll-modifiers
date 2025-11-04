@@ -51,7 +51,7 @@
     "ember-fetch": "^8.1.2",
     "ember-load-initializers": "^3.0.1",
     "ember-qunit": "^8.1.0",
-    "ember-resolver": "^11.0.1",
+    "ember-resolver": "^13.1.1",
     "ember-scroll-modifiers": "workspace:*",
     "ember-sinon-qunit": "^6.0.0",
     "ember-source": "~5.12.0",
