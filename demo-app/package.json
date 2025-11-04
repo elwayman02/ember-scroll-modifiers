@@ -62,7 +62,7 @@
     "eslint-plugin-n": "^17.10.2",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-qunit": "^8.1.2",
-    "field-guide": "3.0.0",
+    "field-guide": "3.1.0",
     "field-guide-default-template": "^4.0.1",
     "loader.js": "^4.7.0",
     "prember": "^2.1.0",
