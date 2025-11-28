@@ -28,6 +28,9 @@
     "test:ember": "pnpm --filter 'test-app' test:ember",
     "test:ember-compatibility": "pnpm --filter 'test-app' test:compatibility"
   },
+  "devDependencies": {
+    "release-plan": "^0.17.0"
+  },
   "volta": {
     "node": "18.20.4",
     "pnpm": "10.19.0"
