@@ -64,8 +64,6 @@
     "eslint-plugin-n": "^17.10.2",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
-    "release-it": "^15.11.0",
-    "release-it-lerna-changelog": "^5.0.0",
     "rollup": "^4.52.5"
   },
   "engines": {
@@ -88,20 +86,5 @@
       "./services/scroll-modifiers-observer.js": "./dist/_app_/services/scroll-modifiers-observer.js"
     }
   },
-  "homepage": "https://ember-scroll-modifiers.jhawk.co/",
-  "release-it": {
-    "plugins": {
-      "release-it-lerna-changelog": {
-        "infile": "CHANGELOG.md",
-        "launchEditor": false
-      }
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH"
-    }
-  }
+  "homepage": "https://ember-scroll-modifiers.jhawk.co/"
 }
