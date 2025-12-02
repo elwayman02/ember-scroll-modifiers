@@ -1,0 +1,22 @@
+{
+  "solution": {
+    "ember-scroll-modifiers": {
+      "impact": "major",
+      "oldVersion": "7.3.0",
+      "newVersion": "8.0.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./ember-scroll-modifiers/package.json"
+    }
+  },
+  "description": "## Release (2025-12-02)\n\n* ember-scroll-modifiers 8.0.0 (major)\n\n#### :boom: Breaking Change\n* `ember-scroll-modifiers`\n  * [#1276](https://github.com/elwayman02/ember-scroll-modifiers/pull/1276) BREAKING: Convert to V2 format ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n\n#### :bug: Bug Fix\n* [#1273](https://github.com/elwayman02/ember-scroll-modifiers/pull/1273) Fix ember-try release scenario ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n\n#### :house: Internal\n* `ember-scroll-modifiers`\n  * [#1277](https://github.com/elwayman02/ember-scroll-modifiers/pull/1277) Release plan setup ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n  * [#1276](https://github.com/elwayman02/ember-scroll-modifiers/pull/1276) BREAKING: Convert to V2 format ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n  * [#1274](https://github.com/elwayman02/ember-scroll-modifiers/pull/1274) Monorepo structure ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n* Other\n  * [#1275](https://github.com/elwayman02/ember-scroll-modifiers/pull/1275) Untangle tests and demo-app ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n  * [#1273](https://github.com/elwayman02/ember-scroll-modifiers/pull/1273) Fix ember-try release scenario ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n  * [#1268](https://github.com/elwayman02/ember-scroll-modifiers/pull/1268) Use pnpm package manager instead of yarn ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n  * [#1252](https://github.com/elwayman02/ember-scroll-modifiers/pull/1252) Remove use of `inject` ([@bertdeblock](https://github.com/bertdeblock))\n\n#### Committers: 2\n- Bert De Block ([@bertdeblock](https://github.com/bertdeblock))\n- Marine Dunstetter ([@BlueCutOfficial](https://github.com/BlueCutOfficial))\n"
+}

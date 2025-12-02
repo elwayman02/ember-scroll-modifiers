@@ -1,5 +1,31 @@
 # Changelog
 
+## Release (2025-12-02)
+
+* ember-scroll-modifiers 8.0.0 (major)
+
+#### :boom: Breaking Change
+* `ember-scroll-modifiers`
+  * [#1276](https://github.com/elwayman02/ember-scroll-modifiers/pull/1276) BREAKING: Convert to V2 format ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+
+#### :bug: Bug Fix
+* [#1273](https://github.com/elwayman02/ember-scroll-modifiers/pull/1273) Fix ember-try release scenario ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+
+#### :house: Internal
+* `ember-scroll-modifiers`
+  * [#1277](https://github.com/elwayman02/ember-scroll-modifiers/pull/1277) Release plan setup ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+  * [#1276](https://github.com/elwayman02/ember-scroll-modifiers/pull/1276) BREAKING: Convert to V2 format ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+  * [#1274](https://github.com/elwayman02/ember-scroll-modifiers/pull/1274) Monorepo structure ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+* Other
+  * [#1275](https://github.com/elwayman02/ember-scroll-modifiers/pull/1275) Untangle tests and demo-app ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+  * [#1273](https://github.com/elwayman02/ember-scroll-modifiers/pull/1273) Fix ember-try release scenario ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+  * [#1268](https://github.com/elwayman02/ember-scroll-modifiers/pull/1268) Use pnpm package manager instead of yarn ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+  * [#1252](https://github.com/elwayman02/ember-scroll-modifiers/pull/1252) Remove use of `inject` ([@bertdeblock](https://github.com/bertdeblock))
+
+#### Committers: 2
+- Bert De Block ([@bertdeblock](https://github.com/bertdeblock))
+- Marine Dunstetter ([@BlueCutOfficial](https://github.com/BlueCutOfficial))
+
 ## v7.3.0 (2024-08-30)
 
 #### :rocket: Enhancement
