@@ -1,4 +1,4 @@
-
+# Changelog
 
 ## v7.3.0 (2024-08-30)
 
@@ -305,4 +305,3 @@
 #### Committers: 2
 - Jordan Hawker ([@elwayman02](https://github.com/elwayman02))
 - [@dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
-
