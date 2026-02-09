@@ -60,7 +60,7 @@
     "concurrently": "^9.1.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-ember": "^12.2.0",
+    "eslint-plugin-ember": "^12.7.5",
     "eslint-plugin-n": "^17.10.2",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
