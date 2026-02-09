@@ -63,7 +63,7 @@
     "eslint-plugin-ember": "^12.2.0",
     "eslint-plugin-n": "^17.10.2",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.8.1",
     "rollup": "^4.52.5"
   },
   "engines": {
